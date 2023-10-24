@@ -49,18 +49,20 @@
                     </div>
                     <h3 class="card-title mt-4"> Profile</h3>
                     <div class="row g-3">
+                        <form action="{{ route('registration.update',auth()->user()->id) }}" method="post">
+                            @csrf
                       <div class="col-md">
                         <div class="form-label"> Name</div>
-                        <input type="text" class="form-control" value="{{ auth()->user()->name }}">
+                        <input type="text" name="name" class="form-control" value="{{ auth()->user()->name }}">
                       </div>
                       <div class="col-md">
                         <div class="form-label"> Email</div>
-                        <input type="text" class="form-control" value="{{ auth()->user()->email }}">
+                        <input type="text" class="form-control" name="email" value="{{ auth()->user()->email }}">
                       </div>
                       <div class="col-md">
                         <div class="form-label">Mobile</div>
                         <input type="text" class="form-control"
-			       value="{{ auth()->user()->phone }}">
+			       value="{{ auth()->user()->phone }}" name="phone">
                       </div>
                     </div>
                     <h3 class="card-title mt-4">User Role</h3>
@@ -73,22 +75,14 @@
 
                       </div>
                     </div>
-                    <h3 class="card-title mt-4">Old Password</h3>
-
-                    <div>
-                      <input href="#" class="btn" placeholder="Old Passowrd">
-
-                    </div>
                     <h3 class="card-title mt-4">New Password</h3>
 
                     <div>
-                      <input href="#" class="btn" placeholder="New Password">
-                    </div>
-                    <h3 class="card-title mt-4">Confirm Password</h3>
+                      <input type="password" name="password" class="btn" placeholder="Old Passowrd">
 
-                    <div>
-                      <input href="#" class="btn" placeholder="Confirm Password">
                     </div>
+
+
 
 
                   </div>
@@ -97,11 +91,12 @@
                       <a href="#" class="btn">
                         Cancel
                       </a>
-                      <a href="#" class="btn btn-primary">
+                      <button type="submit" class="btn btn-primary">
                         Submit
-                      </a>
+                      </button>
                     </div>
                   </div>
+                </form>
                 </div>
               </div>
             </div>

@@ -86,7 +86,19 @@ class RegistrationController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+       $userUpdate= User::find($id);
+       $userUpdate->update([
+        "email"=>$request->email,
+
+        "phone"=>$request->phone,
+
+        "name"=>$request->name,
+
+        "password"=>bcrypt($request->password),
+
+        "role"=>'customer',
+       ]);
+       return redirect()->back()->withSuccess('Profile Update Success');
     }
 
     /**

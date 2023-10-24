@@ -12,4 +12,8 @@ class TestController extends Controller
 
        return redirect()->route('home')->withSuccess('Logout Success');
     }
+
+    public function form(){
+        return view('backend.pages.test');
+    }
 }

@@ -41,7 +41,10 @@ Route::group(['middleware'=>'auth'],function(){
 //Pages
 Route::get('/app',[HomeController::class,'index'])->name('app');
 Route::get('/logout',[TestController::class,'logout'])->name('logout');
+Route::get('/form',[TestController::class,'form'])->name('form');
 Route::get('/setting',[SettingController::class,'index'])->name('setting');
 //profile
 Route::get('/profile',[ProfileController::class,'index'])->name('profile');
+//post
+Route::post('/registration/update{id}',[RegistrationController::class,'update'])->name('registration.update');
 });
