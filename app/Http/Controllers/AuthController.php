@@ -33,7 +33,7 @@ class AuthController extends Controller
 
         if (Auth::attempt($credential)) {
             if (auth()->user()->role == 'customer') {
-                return redirect()->route('website');
+                return redirect()->route('home');
 
             } elseif ( auth()->user()->role == 'admin') {
 

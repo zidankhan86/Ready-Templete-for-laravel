@@ -9,6 +9,7 @@ class TestController extends Controller
 {
     public function logout(){
        Auth::logout();
-       return to_route('login');
+
+       return redirect()->route('home')->withSuccess('Logout Success');
     }
 }
