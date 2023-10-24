@@ -3,6 +3,7 @@
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\frontend\HomeController as FrontendHomeController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\RegistrationController;
 use App\Http\Controllers\TestController;
 use Illuminate\Support\Facades\Route;
 
@@ -24,8 +25,8 @@ Route::get('/',[FrontendHomeController::class,'index'])->name('home');
 Route::get('/login',[AuthController::class,'index'])->name('login');
 Route::post('/store',[AuthController::class,'store'])->name('store');
 //Register
-
-
+Route::get('/registration',[RegistrationController::class,'index'])->name('registration');
+Route::post('/registration/store',[RegistrationController::class,'store'])->name('registration.store');
 //Backend
 
 //Middleware

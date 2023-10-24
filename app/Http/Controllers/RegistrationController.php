@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class RegistrationController extends Controller
 {
@@ -11,7 +13,7 @@ class RegistrationController extends Controller
      */
     public function index()
     {
-        //
+        return view('frontend.components.registration.registration');
     }
 
     /**
@@ -19,7 +21,7 @@ class RegistrationController extends Controller
      */
     public function create()
     {
-        //
+    //
     }
 
     /**
@@ -27,7 +29,40 @@ class RegistrationController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validator = Validator::make($request->all(), [
+            'email' => 'required|email|unique:users',
+            'phone' => [
+                'required',
+                'regex:/^(?:\+?88|0088)?01[13-9]\d{8}$/'
+            ],
+
+            'name' => 'required',
+            'password' => 'required|min:5',
+        ], [
+            'phone.regex' => 'The phone number should be a valid number.'
+        ]);
+
+        if ($validator->fails()) {
+            return redirect()->back()->withErrors($validator)->withInput();
+        }
+       // dd($request->all());
+
+        User::create([
+
+            "email"=>$request->email,
+
+            "phone"=>$request->phone,
+
+            "name"=>$request->name,
+
+            "password"=>bcrypt($request->password),
+
+            "role"=>'customer',
+
+        ]);
+
+        return redirect()->route('login')->withSuccess('Registration Success');
+
     }
 
     /**

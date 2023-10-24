@@ -11,8 +11,8 @@
                 <li class="nav-item"><a class="nav-link" href="{{ route('home') }}">Home</a></li>
                 <li class="nav-item"><a class="nav-link" href="#portfolio">Portfolio</a></li>
 
-                <li class="nav-item"><a class="nav-link" href="#team">Login</a></li>
-                <li class="nav-item"><a class="nav-link" href="#contact">Register</a></li>
+                <li class="nav-item"><a class="nav-link" href="{{ route('login') }}">Login</a></li>
+                <li class="nav-item"><a class="nav-link" href="{{ route('registration') }}">Register</a></li>
 
                 <li class="nav-item"><a class="nav-link" href="{{ route('logout') }}" class="btn btn-danger" style="color: red"><strong> Logout</strong></a></li>
             </ul>
