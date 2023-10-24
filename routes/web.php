@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\frontend\HomeController as FrontendHomeController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\TestController;
 use Illuminate\Support\Facades\Route;
@@ -16,9 +17,16 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+//Frontend
+Route::get('/',[FrontendHomeController::class,'index'])->name('home');
+
 //Auth
 Route::get('/login',[AuthController::class,'index'])->name('login');
 Route::post('/store',[AuthController::class,'store'])->name('store');
+//Register
+
+
+//Backend
 
 //Middleware
 Route::group(['middleware'=>'auth'],function(){
