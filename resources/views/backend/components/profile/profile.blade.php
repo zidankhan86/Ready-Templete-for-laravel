@@ -1,137 +1,80 @@
-<style>
-    @import url("https://fonts.googleapis.com/css2?family=Poppins:weight@100;200;300;400;500;600;700;800&display=swap");
+<div class="page-wrapper">
+    <div class="page-header">
+      <div class="container">
+        <div class="row align-items-center">
+          <div class="col-auto">
+            <span class="avatar avatar-lg rounded" style="background-image: url(./static/avatars/003m.jpg)"></span>
+          </div>
+          <div class="col">
+            <h1 class="fw-bold">{{ auth()->user()->name }}</h1>
 
 
-body{
- background-color:#545454;
- font-family: "Poppins", sans-serif;
- font-weight: 300;
-}
+          </div>
+          <div class="col-auto ms-auto">
 
-.container{
- height: 100vh;
-}
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Page body -->
+    <div class="page-body">
+      <div class="container-xl">
+        <div class="row g-3">
+          <div class="col">
+            <ul class="timeline">
+              <li class="timeline-event">
 
-.card{
+                <div class="card timeline-event-card">
+                  <div class="card-body">
+                    <div class="text-muted float-end"></div>
+                    <h4>Name</h4>
+                    <p class="text-muted">{{ auth()->user()->name }}</p>
+                  </div>
+                </div>
+              </li>
+              <li class="timeline-event">
 
- width: 380px;
- border: none;
- border-radius: 15px;
- padding: 8px;
- background-color: #fff;
- position: relative;
- height: 370px;
-}
+                <div class="card timeline-event-card">
+                  <div class="card-body">
+                    <div class="text-muted float-end"></div>
+                    <h4>Email</h4>
+                    <p class="text-muted">{{ auth()->user()->email }}</p>
+                  </div>
+                </div>
+              </li>
+              <li class="timeline-event">
 
-.upper{
+                <div class="card timeline-event-card">
+                  <div class="card-body">
+                    <div class="text-muted float-end"></div>
+                    <h4>Mobile</h4>
+                    <p class="text-muted">{{ auth()->user()->phone }} </p>
+                  </div>
+                </div>
+              </li>
+              <li class="timeline-event">
 
- height: 100px;
-
-}
-
-.upper img{
-
- width: 100%;
- border-top-left-radius: 10px;
- border-top-right-radius: 10px;
-
-}
-
-.user{
- position: relative;
-}
-
-.profile img{
-
-
- height: 80px;
- width: 80px;
- margin-top:2px;
-
-
-}
-
-.profile{
-
- position: absolute;
- top:-50px;
- left: 38%;
- height: 90px;
- width: 90px;
- border:3px solid #fff;
-
- border-radius: 50%;
-
-}
-
-.follow{
-
- border-radius: 15px;
- padding-left: 20px;
- padding-right: 20px;
- height: 35px;
-}
-
-.stats span{
-
- font-size: 29px;
-}
-</style>
-<div class="container d-flex justify-content-center align-items-center">
-
-    <div class="card">
-
-     <div class="upper">
-
-      
-
-     </div>
-
-     <div class="user text-center">
-
-       <div class="profile">
-
-         <img src="https://www.w3schools.com/w3images/avatar2.png" class="rounded-circle" width="80">
-
-       </div>
-
-     </div>
-
-
-     <div class="mt-5 text-center">
-
-       <h4 class="mb-0">{{ auth()->user()->name }}</h4>
+                <div class="card timeline-event-card">
+                  <div class="card-body">
+                    <div class="text-muted float-end"></div>
+                    <h4>User Role</h4>
+                    <p class="text-muted">{{ auth()->user()->role }}</p>
+                  </div>
+                </div>
+              </li>
 
 
 
+            </ul>
+          </div>
 
-
-       <div class="d-flex justify-content-between align-items-center mt-4 px-4">
-
-         <div class="stats">
-           <h6 class="mb-0">Phone</h6>
-           <small>{{ auth()->user()->phone }}</small>
-
-         </div>
-
-
-         <div class="stats">
-           <h6 class="mb-0">Email</h6>
-           <small>{{ auth()->user()->email }}</small>
-
-         </div>
-
-
-         <div class="stats">
-           <h6 class="mb-0">Role</h6>
-           <small>{{ auth()->user()->role }}</small>
-
-         </div>
-
-       </div>
-
-     </div>
-
+        </div>
+      </div>
     </div>
 
   </div>
+</div>
+<!-- Libs JS -->
+<!-- Tabler Core -->
+
+
