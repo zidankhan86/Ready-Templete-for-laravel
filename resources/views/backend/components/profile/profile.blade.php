@@ -83,7 +83,7 @@ body{
 
      <div class="upper">
 
-       <img src="https://i.imgur.com/Qtrsrk5.jpg" class="img-fluid">
+      
 
      </div>
 
@@ -91,7 +91,7 @@ body{
 
        <div class="profile">
 
-         <img src="https://i.imgur.com/JgYD2nQ.jpg" class="rounded-circle" width="80">
+         <img src="https://www.w3schools.com/w3images/avatar2.png" class="rounded-circle" width="80">
 
        </div>
 
