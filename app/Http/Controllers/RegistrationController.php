@@ -60,7 +60,7 @@ class RegistrationController extends Controller
             "role"=>'customer',
 
         ]);
-
+        // toastr()->success('success! Registration Success!');
         return redirect()->route('login')->withSuccess('Registration Success');
 
     }

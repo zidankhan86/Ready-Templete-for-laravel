@@ -36,7 +36,8 @@ class AuthController extends Controller
                 return redirect()->route('website');
 
             } elseif ( auth()->user()->role == 'admin') {
-                return redirect()->route('app');
+
+                return redirect()->route('app')->withSuccess('Login Success');
             }
         } else {
             return redirect()->back()->withErrors(['error' => 'Invalid credentials. Please try again.']);
