@@ -29,19 +29,22 @@ class AuthController extends Controller
     public function store(Request $request)
     {
         //dd($request->all());
-        $credential = $request->only(['email', 'password']);
+              $credential = $request->only(['email', 'password']);
 
-        if (Auth::attempt($credential)) {
-            if (auth()->user()->role == 'customer') {
-                return redirect()->route('home');
+              if (Auth::attempt($credential)) {
 
-            } elseif ( auth()->user()->role == 'admin') {
+              if (auth()->user()->role == 'customer') {
 
-                return redirect()->route('app')->withSuccess('Login Success');
-            }
-        } else {
-            return redirect()->back()->withErrors(['error' => 'Invalid credentials. Please try again.']);
-        }
+              return redirect()->route('home');
+
+             } elseif ( auth()->user()->role == 'admin') {
+
+              return redirect()->route('app')->withSuccess('Login Success');
+             }
+             } else {
+
+              return redirect()->back()->withErrors(['error' => 'Invalid credentials. Please try again.']);
+           }
     }
 
     /**

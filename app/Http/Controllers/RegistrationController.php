@@ -32,9 +32,9 @@ class RegistrationController extends Controller
         $validator = Validator::make($request->all(), [
             'email' => 'required|email|unique:users',
             'phone' => [
-                'required',
-                'regex:/^(?:\+?88|0088)?01[13-9]\d{8}$/'
-            ],
+            'required',
+            'regex:/^(?:\+?88|0088)?01[13-9]\d{8}$/'
+             ],
 
             'name' => 'required',
             'password' => 'required|min:5',
@@ -59,9 +59,9 @@ class RegistrationController extends Controller
 
             "role"=>'customer',
 
-        ]);
-        // toastr()->success('success! Registration Success!');
-        return redirect()->route('login')->withSuccess('Registration Success');
+           ]);
+
+            return redirect()->route('login')->withSuccess('Registration Success');
 
     }
 
