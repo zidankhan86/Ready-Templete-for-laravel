@@ -1,6 +1,8 @@
 <?php
 
+use App\Http\Controllers\AuthController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\TestController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,6 +16,14 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+//Auth
+Route::get('/login',[AuthController::class,'index'])->name('login');
+Route::post('/store',[AuthController::class,'store'])->name('store');
 
+//Middleware
+Route::group(['middleware'=>'auth'],function(){
 
-Route::get('/',[HomeController::class,'index']);
+//Pages
+Route::get('/app',[HomeController::class,'index'])->name('app');
+Route::get('/logout',[TestController::class,'logout'])->name('logout');
+});
