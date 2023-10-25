@@ -78,13 +78,8 @@
                     <h3 class="card-title mt-4">New Password</h3>
 
                     <div>
-                      <input type="password" name="password" class="btn" placeholder="Old Passowrd">
-
+                      <input type="password" name="password" class="btn" placeholder=" Passowrd">
                     </div>
-
-
-
-
                   </div>
                   <div class="card-footer bg-transparent mt-auto">
                     <div class="btn-list justify-content-end">
