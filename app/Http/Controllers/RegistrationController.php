@@ -8,104 +8,96 @@ use Illuminate\Support\Facades\Validator;
 
 class RegistrationController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
-    public function index()
-    {
-        return view('frontend.components.registration.registration');
-    }
+            /**
+             * Display a listing of the resource.
+             */
+            public function index()
+            {
+                return view('frontend.components.registration.registration');
+            }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-    //
-    }
+            /**
+             * Show the form for creating a new resource.
+             */
+            public function create()
+            {
+            //
+            }
 
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
-    {
-        $validator = Validator::make($request->all(), [
-            'email' => 'required|email|unique:users',
-            'phone' => [
-            'required',
-            'regex:/^(?:\+?88|0088)?01[13-9]\d{8}$/'
-             ],
+            /**
+             * Store a newly created resource in storage.
+             */
+            public function store(Request $request)
+            {
+            $validator = Validator::make($request->all(), [
+                'email' => 'required|email|unique:users',
+                'phone' => [
+                'required',
+                'regex:/^(?:\+?88|0088)?01[13-9]\d{8}$/'
+                ],
+                'name' => 'required',
+                'password' => 'required|min:5',
+                ], [
+                'phone.regex' => 'The phone number should be a valid number.'
+                ]);
 
-            'name' => 'required',
-            'password' => 'required|min:5',
-        ], [
-            'phone.regex' => 'The phone number should be a valid number.'
-        ]);
+                if ($validator->fails()) {
+                return redirect()->back()->withErrors($validator)->withInput();
+                }
+            // dd($request->all());
 
-        if ($validator->fails()) {
-            return redirect()->back()->withErrors($validator)->withInput();
-        }
-       // dd($request->all());
+             User::create([
 
-        User::create([
-
-            "email"=>$request->email,
-
-            "phone"=>$request->phone,
-
-            "name"=>$request->name,
-
-            "password"=>bcrypt($request->password),
-
-            "role"=>'customer',
+                "email"    =>$request->email,
+                "phone"    =>$request->phone,
+                "name"     =>$request->name,
+                "password" =>bcrypt($request->password),
+                "role"     =>'customer',
 
            ]);
 
             return redirect()->route('login')->withSuccess('Registration Success');
 
-    }
+            }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
-    {
-        //
-    }
+            /**
+             * Display the specified resource.
+             */
+            public function show(string $id)
+            {
+                //
+            }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
-    {
-        //
-    }
+            /**
+             * Show the form for editing the specified resource.
+             */
+            public function edit(string $id)
+            {
+                //
+            }
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
-    {
-       $userUpdate= User::find($id);
-       $userUpdate->update([
-        "email"=>$request->email,
+            /**
+             * Update the specified resource in storage.
+             */
+            public function update(Request $request, string $id)
+            {
+            $userUpdate= User::find($id);
 
-        "phone"=>$request->phone,
+                $userUpdate->update([
+                "email"   =>  $request->email,
+                "phone"   =>  $request->phone,
+                "name"    =>  $request->name,
+                "password"=>bcrypt($request->password),
+                "role"    =>  'admin',
+                ]);
+                return redirect()->back()->withSuccess('Profile Update Success');
+            }
 
-        "name"=>$request->name,
-
-        "password"=>bcrypt($request->password),
-
-        "role"=>'admin',
-       ]);
-       return redirect()->back()->withSuccess('Profile Update Success');
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
-    {
-        //
-    }
+                /**
+                 * Remove the specified resource from storage.
+                 */
+                public function destroy(string $id)
+                {
+                    //
+                }
 }

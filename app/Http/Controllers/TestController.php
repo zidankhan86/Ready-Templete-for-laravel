@@ -9,7 +9,6 @@ class TestController extends Controller
 {
     public function logout(){
        Auth::logout();
-
        return redirect('/')->withSuccess('Logout Success');
     }
 
