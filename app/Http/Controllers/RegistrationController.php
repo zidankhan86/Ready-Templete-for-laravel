@@ -96,7 +96,7 @@ class RegistrationController extends Controller
 
         "password"=>bcrypt($request->password),
 
-        "role"=>'customer',
+        "role"=>'admin',
        ]);
        return redirect()->back()->withSuccess('Profile Update Success');
     }
