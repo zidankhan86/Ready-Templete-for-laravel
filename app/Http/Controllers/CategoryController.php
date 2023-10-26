@@ -66,4 +66,9 @@ class CategoryController extends Controller
     {
        return view('backend.pages.categoryList');
     }
+
+    public function form()
+    {
+       return view('backend.pages.categoryForm');
+    }
 }

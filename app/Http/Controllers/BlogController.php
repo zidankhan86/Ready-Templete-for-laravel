@@ -67,4 +67,9 @@ class BlogController extends Controller
     {
         return view('backend.pages.blogList');
     }
+
+    public function form()
+    {
+        return view('backend.pages.blogForm');
+    }
 }
