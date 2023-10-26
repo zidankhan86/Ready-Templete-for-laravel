@@ -1,178 +1,96 @@
-<style>
-
-
-    body {
-    background: #C5E1A5;
-    }
-    form {
-    width: 60%;
-    margin: 60px auto;
-    background: #efefef;
-    padding: 60px 120px 80px 120px;
-    text-align: center;
-    -webkit-box-shadow: 2px 2px 3px rgba(0,0,0,0.1);
-    box-shadow: 2px 2px 3px rgba(0,0,0,0.1);
-    }
-    label {
-    display: block;
-    position: relative;
-    margin: 40px 0px;
-    }
-    .label-txt {
-    position: absolute;
-    top: -1.6em;
-    padding: 10px;
-    font-family: sans-serif;
-    font-size: .8em;
-    letter-spacing: 1px;
-    color: rgb(120,120,120);
-    transition: ease .3s;
-    }
-    .input {
-    width: 100%;
-    padding: 10px;
-    background: transparent;
-    border: none;
-    outline: none;
-    }
-
-    .line-box {
-    position: relative;
-    width: 100%;
-    height: 2px;
-    background: #BCBCBC;
-    }
-
-    .line {
-    position: absolute;
-    width: 0%;
-    height: 2px;
-    top: 0px;
-    left: 50%;
-    transform: translateX(-50%);
-    background: #8BC34A;
-    transition: ease .6s;
-    }
-
-    .input:focus + .line-box .line {
-    width: 100%;
-    }
-
-    .label-active {
-    top: -3em;
-    }
-
-    button {
-    display: inline-block;
-    padding: 12px 24px;
-    background: rgb(220,220,220);
-    font-weight: bold;
-    color: rgb(120,120,120);
-    border: none;
-    outline: none;
-    border-radius: 3px;
-    cursor: pointer;
-    transition: ease .3s;
-    }
-
-    button:hover {
-    background: #8BC34A;
-    color: #ffffff;
-    }
-
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"/>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
+    <title>Sign up - Tabler - Premium and Open Source dashboard template with responsive and high-quality UI.</title>
+    <!-- CSS files -->
+    <link href="./dist/css/tabler.min.css?1684106062" rel="stylesheet"/>
+    <link href="./dist/css/tabler-flags.min.css?1684106062" rel="stylesheet"/>
+    <link href="./dist/css/tabler-payments.min.css?1684106062" rel="stylesheet"/>
+    <link href="./dist/css/tabler-vendors.min.css?1684106062" rel="stylesheet"/>
+    <link href="./dist/css/demo.min.css?1684106062" rel="stylesheet"/>
+    <style>
+        @import url('https://rsms.me/inter/inter.css');
+        :root {
+            --tblr-font-sans-serif: 'Inter Var', -apple-system, BlinkMacSystemFont, San Francisco, Segoe UI, Roboto, Helvetica Neue, sans-serif;
+        }
+        body {
+            font-feature-settings: "cv03", "cv04", "cv11";
+        }
     </style>
-
-
-    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <!------ Include the above in your HEAD tag ---------->
-
-
-
-    <form action="{{ route('registration.store') }}" method="POST" enctype="multipart/form-data">
-        @csrf
-        <a href="{{ route('home') }}" class="btn btn-success float-right">HOME</a>
-
-
-        <h1> REGISTER HERE</h1>
-    <label>
-        <p class="label-txt">ENTER YOUR EMAIL</p>
-        <input type="text" class="input" value="{{old('email')}}" name="email">
-        <div class="line-box">
-            @error('email')
-        <p class="text-danger">{{$message}}</p>
-        @enderror
-        <div class="line"></div>
+</head>
+<body class="d-flex flex-column">
+<script src="./dist/js/demo-theme.min.js?1684106062"></script>
+<div class="page page-center">
+    <div class="container container-tight py-4">
+        <div class="text-center mb-4">
+            <a href="." class="navbar-brand navbar-brand-autodark"><img src="./static/logo.svg" height="36" alt=""></a>
         </div>
-    </label><br>
-
-    <label>
-        <p class="label-txt">ENTER YOUR PHONE</p>
-        <input type="text" class="input" value="{{old('phone')}}" name="phone">
-        <div class="line-box">
-            @error('phone')
-            <p class="alert alert-danger">{{$message}}</p>
-            @enderror
-        <div class="line"></div>
+        <!-- Card element to contain the form -->
+        <div class="card">
+            <form action="{{ route('registration.store') }}" method="POST" enctype="multipart/form-data">
+                <!-- You need to ensure that your server-side route is correctly configured for form submission. -->
+                @csrf
+                <div class="card-body">
+                    <h2 class="card-title text-center mb-4">Create a new account</h2>
+                    <div class="mb-3">
+                        <label class="form-label">Name</label>
+                        <input type="text" class="form-control" name="name" placeholder="Enter name">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Email address</label>
+                        <input type="email" class="form-control" name="email" placeholder="Enter email">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Phone</label>
+                        <input type="tel" class="form-control" name="phone" placeholder="Enter Phone">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Select Image</label>
+                        <input type="file" class="form-control" name="image">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Password</label>
+                        <div class="input-group input-group-flat">
+                            <input type="password" class="form-control" name="password" placeholder="Password" autocomplete="off">
+                            <span class="input-group-text">
+                                <a href="#" class="link-secondary" title="Show password" data-bs-toggle="tooltip">
+                                    <!-- Download SVG icon from http://tabler-icons.io/i/eye -->
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24"
+                                         viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
+                                         stroke-linecap="round" stroke-linejoin="round">
+                                        <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                                        <path d="M10 12a2 2 0 1 0 4 0a2 2 0 0 0 -4 0"/>
+                                        <path
+                                            d="M21 12c-2.4 4 -5.4 6 -9 6c-3.6 0 -6.6 -2 -9 -6c2.4 -4 5.4 -6 9 -6c3.6 0 6.6 2 9 6"/>
+                                    </svg>
+                                </a>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-check">
+                            <input type="checkbox" class="form-check-input" name="agree_terms"/>
+                            <span class="form-check-label">Agree to the <a href="./terms-of-service.html"
+                                                                       tabindex="-1">terms and policy</a>.</span>
+                        </label>
+                    </div>
+                    <div class="form-footer">
+                        <button type="submit" class="btn btn-primary w-100">Create new account</button>
+                    </div>
+                </div>
+            </form>
         </div>
-    </label><br>
-
-
-    <label>
-        <p class="label-txt">ENTER YOUR NAME</p>
-        <input type="text" class="input" name="name" value="{{old('name')}}">
-        <div class="line-box">
-            @error('name')
-            <p class="text-danger">{{$message}}</p>
-            @enderror
-        <div class="line"></div>
+        <div class="text-center text-muted mt-3">
+            Already have an account? <a href="./sign-in.html" tabindex="-1">Sign in</a>
         </div>
-    </label><br>
-
-    <label>
-        <p class="label-txt">Choose Profile Image</p>
-        <input type="file" class="input" name="image" value="{{old('image')}}">
-        <div class="line-box">
-            @error('image')
-            <p class="text-danger">{{$message}}</p>
-            @enderror
-        <div class="line"></div>
-        </div>
-    </label><br>
-
-    <div>
-    <input type="hidden" name="role">
     </div>
-
-
-    <label>
-        <p class="label-txt">ENTER YOUR PASSWORD</p>
-        <input type="password" class="input" value="{{old('password')}}" name="password">
-        <div class="line-box">
-            @error('password')
-            <p class=" text-danger">{{$message}}</p>
-            @enderror
-        <div class="line"></div>
-        </div>
-    </label><br><br><br><br>
-    <button type="submit" class="btn btn-info">submit</button>
-    </form>
-
-
-
-    <script>
-        $(document).ready(function(){
-
-    $('.input').focus(function(){
-    $(this).parent().find(".label-txt").addClass('label-active');
-    });
-
-    $(".input").focusout(function(){
-    if ($(this).val() == '') {
-        $(this).parent().find(".label-txt").removeClass('label-active');
-    };
-    });
-
-    });
-    </script>
+</div>
+<!-- Libs JS -->
+<!-- Tabler Core -->
+<script src="./dist/js/tabler.min.js?1684106062" defer></script>
+<script src="./dist/js/demo.min.js?1684106062" defer></script>
+</body>
+</html>

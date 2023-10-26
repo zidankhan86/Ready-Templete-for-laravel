@@ -30,6 +30,7 @@ class RegistrationController extends Controller
              */
             public function store(Request $request)
             {
+                //dd($request->all());
             $validator = Validator::make($request->all(), [
                 'email' => 'required|email|unique:users',
                 'phone' => [
@@ -103,7 +104,7 @@ class RegistrationController extends Controller
                 "email"   =>  $request->email,
                 "phone"   =>  $request->phone,
                 "name"    =>  $request->name,
-                "role"    =>  'admin',
+                "role"    =>  'customer',
                 "image"   => $imageName,
             ]);
 
