@@ -51,7 +51,7 @@ class AuthController extends Controller
      */
     public function show(string $id)
     {
-        //
+       //
     }
 
     /**
@@ -76,5 +76,10 @@ class AuthController extends Controller
     public function destroy(string $id)
     {
         //
+    }
+
+    public function list()
+    {
+        return view('backend.pages.userList');
     }
 }

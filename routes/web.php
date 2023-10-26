@@ -54,6 +54,7 @@ Route::get('/form',[TestController::class,'form'])->name('form');
 Route::get('/setting',[SettingController::class,'index'])->name('setting');
 Route::get('/change-password',[ChangePasswordController::class,'index'])->name('change.password');
 Route::post('/update-password/{id}',[ChangePasswordController::class,'update'])->name('update.password');
+Route::get('/user-list',[AuthController::class,'list'])->name('user.list');
 //profile
 Route::get('/profile',[ProfileController::class,'index'])->name('profile');
 //post
