@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\BlogController;
 use App\Http\Controllers\ChangePasswordController;
 use App\Http\Controllers\frontend\HomeController as FrontendHomeController;
 use App\Http\Controllers\HomeController;
@@ -23,9 +24,11 @@ use Illuminate\Support\Facades\Route;
 
 //Frontend
 
-Route::get('/', function () {return view('welcome');});
-Route::get('/home',[FrontendHomeController::class,'index'])->name('home');
+// Route::get('/', function () {return view('welcome');});
 
+Route::get('/',[FrontendHomeController::class,'index'])->name('home');
+
+Route::get('/blog',[BlogController::class,'index'])->name('blog');
 //Auth
 Route::get('/login',[AuthController::class,'index'])->name('login');
 Route::post('/store',[AuthController::class,'store'])->name('store');

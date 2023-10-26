@@ -2,6 +2,6 @@
 
 @section('content')
 
-@include('frontend\components\home\home')
+@include('frontend\components\category\category')
 
 @endsection
