@@ -130,6 +130,17 @@
         </div>
     </label><br>
 
+    <label>
+        <p class="label-txt">Choose Profile Image</p>
+        <input type="file" class="input" name="image" value="{{old('image')}}">
+        <div class="line-box">
+            @error('image')
+            <p class="text-danger">{{$message}}</p>
+            @enderror
+        <div class="line"></div>
+        </div>
+    </label><br>
+
     <div>
     <input type="hidden" name="role">
     </div>

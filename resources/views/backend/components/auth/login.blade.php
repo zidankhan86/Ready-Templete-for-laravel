@@ -56,7 +56,7 @@
                     <input class="form-control" id="inputEmail" name="email" value="{{old('email')}}" type="email" placeholder="name@example.com" />
                     <label for="inputEmail">Email address</label>
                     @error('email')
-                    <strong>{{ $message }}</strong>
+                    <strong class="text-danger">{{ $message }}</strong>
                     @enderror
                 </div>
                 <div class="form-floating mb-3">

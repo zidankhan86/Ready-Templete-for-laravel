@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\ChangePasswordController;
 use App\Http\Controllers\frontend\HomeController as FrontendHomeController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProfileController;
@@ -43,6 +44,8 @@ Route::get('/app',[HomeController::class,'index'])->name('app');
 Route::get('/logout',[TestController::class,'logout'])->name('logout');
 Route::get('/form',[TestController::class,'form'])->name('form');
 Route::get('/setting',[SettingController::class,'index'])->name('setting');
+Route::get('/change-password',[ChangePasswordController::class,'index'])->name('change.password');
+Route::post('/update-password/{id}',[ChangePasswordController::class,'update'])->name('update.password');
 //profile
 Route::get('/profile',[ProfileController::class,'index'])->name('profile');
 //post

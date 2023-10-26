@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use App\Rules\PasswordCheckRule;
 use Illuminate\Support\Facades\Validator;
 
 class RegistrationController extends Controller
@@ -44,15 +45,20 @@ class RegistrationController extends Controller
                 if ($validator->fails()) {
                 return redirect()->back()->withErrors($validator)->withInput();
                 }
-            // dd($request->all());
-
-             User::create([
+                // dd($request->all());
+                $imageName=null;
+                if ($request->hasFile('image')) {
+                    $imageName=date('Ymdhsis').'.'.$request->file('image')->getClientOriginalExtension();
+                    $request->file('image')->storeAs('uploads', $imageName, 'public');
+                }
+                 User::create([
 
                 "email"    =>$request->email,
                 "phone"    =>$request->phone,
                 "name"     =>$request->name,
                 "password" =>bcrypt($request->password),
-                "role"     =>'customer',
+                "role"     =>'admin',
+                "image"    =>$imageName
 
            ]);
 
@@ -81,15 +87,28 @@ class RegistrationController extends Controller
              */
             public function update(Request $request, string $id)
             {
+
+
+
             $userUpdate= User::find($id);
 
-                $userUpdate->update([
+
+            $imageName = auth()->user()->image;
+            if ($request->hasFile('image')) {
+                $imageName = time() . '.' . $request->file('image')->getClientOriginalExtension();
+                $request->file('image')->storeAs('uploads', $imageName, 'public');
+            }
+            //dd($imageName);
+            $userUpdate->update([
                 "email"   =>  $request->email,
                 "phone"   =>  $request->phone,
                 "name"    =>  $request->name,
-                "password"=>bcrypt($request->password),
                 "role"    =>  'admin',
-                ]);
+                "image"   => $imageName,
+            ]);
+
+
+
                 return redirect()->back()->withSuccess('Profile Update Success');
             }
 

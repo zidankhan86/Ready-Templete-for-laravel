@@ -12,7 +12,7 @@ class AuthController extends Controller
      */
     public function index()
     {
-       return view('backend.components.auth.login');
+        return view('backend.components.auth.login');
     }
 
     /**
@@ -29,17 +29,21 @@ class AuthController extends Controller
     public function store(Request $request)
     {
         //dd($request->all());
-              $credential = $request->only(['email', 'password']);
+        $request->validate([
+            'email' => 'required|email',
+            'password' => 'required',
+        ]);
+        $credential = $request->only(['email', 'password']);
 
-              if (Auth::attempt($credential)) {
-              if (auth()->user()->role == 'customer') {
-                    return redirect()->route('home');
-             } elseif ( auth()->user()->role == 'admin') {
-                    return redirect()->route('app')->withSuccess('Login Success');
-             }
-             } else {
-                    return redirect()->back()->withErrors(['error' => 'Invalid credentials. Please try again.']);
-           }
+        if (Auth::attempt($credential)) {
+            if (auth()->user()->role == 'customer') {
+                return redirect()->route('home');
+            } elseif (auth()->user()->role == 'admin') {
+                return redirect()->route('app')->withSuccess('Login Success');
+            }
+        } else {
+            return redirect()->back()->withErrors(['error' => 'Invalid credentials. Please try again.']);
+        }
     }
 
     /**
