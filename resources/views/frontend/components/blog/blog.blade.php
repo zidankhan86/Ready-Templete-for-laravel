@@ -17,7 +17,7 @@
             <span class="text-uppercase font-sm letter-spacing-1">January 17,2019</span>
         </div>
         <div class="post-featured-image mt-5">
-            <img src="images/fashion/bg-banner.jpg" class="img-fluid w-100" alt="featured-image">
+            <img src="frontend/images/fashion/bg-banner.jpg" class="img-fluid w-100" alt="featured-image">
         </div>
     </div>
     <div class="post-body">
@@ -31,10 +31,10 @@
 
             <div class="row">
                 <div class="col-lg-6 col-md-6">
-                    <img src="images/fashion/single-img1.png" alt="post-ads" class="img-fluid mr-4 w-100">
+                    <img src="frontend/images/fashion/single-img1.png" alt="post-ads" class="img-fluid mr-4 w-100">
                 </div>
                 <div class="col-lg-6 col-md-6">
-                    <img src="images/fashion/single-img2.png" alt="post-ads" class="img-fluid mr-4 w-100">
+                    <img src="frontend/images/fashion/single-img2.png" alt="post-ads" class="img-fluid mr-4 w-100">
                 </div>
             </div>
             <h3 class="mt-5 mb-3">Enjoying the view of summer</h3>
@@ -75,7 +75,7 @@
 
 				<div class="post-author d-flex my-5">
 	<div class="author-img">
-		<img alt="" src="images/author.jpg" class="avatar avatar-100 photo" width="100" height="100">
+		<img alt="" src="frontend/images/author.jpg" class="avatar avatar-100 photo" width="100" height="100">
 	</div>
 
 	<div class="author-content pl-4">
@@ -112,7 +112,7 @@
         <div class="col-lg-4 col-md-4 col-sm-6">
             <div class="post-block-wrapper mb-4 mb-lg-0">
                 <a href="blog-single.html">
-                    <img class="img-fluid" src="images/fashion/img-1.jpg" alt="post-thumbnail"/>
+                    <img class="img-fluid" src="frontend/images/fashion/img-1.jpg" alt="post-thumbnail"/>
                 </a>
                 <div class="post-content mt-3">
                     <h5 >
@@ -124,7 +124,7 @@
         <div class="col-lg-4 col-md-4 col-sm-6">
             <div class="post-block-wrapper mb-4 mb-lg-0">
                 <a href="blog-single.html">
-                    <img class="img-fluid" src="images/fashion/img-2.jpg" alt="post-thumbnail"/>
+                    <img class="img-fluid" src="frontend/images/fashion/img-2.jpg" alt="post-thumbnail"/>
                 </a>
                 <div class="post-content mt-3">
                     <h5 >
@@ -136,7 +136,7 @@
         <div class="col-lg-4 col-md-4 col-sm-6">
             <div class="post-block-wrapper">
                 <a href="blog-single.html">
-                    <img class="img-fluid" src="images/fashion/img-3.jpg" alt="post-thumbnail"/>
+                    <img class="img-fluid" src="frontend/images/fashion/img-3.jpg" alt="post-thumbnail"/>
                 </a>
                 <div class="post-content mt-3">
                     <h5 >
@@ -151,7 +151,7 @@
 					<div class="comment-area my-5">
 		<h3 class="mb-4 text-center">2 Comments</h3>
 		<div class="comment-area-box media">
-			<img alt="" src="images/blog-user-2.jpg" class="img-fluid float-left mr-3 mt-2">
+			<img alt="" src="frontend/images/blog-user-2.jpg" class="img-fluid float-left mr-3 mt-2">
 
 			<div class="media-body ml-4">
 				<h4 class="mb-0">Micle harison </h4>
@@ -167,7 +167,7 @@
 		</div>
 
 		<div class="comment-area-box media mt-5">
-			<img alt="" src="images/blog-user-3.jpg" class="mt-2 img-fluid float-left mr-3">
+			<img alt="" src="frontend/images/blog-user-3.jpg" class="mt-2 img-fluid float-left mr-3">
 
 			<div class="media-body ml-4">
 				<h4 class="mb-0 ">John Doe </h4>

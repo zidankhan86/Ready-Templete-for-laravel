@@ -6,7 +6,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title>Revolve - Personal Magazine blog Template</title>
+    <title>Lomeyo Blog</title>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <!-- theme meta -->
