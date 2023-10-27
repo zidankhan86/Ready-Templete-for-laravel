@@ -37,7 +37,7 @@
                                 <div class="row align-items-center">
                                     <label for="image-upload" style="cursor: pointer;">
                                         <p class="label-txt">Choose Image</p>
-                                        <img height="100px" width="100px" id="image-preview" src="{{ asset('storage/uploads/' . auth()->user()->image) }}" alt="Student Image">
+                                        <img height="100px" width="100px" id="image-preview" src="{{ asset('/uploads/' . auth()->user()->image) }}" alt="Student Image">
                                         <input type="file" id="image-upload" name="image">
                                     </label>
                                 </div>
@@ -60,7 +60,7 @@
 
                                 <!-- User Role (no changes allowed) -->
 
-                                
+
 
                                 <div class="card-footer bg-transparent mt-auto">
                                     <div class="btn-list justify-content-end">
