@@ -22,7 +22,12 @@
                 <button class="btn btn-outline-dark" type="submit">
                     <i class="bi-cart-fill me-1"></i>
                   <a href="{{ route('cart.show') }}">Cart</a>
-                    <span class="badge bg-dark text-white ms-1 rounded-pill">{{ Cart::session(auth()->user()->id)->getTotalQuantity() }}</span>
+                  @if(auth()->check())
+                  <span class="badge bg-dark text-white ms-1 rounded-pill">{{ Cart::session(auth()->user()->id)->getTotalQuantity() }}</span>
+              @else
+                  0 <!-- Or any default value you want to display -->
+              @endif
+
                 </button>
             </form>
         </div>
