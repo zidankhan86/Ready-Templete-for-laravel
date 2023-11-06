@@ -2,7 +2,6 @@
 
 @section('content')
 
-
 @include('frontend\components\product\product')
 
 @endsection

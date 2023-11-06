@@ -1,68 +1,30 @@
-<header class="header-top bg-grey justify-content-center">
-    <div class="container">
-      <div class="row align-items-center">
-        <div class="col-lg-2 col-md-4 text-center d-none d-lg-block">
-            <a class="navbar-brand " href="index.html">
-              <img src="frontend/images/logo.png" alt="" class="img-fluid">
-            </a>
+<!-- Navigation-->
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container px-4 px-lg-5">
+        <a class="navbar-brand" href="#!">Lomeyo eCommerce</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
+                <li class="nav-item"><a class="nav-link active" aria-current="page" href="{{ route('home') }}">Home</a></li>
+                <li class="nav-item"><a class="nav-link" href="#!">About</a></li>
+                <li class="nav-item"><a class="nav-link" href="{{ route('product.page') }}">Product</a></li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Shop</a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <li><a class="dropdown-item" href="">All Products</a></li>
+                        <li><hr class="dropdown-divider" /></li>
+                        <li><a class="dropdown-item" href="#!">Popular Items</a></li>
+                        <li><a class="dropdown-item" href="#!">New Arrivals</a></li>
+                    </ul>
+                </li>
+            </ul>
+            <form class="d-flex">
+                <button class="btn btn-outline-dark" type="submit">
+                    <i class="bi-cart-fill me-1"></i>
+                  <a href="{{ route('cart.show') }}">Cart</a>
+                    <span class="badge bg-dark text-white ms-1 rounded-pill">{{ Cart::session(auth()->user()->id)->getTotalQuantity() }}</span>
+                </button>
+            </form>
         </div>
-
-        <div class="col-lg-8 col-md-12">
-          <nav class="navbar navbar-expand-lg navigation-2 navigation">
-            <a class="navbar-brand text-uppercase d-lg-none" href="#">
-              <img src="frontend/images/logo.png" alt="" class="img-fluid">
-            </a>
-              <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-collapse" aria-controls="navbar-collapse" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="ti-menu"></span>
-              </button>
-
-                <div class="collapse navbar-collapse" id="navbar-collapse">
-                    <ul id="menu" class="menu navbar-nav mx-auto">
-                        <li class="nav-item">
-                            <a class="nav-link " href="{{ route('home') }}"  >
-                             Home
-                            </a>
-                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-
-                            </div>
-                        </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="{{ route('blog') }}"  role="button">
-                             Blog
-                            </a>
-
-                        </li>
-
-                        <li class="nav-item"><a href="{{ route('about') }}" class="nav-link">About</a></li>
-                        <li class="nav-item"><a href="{{ route('category') }}" class="nav-link">Category</a></li>
-
-
-                        <li class="nav-item"><a href="{{ route('contact') }}" class="nav-link">Contact</a></li>
-
-                        <li class="nav-item"><a href="{{ route('login') }}" class="nav-link"><strong class="btn btn-success"> SignIn </strong></a></li>
-                        <li class="nav-item"><a href="{{ route('registration') }}" class="nav-link"><strong class="btn btn-info">SignUp</strong></a></li>
-                    </ul>
-
-                    <ul class="list-inline mb-0 d-block d-lg-none">
-                      <li class="list-inline-item"><a href="#"><i class="ti-facebook"></i></a></li>
-                      <li class="list-inline-item"><a href="#"><i class="ti-twitter"></i></a></li>
-                      <li class="list-inline-item"><a href="#"><i class="ti-linkedin"></i></a></li>
-                      <li class="list-inline-item"><a href="#"><i class="ti-pinterest"></i></a></li>
-                    </ul>
-                </div>
-            </nav>
-          </div>
-
-          <div class="col-lg-2 col-md-4 col-6">
-            <div class="header-socials-2 text-right d-none d-lg-block">
-              <ul class="list-inline mb-0">
-                <li class="list-inline-item"><a href="#"><i class="ti-facebook"></i></a></li>
-                <li class="list-inline-item"><a href="#"><i class="ti-twitter"></i></a></li>
-                <li class="list-inline-item"><a href="#"><i class="ti-linkedin"></i></a></li>
-                <li class="list-inline-item"><a href="#"><i class="ti-pinterest"></i></a></li>
-              </ul>
-            </div>
-          </div>
-      </div>
     </div>
-  </header>
+</nav>

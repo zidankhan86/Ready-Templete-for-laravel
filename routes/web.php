@@ -1,18 +1,20 @@
 <?php
 
-use App\Http\Controllers\AboutController;
+use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\BlogController;
-use App\Http\Controllers\CategoryController;
-use App\Http\Controllers\ChangePasswordController;
-use App\Http\Controllers\ContactController;
-use App\Http\Controllers\frontend\HomeController as FrontendHomeController;
+use App\Http\Controllers\CartController;
 use App\Http\Controllers\HomeController;
-use App\Http\Controllers\ProfileController;
-use App\Http\Controllers\RegistrationController;
-use App\Http\Controllers\SettingController;
 use App\Http\Controllers\TestController;
-use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AboutController;
+use App\Http\Controllers\ContactController;
+use App\Http\Controllers\ProductController;
+use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\SettingController;
+use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\RegistrationController;
+use App\Http\Controllers\ChangePasswordController;
+use App\Http\Controllers\frontend\HomeController as FrontendHomeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -29,10 +31,14 @@ use Illuminate\Support\Facades\Route;
 
 //Pages
 Route::get('/',[FrontendHomeController::class,'index'])->name('home');
+Route::get('/product/page',[FrontendHomeController::class,'product'])->name('product.page');
 Route::get('/blog',[BlogController::class,'index'])->name('blog');
 Route::get('/about',[AboutController::class,'index'])->name('about');
 Route::get('/contact',[ContactController::class,'index'])->name('contact');
 Route::get('/category',[CategoryController::class,'index'])->name('category');
+
+Route::get('/products/cart', [ProductController::class,'cart'])->name('cart');
+
 
 //Auth
 Route::get('/login',[AuthController::class,'index'])->name('login');
@@ -47,8 +53,15 @@ Route::post('/registration/store',[RegistrationController::class,'store'])->name
 //Middleware
 Route::group(['middleware'=>'auth'],function(){
 
+    Route::get('/add-to-cart/{product}', [CartController::class, 'addToCart'])->name('cart.add');
+    Route::get('/cart', [CartController::class, 'showCart'])->name('cart.show');
+    Route::get('/remove-from-cart/{product}', [CartController::class, 'removeFromCart'])->name('cart.remove');
+    Route::get('/clear-cart', [CartController::class, 'clearCart'])->name('cart.clear');
+
 //Pages
 Route::get('/app',[HomeController::class,'index'])->name('app');
+Route::get('/product', [ProductController::class,'index'])->name('products.index');
+Route::post('/product', [ProductController::class,'store'])->name('product');
 Route::get('/logout',[TestController::class,'logout'])->name('logout');
 Route::get('/form',[TestController::class,'form'])->name('form');
 Route::get('/setting',[SettingController::class,'index'])->name('setting');
@@ -59,6 +72,7 @@ Route::get('/category-list',[CategoryController::class,'list'])->name('category.
 Route::get('/category-form',[CategoryController::class,'form'])->name('category.form');
 Route::get('/blog-list',[BlogController::class,'list'])->name('blog.list');
 Route::get('/blog-form',[BlogController::class,'form'])->name('blog.form');
+
 //profile
 Route::get('/profile',[ProfileController::class,'index'])->name('profile');
 //post

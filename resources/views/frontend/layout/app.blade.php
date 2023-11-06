@@ -1,37 +1,39 @@
 <!DOCTYPE html>
-
-
-
 <html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>Lomeyo eCommerce</title>
 
-<head>
-    <meta charset="utf-8">
-    <title>Lomeyo Blog</title>
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <!-- theme meta -->
-    <meta name="theme-name" content="revolve" />
-    {{-- CSS --}}
-    @include('frontend\components\fixed\style')
+                {{-- style --}}
 
-</head>
-<body>
+        @include('frontend\components\fixed\style')
 
-    {{-- Nav --}}
-    @include('frontend\components\fixed\header')
+    </head>
+    <body>
 
+                {{-- header --}}
 
-    {{-- Content --}}
-    @yield('content')
+        @include('frontend\components\fixed\header')
 
+                {{-- hero --}}
 
-    {{-- Footer --}}
-    @include('frontend\components\fixed\footer')
+        @include('frontend\components\fixed\hero')
 
 
-    {{-- Js --}}
-    @include('frontend\components\fixed\script')
+        @yield('content')
 
 
-</body>
+
+              {{-- footer --}}
+
+        @include('frontend\components\fixed\footer')
+
+                {{-- js --}}
+        @include('frontend\components\fixed\script')
+
+
+    </body>
 </html>

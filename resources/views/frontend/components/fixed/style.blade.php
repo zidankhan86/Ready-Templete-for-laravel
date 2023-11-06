@@ -1,16 +1,6 @@
- <!--Favicon-->
- <link rel="shortcut icon" href="{{asset ('frontend/images/favicon.ico') }}" type="image/x-icon">
- <!-- THEME CSS
- ================================================== -->
- <!-- Bootstrap -->
- <link rel="stylesheet" href="{{asset ('frontend/plugins/bootstrap/css/bootstrap.min.css') }}">
- <!-- Themify -->
- <link rel="stylesheet" href="{{asset ('frontend/plugins/themify/css/themify-icons.css') }}">
- <link rel="stylesheet" href="{{asset ('frontend/plugins/slick-carousel/slick-theme.css') }}">
- <link rel="stylesheet" href="{{asset ('frontend/plugins/slick-carousel/slick.css') }}">
- <!-- Slick Carousel -->
- <link rel="stylesheet" href="{{asset ('frontend/plugins/owl-carousel/owl.carousel.min.css') }}">
- <link rel="stylesheet" href="{{asset ('frontend/plugins/owl-carousel/owl.theme.default.min.css') }}">
- <link rel="stylesheet" href="{{asset ('frontend/plugins/magnific-popup/magnific-popup.css') }}">
- <!-- manin stylesheet -->
- <link rel="stylesheet" href="{{asset ('frontend/css/style.css') }}">
+<!-- Favicon-->
+<link rel="icon" type="image/x-icon" href="{{asset ('frontend/assets/favicon.ico') }}" />
+<!-- Bootstrap icons-->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
+<!-- Core theme CSS (includes Bootstrap)-->
+<link href="{{asset ('frontend/css/styles.css') }}" rel="stylesheet" />

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\frontend;
 
 use App\Http\Controllers\Controller;
+use App\Models\Product;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -12,7 +13,18 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('frontend.pages.home');
+
+        $products = Product::all();
+
+        return view('frontend.pages.home',compact('products'));
+    }
+
+    public function product()
+    {
+
+        $products = Product::all();
+        $userId = auth()->user()->id;
+        return view('frontend.pages.product',compact('products','userId'));
     }
 
     /**
