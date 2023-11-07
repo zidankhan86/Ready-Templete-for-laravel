@@ -1,482 +1,324 @@
-<style>
-    @import url('https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap');
-
-    * {
-        padding: 0;
-        margin: 0;
-        box-sizing: border-box;
-    }
-
-    body {
-        background-color: #f4f4f4;
-    }
-
-    .wrapper {
-        max-width: 900px;
-        margin: 20px auto;
-        padding: 20px;
-    }
-
-    .h3 {
-        margin-bottom: 0;
-    }
-
-    div.text-uppercase {
-        font-size: 0.8rem;
-        font-weight: 600;
-        letter-spacing: 0.1rem;
-    }
-
-    .btn#sub {
-        font-size: 0.8rem;
-        font-weight: 700;
-        border: 1px solid #ddd;
-    }
-
-    .btn#sub:hover {
-        background-color: #333;
-        color: #FFF;
-        border: 1ps solid #333;
-    }
-
-    .fa-cog {
-        color: #a8a8a8;
-        font-size: 0.8rem;
-    }
-
-    .ml-auto.btn:hover span {
-        color: #333;
-    }
-
-    div.btn {
-        padding: 8px 20px;
-    }
-
-    .notification {
-        background-color: #54e346;
-        padding: 0px 10px;
-    }
-
-    .notification button.btn {
-        background-color: inherit;
-        box-shadow: none;
-    }
-
-    .close {
-        font-size: 1rem;
-        font-weight: normal;
-        opacity: 1;
-    }
-
-    .close:hover {
-        color: #EEE;
-    }
-
-    .alert-dismissible .close {
-        position: unset;
-    }
-
-    button:focus {
-        outline: none;
-    }
-
-    .h4 {
-        margin: 0;
-    }
-
-    .editors {
-        position: relative;
-    }
-
-    .editors img {
-        object-fit: cover;
-        width: 40px;
-        height: 40px;
-        border-radius: 50%;
-        border: 5px solid #FFF;
-    }
-
-    #img1,
-    #img2,
-    #img3 {
-        position: absolute;
-    }
-
-    #img1 {
-        top: -15px;
-        left: -50px;
-    }
-
-    #img2 {
-        top: -15px;
-        left: -70px;
-    }
-
-    #img3 {
-        top: -15px;
-        left: -90px;
-    }
-
-    div.text-muted {
-        font-size: 0.9rem;
-    }
-
-    .table {
-        overflow: hidden;
-    }
-
-    .table thead tr th {
-        letter-spacing: 0.08rem;
-        font-weight: normal;
-    }
-
-    .table tr td,
-    .table tr th {
-        border: none;
-        text-align: center;
-    }
-
-    .table.activitites thead {
-        border-bottom: 1px solid #54e346;
-        font-size: 0.8rem;
-        font-weight: 700;
-    }
-
-    .table thead {
-        font-size: 0.8rem;
-        font-weight: 700;
-    }
-
-    .table.activitites {
-        position: relative;
-    }
-
-    .table.activitites thead::after {
-        position: absolute;
-        content: "RECENT ACTIVITIES";
-        background: #FFF;
-        padding: 0px 8px;
-        top: 38px;
-        letter-spacing: 0.08rem;
-        font-size: 0.6rem;
-        color: #54e346;
-        font-weight: 600;
-    }
-
-    .table tbody td.item {
-        font-family: 'Dancing Script', cursive;
-        font-size: 1.2rem;
-        font-weight: 900;
-        text-align: left;
-    }
-
-    del {
-        font-size: 0.85rem;
-    }
-
-    .red {
-        color: #ff0000;
-    }
-
-    div.new {
-        font-size: 0.7rem;
-        font-family: Arial, Helvetica, sans-serif;
-        font-weight: normal;
-        letter-spacing: 0.08rem;
-        background-color: #c7fdc3;
-        color: #0e7504;
-        display: inline-block;
-    }
-
-    .table tbody td.item img {
-        width: 30px;
-        height: 30px;
-        object-fit: contain;
-    }
-
-    .table thead th.header {
-        text-align: left;
-    }
-
-    .table tbody tr {
-        padding-top: 10px;
-        padding: 10px 20px;
-        border-bottom: 1px solid #ccc;
-        transition: all .4s ease-in-out;
-    }
-
-    .table tbody tr:last-child {
-        border: none;
-    }
-
-    td .close,
-    td .btn {
-        opacity: 0;
-        background: #fff;
-        font-weight: 600;
-        font-size: 0.9rem;
-    }
-
-    .table tbody tr:hover {
-        transform: scale(1.004);
-        box-shadow: 2px 2px 10px #a5a5a5;
-        cursor: pointer;
-        overflow: hidden;
-        scroll-behavior: unset;
-    }
-
-    .table tbody tr:hover .close {
-        font-size: 1.5rem;
-        opacity: 1;
-    }
-
-    .table tbody tr:hover .close:hover {
-        color: #aaa;
-    }
-
-    .table tbody tr:hover .btn {
-        border: 1px solid #ddd;
-        opacity: 1;
-        background: #fff;
-    }
-
-    a {
-        font-size: 0.8rem;
-        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-        font-weight: normal;
-        visibility: hidden;
-    }
-
-    a:hover {
-        text-decoration: none;
-    }
-
-    .table tbody tr:hover a {
-        visibility: visible;
-    }
-
-    #commentor2,
-    #commentor3 {
-        position: absolute;
-        object-fit: cover;
-    }
-
-    #commentor1 {
-        object-fit: cover;
-    }
-
-    #commentor2 {
-        top: 2px;
-        left: 20px;
-    }
-
-    #commentor3 {
-        top: 2px;
-        left: 35px;
-    }
-
-    .comments {
-        visibility: visible;
-    }
-
-    hr.items {
-        position: relative;
-        margin: 0;
-        margin-top: 10px;
-    }
-
-    hr.items:after {
-        position: absolute;
-        content: "ALL ITEMS";
-        background: #FFF;
-        top: -9px;
-        padding: 0px 8px;
-        letter-spacing: 0.08rem;
-        font-size: 0.6rem;
-        font-weight: 600;
-    }
-
-    .subtotal {
-        border-bottom-left-radius: 50px;
-        background-color: #ccc;
-    }
-
-    .tag,
-    .fa-shoppping-cart {
-        font-size: 0.5rem;
-    }
-
-    button.btn {
-        background-color: inherit;
-    }
-
-    button.btn:hover {
-        background-color: #cecccc;
-        box-shadow: none;
-        outline: none;
-    }
-
-    @media(max-width:760px) {
-        .table.activitites thead::after {
-            top: 35px;
-        }
-    }
-
-    @media(max-width:576px) {
-        .table.activitites thead::after {
-            top: 55px;
-        }
-
-        #img1 {
-            top: -8px;
-            left: 0px;
-        }
-
-        #img2 {
-            top: -8px;
-            left: 15px;
-        }
-
-        #img3 {
-            top: -8px;
-            left: 30px;
-        }
-
-        .editors img {
-            width: 20px;
-            height: 20px;
-            border: 1px solid #FFF;
-        }
-    }
-
-    @media(max-width:400px) {
-        .notification {
-            font-size: 0.7rem;
-        }
-
-        .close {
-            font-size: 0.7rem;
-            font-weight: normal;
-            opacity: 1;
-        }
-
-        .wrapper {
-            padding: 10px;
-        }
-    }
-</style>
-
 <div class="container">
-    <div class="row">
-        <div class="col-md-12">
-            <div class="wrapper">
-                <div class="d-flex align-items-center justify-content-between">
-                    <div class="d-flex flex-column">
-                        <div class="h3">My lists</div>
 
-                    </div>
-                    <div class="ml-auto btn"><span class="fas fa-cog"></span></div>
-                    <div class="btn" id="sub">
-                        + Add sublist
-                    </div>
-                </div>
-                <div class="notification alert alert-dismissible fade show text-white d-flex align-items-center my-3 text-justify"
-                    role="alert">
-                    <!-- You can display dynamic notifications here -->
-                </div>
-                <div id="table" class="bg-white rounded">
-                    <div class="d-md-flex align-items-md-center px-3 pt-3">
-                        <div class="d-flex flex-column">
-                            <div class="h4 font-weight-bold">Product lists</div>
-                            <div class="text-muted">{{ $cartContents->count() }} items</div>
+<div class="container padding-bottom-3x mb-1"><br><br>
+    <h1 style="text-align: center">Cart Product</h1>
+    @if (session('success'))
+    <div class="alert alert-info alert-dismissible fade show text-center" style="margin-bottom: 30px;">
+        {{ session('success') }}
+    </div>
+    @endif
+
+    <div class="table-responsive shopping-cart">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Product Name</th>
+                    <th class="text-center">Quantity</th>
+                    <th class="text-center">Subtotal</th>
+                    <th class="text-center">Discount</th>
+                    <th class="text-center">
+                        <form action="{{ route('cart.clear') }}">
+
+                            <button class="btn btn-sm btn-outline-danger" type="submit">Clear Cart</button>
+                        </form>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach($cartContents as $item)
+                <tr>
+                    <td>
+                        <div class="product-item">
+                            <a class="product-thumb" href="#"><img src="{{ asset('public/uploads/' . $item->image) }}" alt="Product"></a>
+
+                            <div class="product-info">
+                                <h4 class="product-title"><a href="#">{{ $item->name }}</a></h4>
+                                {{-- <span><em>Size:</em> {{ $item->attributes->size }}</span>
+                                <span><em>Color:</em> {{ $item->attributes->color }}</span> --}}
+                            </div>
                         </div>
-                        <div class="ml-auto d-flex align-items-center">
-                            <!-- You can add dynamic content here -->
+                    </td>
+                    <td class="text-center">
+                        <div class="count-input">
+                            <form action="#" method="POST">
+                                @csrf
+                                @method('PATCH')
+                                <select class="form-control" name="quantity" onchange="this.form.submit()">
+                                    @for ($i = 1; $i <= 10; $i++)
+                                    <option value="{{ $i }}" @if($i == $item->quantity) selected @endif>{{ $i }}</option>
+                                    @endfor
+                                </select>
+                            </form>
                         </div>
-                    </div>
-                    <hr>
-                    <div class="table-responsive">
-                        <table class="table activitites">
-                            <thead>
-                                <tr>
-                                    <th scope="col" class="text-uppercase header">Item</th>
-                                    <th scope="col" class="text-uppercase">Quantity</th>
-                                    <th scope="col" class="text-uppercase">Price Each</th>
-                                    <th scope="col" class="text-uppercase">Total</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                @foreach ($cartContents as $item)
-                                    <tr>
-                                        <td class="item">
-                                            <div class="d-flex">
-
-                                                <div class="pl-2">
-                                                    {{ $item->name }}
-                                                    <div class="text-uppercase new">
-
-                                                    </div>
-                                                    <div class="d-flex flex-column justify-content-center">
-
-                                                        <div>
-                                                            <a href="#">
-                                                                <span class="red text-uppercase">
-                                                                    <span class="fas fa-comment pr-1"></span>
-                                                            </a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                        </td>
-                                        <td>
-                                            <div class="quantity">
-                                                <div class="pro-qty">
-                                                    <input type="number" value="{{ $item->quantity }}" min="1">
-                                                </div>
-                                            </div>
-                                        </td>
-                                        <td class="d-flex flex-column">
-                                            <span class="red">BDT{{ number_format($item->price) }}</span>
-
-                                        </td>
-                                        <td class="font-weight-bold">
-                                            BDT{{ number_format($item->price * $item->quantity) }}
-
-                                            <a href="{{ route('cart.remove', ['product' => $item->id]) }}">
-                                                <div class="close">&times;</div>
-                                            </a>
-                                        </td>
-                                    </tr>
-                                @endforeach
-                            </tbody>
-                        </table>
-                    </div>
-                    <hr class="items">
-                </div>
-                <div class="d-flex justify-content-between">
-                    <div class="text-muted">
-                        <button class="btn" type="button" data-toggle="collapse" data-target="#table"
-                            aria-expanded="false" aria-controls="table">
-
-                            <span class="fas fa-minus"></span>
-                        </button>
-                    </div>
-                    <div class="d-flex flex-column justify-content-end align-items-end">
-                        <div class="d-flex px-3 pr-md-5 py-1 subtotal">
-
-                            <div class="px-4">Subtotal</div>
-                            <div class="h5 font-weight-bold px-md-2"> BDT {{ number_format($totalPrice, 2) }}</div>
-
-                        </div>
-
-                        <div class="text-muted tag">
-
-                            <span class="fas fa-shopping-cart pl-1"></span>
-                        </div>
-                    </div>
-                </div>
-            </div>
+                    </td>
+                    <td class="text-center text-lg text-medium">BDT-{{ number_format($item->price * $item->quantity, 2) }}</td>
+                    <td class="text-center">BDT-{{ number_format($item->discount, 2) }}</td>
+                    <td class="text-center">
+                        <form action="{{ route('cart.remove', ['product' => $item->id]) }}" method="POST">
+                            @csrf
+                            @method('DELETE')
+                            <a class="btn btn-danger" href="{{ route('cart.remove',$item->id) }}" data-toggle="tooltip" title="Remove item">
+                                Remove item
+                            </a>
+                        </form>
+                    </td>
+                </tr>
+                @endforeach
+            </tbody>
+        </table>
+    </div>
+    <div class="shopping-cart-footer">
+        <div class="column">
+            <form class="coupon-form" method="post">
+                <input class="form-control form-control-sm" type="text" placeholder="Coupon code" required="">
+                <button class="btn btn-outline-primary btn-sm" type="submit">Apply Coupon</button>
+            </form>
+        </div>
+        <div class="column text-lg">Subtotal: <span class="text-medium"> BDT {{ number_format($totalPrice, 2) }}</span></div>
+    </div>
+    <div class="shopping-cart-footer">
+        <div class="column"><a class="btn btn-outline-secondary" href="{{ route('home') }}"><i class="icon-arrow-left"></i>&nbsp;Back to Shopping</a></div>
+        <div class="column">
+            <a class="btn btn-primary" href="#" data-toast="" data-toast-type="success"
+                data-toast-position="topRight" data-toast-icon="icon-circle-check" data-toast-title="Your cart"
+                data-toast-message="is updated successfully!">Update Cart</a>
+            <a class="btn btn-success" href="#">Checkout</a>
         </div>
     </div>
 </div>
+
 </div>
-</div>
+<style>
+    body{margin-top:20px;}
+select.form-control:not([size]):not([multiple]) {
+    height: 44px;
+}
+select.form-control {
+    padding-right: 38px;
+    background-position: center right 17px;
+    background-image: url(data:image/svg+xml;utf8;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iaXNv…9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8L3N2Zz4K);
+    background-repeat: no-repeat;
+    background-size: 9px 9px;
+}
+.form-control:not(textarea) {
+    height: 44px;
+}
+.form-control {
+    padding: 0 18px 3px;
+    border: 1px solid #dbe2e8;
+    border-radius: 22px;
+    background-color: #fff;
+    color: #606975;
+    font-family: "Maven Pro",Helvetica,Arial,sans-serif;
+    font-size: 14px;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+}
+
+.shopping-cart,
+.wishlist-table,
+.order-table {
+    margin-bottom: 20px
+}
+
+.shopping-cart .table,
+.wishlist-table .table,
+.order-table .table {
+    margin-bottom: 0
+}
+
+.shopping-cart .btn,
+.wishlist-table .btn,
+.order-table .btn {
+    margin: 0
+}
+
+.shopping-cart>table>thead>tr>th,
+.shopping-cart>table>thead>tr>td,
+.shopping-cart>table>tbody>tr>th,
+.shopping-cart>table>tbody>tr>td,
+.wishlist-table>table>thead>tr>th,
+.wishlist-table>table>thead>tr>td,
+.wishlist-table>table>tbody>tr>th,
+.wishlist-table>table>tbody>tr>td,
+.order-table>table>thead>tr>th,
+.order-table>table>thead>tr>td,
+.order-table>table>tbody>tr>th,
+.order-table>table>tbody>tr>td {
+    vertical-align: middle !important
+}
+
+.shopping-cart>table thead th,
+.wishlist-table>table thead th,
+.order-table>table thead th {
+    padding-top: 17px;
+    padding-bottom: 17px;
+    border-width: 1px
+}
+
+.shopping-cart .remove-from-cart,
+.wishlist-table .remove-from-cart,
+.order-table .remove-from-cart {
+    display: inline-block;
+    color: #ff5252;
+    font-size: 18px;
+    line-height: 1;
+    text-decoration: none
+}
+
+.shopping-cart .count-input,
+.wishlist-table .count-input,
+.order-table .count-input {
+    display: inline-block;
+    width: 100%;
+    width: 86px
+}
+
+.shopping-cart .product-item,
+.wishlist-table .product-item,
+.order-table .product-item {
+    display: table;
+    width: 100%;
+    min-width: 150px;
+    margin-top: 5px;
+    margin-bottom: 3px
+}
+
+.shopping-cart .product-item .product-thumb,
+.shopping-cart .product-item .product-info,
+.wishlist-table .product-item .product-thumb,
+.wishlist-table .product-item .product-info,
+.order-table .product-item .product-thumb,
+.order-table .product-item .product-info {
+    display: table-cell;
+    vertical-align: top
+}
+
+.shopping-cart .product-item .product-thumb,
+.wishlist-table .product-item .product-thumb,
+.order-table .product-item .product-thumb {
+    width: 130px;
+    padding-right: 20px
+}
+
+.shopping-cart .product-item .product-thumb>img,
+.wishlist-table .product-item .product-thumb>img,
+.order-table .product-item .product-thumb>img {
+    display: block;
+    width: 100%
+}
+
+@media screen and (max-width: 860px) {
+    .shopping-cart .product-item .product-thumb,
+    .wishlist-table .product-item .product-thumb,
+    .order-table .product-item .product-thumb {
+        display: none
+    }
+}
+
+.shopping-cart .product-item .product-info span,
+.wishlist-table .product-item .product-info span,
+.order-table .product-item .product-info span {
+    display: block;
+    font-size: 13px
+}
+
+.shopping-cart .product-item .product-info span>em,
+.wishlist-table .product-item .product-info span>em,
+.order-table .product-item .product-info span>em {
+    font-weight: 500;
+    font-style: normal
+}
+
+.shopping-cart .product-item .product-title,
+.wishlist-table .product-item .product-title,
+.order-table .product-item .product-title {
+    margin-bottom: 6px;
+    padding-top: 5px;
+    font-size: 16px;
+    font-weight: 500
+}
+
+.shopping-cart .product-item .product-title>a,
+.wishlist-table .product-item .product-title>a,
+.order-table .product-item .product-title>a {
+    transition: color .3s;
+    color: #374250;
+    line-height: 1.5;
+    text-decoration: none
+}
+
+.shopping-cart .product-item .product-title>a:hover,
+.wishlist-table .product-item .product-title>a:hover,
+.order-table .product-item .product-title>a:hover {
+    color: #0da9ef
+}
+
+.shopping-cart .product-item .product-title small,
+.wishlist-table .product-item .product-title small,
+.order-table .product-item .product-title small {
+    display: inline;
+    margin-left: 6px;
+    font-weight: 500
+}
+
+.wishlist-table .product-item .product-thumb {
+    display: table-cell !important
+}
+
+@media screen and (max-width: 576px) {
+    .wishlist-table .product-item .product-thumb {
+        display: none !important
+    }
+}
+
+.shopping-cart-footer {
+    display: table;
+    width: 100%;
+    padding: 10px 0;
+    border-top: 1px solid #e1e7ec
+}
+
+.shopping-cart-footer>.column {
+    display: table-cell;
+    padding: 5px 0;
+    vertical-align: middle
+}
+
+.shopping-cart-footer>.column:last-child {
+    text-align: right
+}
+
+.shopping-cart-footer>.column:last-child .btn {
+    margin-right: 0;
+    margin-left: 15px
+}
+
+@media (max-width: 768px) {
+    .shopping-cart-footer>.column {
+        display: block;
+        width: 100%
+    }
+    .shopping-cart-footer>.column:last-child {
+        text-align: center
+    }
+    .shopping-cart-footer>.column .btn {
+        width: 100%;
+        margin: 12px 0 !important
+    }
+}
+
+.coupon-form .form-control {
+    display: inline-block;
+    width: 100%;
+    max-width: 235px;
+    margin-right: 12px;
+}
+
+.form-control-sm:not(textarea) {
+    height: 36px;
+}
+
+
+</style>
