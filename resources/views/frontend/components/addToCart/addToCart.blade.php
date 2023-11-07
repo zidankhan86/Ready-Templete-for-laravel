@@ -29,7 +29,7 @@
                 <tr>
                     <td>
                         <div class="product-item">
-                            <a class="product-thumb" href="#"><img src="{{ asset('public/uploads/' . $item->image) }}" alt="Product"></a>
+                            {{-- <a class="product-thumb" href="#"><img src="{{ asset('public/uploads/' . $item->image) }}" alt="Product"></a> --}}
 
                             <div class="product-info">
                                 <h4 class="product-title"><a href="#">{{ $item->name }}</a></h4>
@@ -51,8 +51,8 @@
                             </form>
                         </div>
                     </td>
-                    <td class="text-center text-lg text-medium">BDT-{{ number_format($item->price * $item->quantity, 2) }}</td>
-                    <td class="text-center">BDT-{{ number_format($item->discount, 2) }}</td>
+                    <td class="text-center text-lg text-medium">BDT {{ number_format($item->price * $item->quantity, 2) }}</td>
+                    <td class="text-center">BDT {{ number_format($item->discount, 2) }}</td>
                     <td class="text-center">
                         <form action="{{ route('cart.remove', ['product' => $item->id]) }}" method="POST">
                             @csrf
