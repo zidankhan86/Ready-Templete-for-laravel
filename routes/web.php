@@ -60,8 +60,16 @@ Route::group(['middleware'=>'auth'],function(){
 
 //Pages
 Route::get('/app',[HomeController::class,'index'])->name('app');
-Route::get('/product', [ProductController::class,'index'])->name('products.index');
+Route::get('/product', [ProductController::class,'create'])->name('product.create');
 Route::post('/product', [ProductController::class,'store'])->name('product');
+
+
+Route::get('/product/index', [ProductController::class,'index'])->name('products.index');
+Route::put('/product/update/{id}', [ProductController::class,'update'])->name('product.update');
+Route::get('/product/edit/{id}', [ProductController::class,'edit'])->name('product.edit');
+Route::delete('/product/delete/{id}', [ProductController::class,'store'])->name('product.destroy');
+
+
 Route::get('/logout',[TestController::class,'logout'])->name('logout');
 Route::get('/form',[TestController::class,'form'])->name('form');
 Route::get('/setting',[SettingController::class,'index'])->name('setting');

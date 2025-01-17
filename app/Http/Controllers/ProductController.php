@@ -10,16 +10,20 @@ class ProductController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function create()
     {
-       return view('backend\pages\productForm');
+       return view('backend.pages.productForm');
     }
 
     /**
      * Show the form for creating a new resource.
      */
-    
 
+     public function index()
+     {
+        $data['products'] = Product::all();
+        return view('backend.components.product.index', $data);
+     }
     /**
      * Store a newly created resource in storage.
      */
@@ -63,18 +67,54 @@ class ProductController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Product $product)
+    public function edit($id)
     {
-        //
+        $data['product'] = Product::find($id);
+        return view('backend.components.product.edit', $data);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Product $product)
-    {
-        //
+    public function update(Request $request, $id)
+{
+    $product = Product::find($id);
+
+    $request->validate([
+        'name' => 'required|max:255',
+        'price' => 'required|numeric',
+        'image' => 'nullable|image|mimes:jpeg,png,jpg,gif', // image is optional during update
+        'description' => 'required',
+    ]);
+
+    // Handle image upload if a new image is provided
+    if ($request->hasFile('image')) {
+        // Generate a unique name for the new image
+        $imageName = date('YmdHis') . '.' . $request->file('image')->getClientOriginalExtension();
+
+        // Delete the old image if it exists
+        if ($product->image && \Storage::disk('public')->exists('uploads/' . $product->image)) {
+            \Storage::disk('public')->delete('uploads/' . $product->image);
+        }
+
+        // Store the new image
+        $request->file('image')->storeAs('uploads', $imageName, 'public');
+
+        // Update the product's image field
+        $product->image = $imageName;
     }
+
+    // Update the product's other fields
+    $product->name = $request->input('name');
+    $product->price = $request->input('price');
+    $product->description = $request->input('description');
+
+    // Save the updated product to the database
+    $product->save();
+
+    return redirect()->route('products.index')->with('success', 'Product updated successfully');
+}
+
 
     /**
      * Remove the specified resource from storage.
