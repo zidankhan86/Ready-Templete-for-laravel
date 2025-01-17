@@ -1,37 +1,70 @@
 <div class="col-12">
-    <form class="card" method="POST" action="{{ route('product') }}" enctype="multipart/form-data">
+    <form class="card shadow-lg border-0" method="POST" action="{{ route('product') }}" enctype="multipart/form-data">
         @csrf
         <div class="card-body">
-            <h3 class="card-title">Product Form</h3>
-            <div class="row row-cards">
-                <div class="col-md-5">
-                    <div class="mb-3">
-                        <label class="form-label">Product Name</label>
-                        <input type="text" class="form-control" name="name" placeholder="Product Name">
+            <h3 class="card-title text-center mb-4 text-primary">Create a New Product</h3>
+            <div class="row g-3">
+                <!-- Product Name -->
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="form-label fw-bold">Product Name</label>
+                        <input type="text" class="form-control border-2 border-primary" name="name" placeholder="Enter product name" required>
                     </div>
                 </div>
-                <div class="col-sm-6 col-md-3">
-                    <div class="mb-3">
-                        <label class="form-label">Price</label>
-                        <input type="number" class="form-control" name="price" placeholder="Price">
+                <!-- Price -->
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="form-label fw-bold">Price &#2547; </label>
+                        <input type="number" class="form-control border-2 border-primary" name="price" placeholder="Enter price" step="0.01" min="0" required>
                     </div>
                 </div>
-                <div class="col-sm-6 col-md-4">
-                    <div class="mb-3">
-                        <label class="form-label">Select Image</label>
-                        <input type="file" class="form-control" name="image">
+                <!-- Image Upload -->
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="form-label fw-bold">Product Image</label>
+                        <input type="file" class="form-control border-2 border-primary" name="image" accept="image/*" required>
+                        <small class="form-text text-muted">Upload a high-quality image (JPEG, PNG).</small>
                     </div>
                 </div>
-                <div class="col-sm-6 col-md-6">
-                    <div class="mb-3">
-                        <label class="form-label">Description</label>
-                        <textarea rows="5" name="description" class="form-control" placeholder="Product Description"></textarea>
+                <!-- Description -->
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="form-label fw-bold">Product Description</label>
+                        <textarea rows="3" name="description" class="form-control border-2 border-primary" placeholder="Provide a brief description of the product" required></textarea>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="card-footer text-end">
-            <button type="submit" class="btn btn-primary">Create Product</button>
+        <div class="card-footer text-end bg-light">
+            <button type="submit" class="btn btn-primary px-4">Create</button>
         </div>
     </form>
 </div>
+
+<style>
+    .card {
+        border-radius: 12px;
+        background: linear-gradient(to bottom, #ffffff, #f9f9f9);
+    }
+
+    .form-control {
+        box-shadow: none;
+        transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .form-control:focus {
+        border-color: #007bff;
+        box-shadow: 0 0 5px rgba(46, 67, 90, 0.5);
+    }
+
+    .btn-primary {
+        background-color: #007bff;
+        border-color: #007bff;
+        transition: background-color 0.3s ease, border-color 0.3s ease;
+    }
+
+    .btn-primary:hover {
+        background-color: #0056b3;
+        border-color: #0056b3;
+    }
+</style>

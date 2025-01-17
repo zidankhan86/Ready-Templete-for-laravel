@@ -19,12 +19,20 @@ class HomeController extends Controller
         return view('frontend.pages.home',compact('products'));
     }
 
-    public function product()
+    public function product(Request $request)
     {
+        $query = $request->input('query');
 
-        $products = Product::all();
+        if ($query) {
+            $products = Product::where('name', 'LIKE', "%{$query}%")
+                ->orWhere('description', 'LIKE', "%{$query}%")
+                ->get();
+        } else {
+            $products = Product::all();
+        }
+
         $userId = auth()->user()->id;
-        return view('frontend.pages.product',compact('products','userId'));
+        return view('frontend.pages.product', compact('products', 'userId', 'query'));
     }
 
     /**
