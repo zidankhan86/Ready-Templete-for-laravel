@@ -1,3 +1,4 @@
+@stack('styles')
  <!-- CSS files -->
  <link href="{{asset ('./dist/css/tabler.min.css?1684106062') }}" rel="stylesheet"/>
  <link href="{{asset ('./dist/css/tabler-flags.min.css?1684106062') }}" rel="stylesheet"/>

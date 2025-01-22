@@ -14,6 +14,7 @@ use App\Http\Controllers\SettingController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\RegistrationController;
 use App\Http\Controllers\ChangePasswordController;
+use App\Http\Controllers\CustomPageController;
 use App\Http\Controllers\frontend\HomeController as FrontendHomeController;
 
 /*
@@ -60,6 +61,12 @@ Route::group(['middleware'=>'auth'],function(){
 
 //Pages
 Route::get('/app',[HomeController::class,'index'])->name('app');
+
+Route::get('/custom/page', [CustomPageController::class,'index'])->name('custom.page.index');
+Route::get('/edit/{id}', [CustomPageController::class,'edit'])->name('custom.page.edit');
+Route::post('/update/{id}', [CustomPageController::class,'update'])->name('custom.page.update');
+
+//Product
 Route::get('/product', [ProductController::class,'create'])->name('product.create');
 Route::post('/product', [ProductController::class,'store'])->name('product');
 
