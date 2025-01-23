@@ -32,9 +32,12 @@ use App\Http\Controllers\frontend\HomeController as FrontendHomeController;
 
 //Pages
 Route::get('/',[FrontendHomeController::class,'index'])->name('home');
+
+Route::get('/about', [CustomPageController::class,'about'])->name('about.page');
+
+
 Route::get('/product/page',[FrontendHomeController::class,'product'])->name('product.page');
 Route::get('/blog',[BlogController::class,'index'])->name('blog');
-Route::get('/about',[AboutController::class,'index'])->name('about');
 Route::get('/contact',[ContactController::class,'index'])->name('contact');
 Route::get('/category',[CategoryController::class,'index'])->name('category');
 

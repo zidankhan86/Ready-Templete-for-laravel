@@ -1,12 +1,16 @@
-<!-- Navigation-->
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container px-4 px-lg-5">
-        <a class="navbar-brand" href="#!">{{ config('app.name') }}</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+        <!-- Logo with Link -->
+        <a class="navbar-brand" href="{{ route('home') }}">
+            <img src="{{ asset('l.png') }}" alt="{{ config('app.name') }}" style="height: 40px;">
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
                 <li class="nav-item"><a class="nav-link active" aria-current="page" href="{{ route('home') }}">Home</a></li>
-                <li class="nav-item"><a class="nav-link" href="#!">About</a></li>
+                <li class="nav-item"><a class="nav-link" href="{{ route('about.page') }}">About</a></li>
                 <li class="nav-item"><a class="nav-link" href="{{ route('product.page') }}">Product</a></li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Shop</a>
@@ -21,13 +25,12 @@
             <form class="d-flex">
                 <button class="btn btn-outline-dark" type="submit">
                     <i class="bi-cart-fill me-1"></i>
-                  <a href="{{ route('cart.show') }}">Cart</a>
-                  @if(auth()->check())
-                  <span class="badge bg-dark text-white ms-1 rounded-pill">{{ Cart::session(auth()->user()->id)->getTotalQuantity() }}</span>
-              @else
-                  0 <!-- Or any default value you want to display -->
-              @endif
-
+                    <a href="{{ route('cart.show') }}">Cart</a>
+                    @if(auth()->check())
+                        <span class="badge bg-dark text-white ms-1 rounded-pill">{{ Cart::session(auth()->user()->id)->getTotalQuantity() }}</span>
+                    @else
+                        0
+                    @endif
                 </button>
             </form>
         </div>

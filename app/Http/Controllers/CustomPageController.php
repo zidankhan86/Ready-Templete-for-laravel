@@ -53,4 +53,10 @@ class CustomPageController extends Controller
     // Redirect or return response
     return redirect()->route('custom.page.index')->with('success', 'Custom page updated successfully.');
 }
+
+
+
+public function about(){
+    return view('frontend.custom_page.about');
+}
 }
