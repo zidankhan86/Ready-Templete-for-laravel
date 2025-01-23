@@ -1,5 +1,5 @@
 <div class="col-12">
-    <form class="card shadow-lg border-0" method="POST" action="{{ route('product') }}" enctype="multipart/form-data">
+    <form class="card shadow-lg border-0" method="POST" action="{{ route('product.store') }}" enctype="multipart/form-data">
         @csrf
         <div class="card-body">
             <h3 class="card-title text-center mb-4 text-primary">Create a New Product</h3>

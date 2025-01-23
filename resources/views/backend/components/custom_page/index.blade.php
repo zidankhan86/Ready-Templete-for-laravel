@@ -1,10 +1,16 @@
 @extends('backend.layout.app')
 @section('content')
-<div class="container card">
-    <div class="card-body table-responsive">
-        <h3 class="card-title">Manage Categories</h3>
-        <table id="dataTable" class="table table-bordered table-hover">
-            <thead>
+<div class="container">
+    <br>
+    <h2 style="text-align: center">Product</h2>
+    <div style="text-align: right">
+        <a href="{{ route('product.create') }}" class="btn btn-info" style="margin-right: 10px;">+ Add</a>
+    </div><br><br>
+    <div class="col-12">
+        <div class="card">
+            <div class="table-responsive">
+                <table class="table table-vcenter table-mobile-md card-table">
+                    <thead>
                 <tr>
                     <th>Title</th>
                     <th>Slug</th>
@@ -29,6 +35,10 @@
         </table>
     </div>
 </div>
+</div>
+
+</div>
+
 @endsection
 
 @push('styles')

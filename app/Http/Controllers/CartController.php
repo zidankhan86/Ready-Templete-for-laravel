@@ -11,7 +11,7 @@ class CartController extends Controller
    public function addToCart($productId){
     $Product = Product::find($productId);
 
-    $userId = auth()->user()->id; // Get the authenticated user's ID
+    $userId = auth()->user()->id; 
 
     // Add the product to the cart
     \Cart::session($userId)->add(array(

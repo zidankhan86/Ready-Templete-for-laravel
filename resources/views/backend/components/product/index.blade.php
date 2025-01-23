@@ -1,17 +1,17 @@
 @extends('backend.layout.app')
 @section('content')
 
-<!-- resources/views/products/index.blade.php -->
-
-<div class="col-12">
-    <a href="{{route('product.create')}}">Add</a>
-    <div class="card shadow-lg border-0">
-        <div class="card-header text-center bg-primary text-white">
-            <h3>Product List</h3>
-        </div>
-        <div class="card-body">
-            <table class="table table-striped">
-                <thead>
+<div class="container">
+    <br>
+    <h2 style="text-align: center">Product</h2>
+    <div style="text-align: right">
+        <a href="{{ route('product.create') }}" class="btn btn-info" style="margin-right: 10px;">+ Add</a>
+    </div><br><br>
+    <div class="col-12">
+        <div class="card">
+            <div class="table-responsive">
+                <table class="table table-vcenter table-mobile-md card-table">
+                    <thead>
                     <tr>
                         <th>#</th>
                         <th>Name</th>
@@ -39,10 +39,9 @@
                 </tbody>
             </table>
         </div>
-        <div class="card-footer text-end">
-            <a href="{{ route('product.create') }}" class="btn btn-primary px-4">Add New Product</a>
-        </div>
     </div>
+</div>
+
 </div>
 
 

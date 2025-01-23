@@ -68,7 +68,7 @@ Route::post('/update/{id}', [CustomPageController::class,'update'])->name('custo
 
 //Product
 Route::get('/product', [ProductController::class,'create'])->name('product.create');
-Route::post('/product', [ProductController::class,'store'])->name('product');
+Route::post('/product', [ProductController::class,'store'])->name('product.store');
 
 
 Route::get('/product/index', [ProductController::class,'index'])->name('products.index');

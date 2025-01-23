@@ -30,9 +30,7 @@ class HomeController extends Controller
         } else {
             $products = Product::all();
         }
-
-        $userId = auth()->user()->id;
-        return view('frontend.pages.product', compact('products', 'userId', 'query'));
+        return view('frontend.pages.product', compact('products', 'query'));
     }
 
     /**
