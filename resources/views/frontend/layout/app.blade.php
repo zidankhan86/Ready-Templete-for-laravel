@@ -9,18 +9,18 @@
 
                 {{-- style --}}
 
-        @include('frontend\components\fixed\style')
+        @include('frontend.components.fixed.style')
 
     </head>
     <body>
 
                 {{-- header --}}
 
-        @include('frontend\components\fixed\header')
+        @include('frontend.components.fixed.header')
 
                 {{-- hero --}}
 
-        @include('frontend\components\fixed\hero')
+        @include('frontend.components.fixed.hero')
 
 
         @yield('content')
@@ -29,10 +29,10 @@
 
               {{-- footer --}}
 
-        @include('frontend\components\fixed\footer')
+        @include('frontend.components.fixed.footer')
 
                 {{-- js --}}
-        @include('frontend\components\fixed\script')
+        @include('frontend.components.fixed.script')
 
 
     </body>

@@ -34,20 +34,89 @@
                             <p class="text-success fs-5 mb-1">BDT {{ number_format($item->price, 2) }}</p>
                         </div>
                         <!-- Product actions-->
-                        <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
                             <div class="text-center">
-                                <a class="btn btn-dark w-100" href="{{ route('cart.add', $item->id) }}">
-                                    <i class="bi-cart-fill me-1"></i> Add to Cart
-                                </a>
+                               <!-- Product actions-->
+                                <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+
+
+
+
+                                    <div class="d-flex justify-content-between">
+                                        <a class="btn btn-dark btn-sm flex-grow-1 me-2" href="{{ route('cart.add', $item->id) }}">
+                                            <i class="bi bi-cart-check-fill"></i>
+
+                                        </a>
+                                        <button class="btn btn-dark btn-sm flex-grow-1 quick-view-btn"
+                                                data-id="{{ $item->id }}"
+                                                data-name="{{ $item->name }}"
+                                                data-price="{{ number_format($item->price, 2) }}"
+                                                data-image="{{ url('/public/uploads/', $item->image) }}"
+                                                data-description="{{ $item->description }}">
+                                                <i class="bi bi-eye-fill"></i>
+                                        </button>
+                                    </div>
+
+
                             </div>
+
                         </div>
                     </div>
                 </div>
             @endforeach
         </div>
+
+
     </div>
 </section>
 
+<div class="modal fade" id="productQuickViewModal" tabindex="-1" aria-labelledby="quickViewModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="quickViewModalLabel">Product Quick View</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-6">
+                        <img id="quickViewImage" src="" alt="" class="img-fluid">
+                    </div>
+                    <div class="col-md-6">
+                        <h4 id="quickViewName"></h4>
+                        <h5 class="text-success mb-3">BDT <span id="quickViewPrice"></span></h5>
+                        <p id="quickViewDescription"></p>
+                        <button class="btn btn-dark mt-3">
+                            <i class="fa fa-shopping-cart"></i> Add to Cart
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+    const quickViewButtons = document.querySelectorAll('.quick-view-btn');
+    const modal = new bootstrap.Modal(document.getElementById('productQuickViewModal'));
+
+    quickViewButtons.forEach(button => {
+        button.addEventListener('click', function () {
+            const name = this.dataset.name;
+            const price = this.dataset.price;
+            const image = this.dataset.image;
+            const description = this.dataset.description;
+
+            document.getElementById('quickViewName').textContent = name;
+            document.getElementById('quickViewPrice').textContent = price;
+            document.getElementById('quickViewImage').src = image;
+            document.getElementById('quickViewDescription').textContent = description;
+
+            modal.show();
+        });
+    });
+});
+
+</script>
 <style>
     .product-image-container {
         overflow: hidden;
