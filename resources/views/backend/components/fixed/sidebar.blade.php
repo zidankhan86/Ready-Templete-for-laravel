@@ -5,7 +5,7 @@
         <span class="navbar-toggler-icon"></span>
       </button>
       <h1 class="navbar-brand navbar-brand-autodark">
-        <a href=".">
+        <a href="{{route('app')}}">
          <h3>{{config('app.name')}}</h3>
         </a>
       </h1>

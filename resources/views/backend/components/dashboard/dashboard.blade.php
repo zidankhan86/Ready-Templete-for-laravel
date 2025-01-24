@@ -1,3 +1,7 @@
+ @php
+     $products = DB::table('products')->get();
+ @endphp
+
  <!-- Page body -->
  <div class="page-body">
      <div class="container-xl">
@@ -66,9 +70,68 @@
 
                              </div>
                          </div>
+
+
+
+
                      </div>
                  </div>
+
+
              </div>
+
+           <!-- New Card 12 -->
+<div class="col-sm-12 col-lg-12">
+    <div class="card">
+        <div class="card-body">
+            <div class="d-flex align-items-center">
+                <div class="subheader">Product Information</div>
+            </div>
+
+            <!-- Table to display product details -->
+            <div class="table-responsive mt-3">
+                <table class="table table-bordered table-striped">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Name</th>
+                            <th>Price</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach($products as $product)
+                        <tr>
+                            <td>{{ $loop->iteration }}</td>
+                            <td>{{ $product->name }}</td>
+                            <td>{{ $product->price }} $</td>
+                            <td>
+                                <!-- Edit Button -->
+                                <a href="{{ route('product.edit', $product->id) }}" class="btn btn-warning btn-sm">Edit</a>
+
+                                <!-- Delete Button -->
+                                <form action="{{ route('product.destroy', $product->id) }}" method="POST" style="display:inline;">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+                                </form>
+                            </td>
+                        </tr>
+                        @endforeach
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+
+
          </div>
+
      </div>
+
  </div>
+
