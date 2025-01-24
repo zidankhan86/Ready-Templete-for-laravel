@@ -21,13 +21,32 @@
                 <!-- Image Upload -->
                 <div class="col-md-6">
                     <div class="form-group">
-                        <label class="form-label fw-bold">Product Image</label>
+                        <label class="form-label fw-bold">Product Thubnail</label>
                         <input type="file" class="form-control border-2 border-primary" name="image" accept="image/*" required>
                         <small class="form-text text-muted">Upload a high-quality image (JPEG, PNG).</small>
                     </div>
                 </div>
-                <!-- Description -->
+
+
                 <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="form-label fw-bold">Product Images</label>
+                        <input
+                            type="file"
+                            class="form-control border-2 border-primary"
+                            name="images[]"
+                            accept="image/jpeg,image/png"
+                            multiple
+                            required
+                        >
+                        <small class="form-text text-muted">Upload high-quality images (JPEG, PNG).</small>
+                    </div>
+                </div>
+
+
+
+                <!-- Description -->
+                <div class="col-md-12">
                     <div class="form-group">
                         <label class="form-label fw-bold">Product Description</label>
                         <textarea rows="3" name="description" class="form-control border-2 border-primary" placeholder="Provide a brief description of the product" required></textarea>

@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Product;
+use Illuminate\Support\Str;
+use App\Models\ImageGallery;
 use Illuminate\Http\Request;
 
 class ProductController extends Controller
@@ -12,21 +14,14 @@ class ProductController extends Controller
      */
     public function create()
     {
-       return view('backend.pages.productForm');
+       return view('backend.pages.create');
     }
-
-    /**
-     * Show the form for creating a new resource.
-     */
-
      public function index()
      {
         $data['products'] = Product::all();
         return view('backend.components.product.index', $data);
      }
-    /**
-     * Store a newly created resource in storage.
-     */
+
     public function store(Request $request)
     {
         $request->validate([
@@ -44,13 +39,26 @@ class ProductController extends Controller
 
         // Create a new Product instance
         $product = new Product;
-        $product->name = $request->input('name');
-        $product->price = $request->input('price');
-        $product->image = $imageName; // Assign the image name
-        $product->description = $request->input('description');
+        $product->name = $request->name;
+        $product->slug = Str::slug($request->name);
+        $product->price = $request->price;
+        $product->image = $imageName;
+        $product->description = $request->description;
 
-        // Save the product to the database
         $product->save();
+
+        if ($request->hasFile('images')) {
+            foreach ($request->file('images') as $file) {
+                if ($file->isValid()) {
+                    $filename = time() . '_' . uniqid() . '.' . $file->getClientOriginalExtension();
+                    $filePath = $file->storeAs('uploads', $filename, 'public');
+                    ImageGallery::create([
+                        'product_id' => $product->id,
+                        'images' => '/public/uploads/' . $filename,
+                    ]);
+                }
+            }
+        }
 
         return redirect()->route('products.index')->with('success', 'Product created successfully');
 

@@ -2,10 +2,8 @@
 @section('content')
 <div class="container">
     <br>
-    <h2 style="text-align: center">Product</h2>
-    <div style="text-align: right">
-        <a href="{{ route('product.create') }}" class="btn btn-info" style="margin-right: 10px;">+ Add</a>
-    </div><br><br>
+    <h2 style="text-align: center">Custom Page</h2>
+
     <div class="col-12">
         <div class="card">
             <div class="table-responsive">

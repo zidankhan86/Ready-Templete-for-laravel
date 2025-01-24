@@ -10,7 +10,7 @@ class CustomPageController extends Controller
 {
     public function index()
     {
-        $data = CustomPage::all(); // Fetch data from the table
+        $data = CustomPage::all();
         return view('backend.components.custom_page.index', compact('data'));
     }
 

@@ -37,6 +37,7 @@ Route::get('/about', [CustomPageController::class,'about'])->name('about.page');
 
 
 Route::get('/product/page',[FrontendHomeController::class,'product'])->name('product.page');
+Route::get('/product/details/{slug}',[FrontendHomeController::class,'details'])->name('product.details');
 Route::get('/blog',[BlogController::class,'index'])->name('blog');
 Route::get('/contact',[ContactController::class,'index'])->name('contact');
 Route::get('/category',[CategoryController::class,'index'])->name('category');

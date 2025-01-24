@@ -6,3 +6,4 @@
 <link href="{{asset ('frontend/css/styles.css') }}" rel="stylesheet" />
 
 
+@stack('styles')

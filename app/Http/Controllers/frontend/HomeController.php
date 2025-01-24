@@ -36,9 +36,12 @@ class HomeController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function details($slug)
     {
-        //
+
+        $data['product'] = Product::with('images')->where('slug', $slug)->firstOrFail();
+
+        return view('frontend.components.product.details',$data);
     }
 
     /**

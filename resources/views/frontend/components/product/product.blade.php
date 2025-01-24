@@ -24,7 +24,7 @@
                     <div class="card h-100 shadow-sm border-0">
                         <!-- Product image-->
                         <div class="product-image-container">
-                            <img class="card-img-top" src="{{ url('/public/uploads/', $item->image) }}" alt="{{ $item->name }}" />
+                            <a href="{{route('product.details',$item->slug)}}"><img class="card-img-top" src="{{ url('/public/uploads/', $item->image) }}" alt="{{ $item->name }}" /></a>
                         </div>
                         <!-- Product details-->
                         <div class="card-body p-4 text-center">
@@ -42,11 +42,11 @@
 
 
                                     <div class="d-flex justify-content-between">
-                                        <a class="btn btn-dark btn-sm flex-grow-1 me-2" href="{{ route('cart.add', $item->id) }}">
+                                        <a class="btn btn-info btn-sm flex-grow-1 me-2" href="{{ route('cart.add', $item->id) }}">
                                             <i class="bi bi-cart-check-fill"></i>
 
                                         </a>
-                                        <button class="btn btn-dark btn-sm flex-grow-1 quick-view-btn"
+                                        <button class="btn btn-warning btn-sm flex-grow-1 quick-view-btn"
                                                 data-id="{{ $item->id }}"
                                                 data-name="{{ $item->name }}"
                                                 data-price="{{ number_format($item->price, 2) }}"
@@ -69,6 +69,8 @@
     </div>
 </section>
 
+
+{{-- Quick View Modal --}}
 <div class="modal fade" id="productQuickViewModal" tabindex="-1" aria-labelledby="quickViewModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
@@ -94,29 +96,8 @@
         </div>
     </div>
 </div>
-<script>
-    document.addEventListener('DOMContentLoaded', function () {
-    const quickViewButtons = document.querySelectorAll('.quick-view-btn');
-    const modal = new bootstrap.Modal(document.getElementById('productQuickViewModal'));
 
-    quickViewButtons.forEach(button => {
-        button.addEventListener('click', function () {
-            const name = this.dataset.name;
-            const price = this.dataset.price;
-            const image = this.dataset.image;
-            const description = this.dataset.description;
-
-            document.getElementById('quickViewName').textContent = name;
-            document.getElementById('quickViewPrice').textContent = price;
-            document.getElementById('quickViewImage').src = image;
-            document.getElementById('quickViewDescription').textContent = description;
-
-            modal.show();
-        });
-    });
-});
-
-</script>
+@push('styles')
 <style>
     .product-image-container {
         overflow: hidden;
@@ -173,3 +154,31 @@
         border-radius: 30px;
     }
 </style>
+@endpush
+
+
+@push('scripts')
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+    const quickViewButtons = document.querySelectorAll('.quick-view-btn');
+    const modal = new bootstrap.Modal(document.getElementById('productQuickViewModal'));
+
+    quickViewButtons.forEach(button => {
+        button.addEventListener('click', function () {
+            const name = this.dataset.name;
+            const price = this.dataset.price;
+            const image = this.dataset.image;
+            const description = this.dataset.description;
+
+            document.getElementById('quickViewName').textContent = name;
+            document.getElementById('quickViewPrice').textContent = price;
+            document.getElementById('quickViewImage').src = image;
+            document.getElementById('quickViewDescription').textContent = description;
+
+            modal.show();
+        });
+    });
+});
+
+</script>
+@endpush

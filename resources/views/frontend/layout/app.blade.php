@@ -33,6 +33,7 @@
 
                 {{-- js --}}
         @include('frontend.components.fixed.script')
+        @stack('scripts')
 
 
     </body>

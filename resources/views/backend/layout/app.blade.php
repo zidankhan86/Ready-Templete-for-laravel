@@ -7,6 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
     <title>Lomeyo Templeting</title>
             {{-- CSS --}}
+            @stack('styles')
             @include('backend.components.fixed.style')
 
   </head>
@@ -32,6 +33,6 @@
 
         {{-- Js --}}
         @include('backend.components.fixed.script')
-
+    @stack('scripts')
   </body>
 </html>
