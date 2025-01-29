@@ -47,7 +47,7 @@ class RolePermissionController extends Controller
         $user = User::findOrFail($request->user_id);
         $user->assignRole($request->role_name);
 
-        return redirect()->route('roles.index')->with('success', 'Role assigned successfully.');
+        return redirect()->route('roles.permission.index')->with('success', 'Role assigned successfully.');
     }
 
     public function assignPermission(Request $request)
@@ -60,7 +60,7 @@ class RolePermissionController extends Controller
         $role = Role::findByName($request->role_name);
         $role->givePermissionTo($request->permission_name);
 
-        return redirect()->route('roles.index')->with('success', 'Permission assigned successfully.');
+        return redirect()->route('roles.permission.index')->with('success', 'Permission assigned successfully.');
     }
 
 
