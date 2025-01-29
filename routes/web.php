@@ -12,9 +12,10 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SettingController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\CustomPageController;
 use App\Http\Controllers\RegistrationController;
 use App\Http\Controllers\ChangePasswordController;
-use App\Http\Controllers\CustomPageController;
+use App\Http\Controllers\RolePermissionController;
 use App\Http\Controllers\frontend\HomeController as FrontendHomeController;
 
 /*
@@ -96,4 +97,12 @@ Route::get('/blog-form',[BlogController::class,'form'])->name('blog.form');
 Route::get('/profile',[ProfileController::class,'index'])->name('profile');
 //post
 Route::post('/registration/update{id}',[RegistrationController::class,'update'])->name('registration.update');
+
+
+Route::get('/roles', [RolePermissionController::class, 'createRole'])->name('roles.permission.create');
+Route::get('/roles/permission/index', [RolePermissionController::class, 'index'])->name('roles.permission.index');
+Route::post('/roles/store', [RolePermissionController::class, 'storeRole'])->name('store.roles');
+Route::post('/permissions/store', [RolePermissionController::class, 'createPermission'])->name('permissions.create');
+Route::post('/roles/assign', [RolePermissionController::class, 'assignRole'])->name('assign.role');
+Route::post('/permissions/assign', [RolePermissionController::class, 'assignPermission'])->name('assign.permission');
 });
