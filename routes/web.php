@@ -96,7 +96,7 @@ use App\Http\Controllers\frontend\HomeController as FrontendHomeController;
     Route::get('/product/create', [PropertyController::class, 'create'])->name('product.create');
     Route::post('/product/store', [PropertyController::class, 'store'])->name('product.store');
     Route::get('/product/index', [PropertyController::class, 'index'])->name('products.index');
-    Route::get('/product/edit/{id}', [PropertyController::class, 'edit'])->name('product.edit');
+    Route::get('/product/edit/{slug}', [PropertyController::class, 'edit'])->name('product.edit');
     Route::put('/product/update/{id}', [PropertyController::class, 'update'])->name('product.update');
     Route::delete('/product/delete/{id}', [PropertyController::class, 'destroy'])->name('product.destroy');
     Route::get('/product/show/{slug}', [PropertyController::class, 'show'])->name('product.show');
@@ -114,6 +114,7 @@ use App\Http\Controllers\frontend\HomeController as FrontendHomeController;
     Route::get('/category/create', [CategoryController::class, 'create'])->name('category.create');
     Route::post('/category/save', [CategoryController::class, 'store'])->name('category.store');
     Route::get('/category/edit/{slug}', [CategoryController::class, 'edit'])->name('category.edit');
+    Route::post('/category/update/{id}', [CategoryController::class, 'update'])->name('category.update');
     Route::get('/category/delete/{id}', [CategoryController::class, 'delete'])->name('category.destroy');
 
 

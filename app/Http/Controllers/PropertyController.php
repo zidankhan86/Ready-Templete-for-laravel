@@ -93,47 +93,69 @@ class PropertyController extends Controller
 
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit($id)
+    public function update(Request $request, Product $product)
     {
-        $data['product'] = Product::find($id);
-        return view('backend.admin.properties.edit', $data);
-    }
+        $request->validate([
+            'name' => 'required|max:255',
+            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif',
+            'description' => 'required',
+        ]);
 
-    public function update(Request $request, $id)
-{
-    $product = Product::find($id);
+        // Handle updating the product's main image
+        if ($request->hasFile('image')) {
+            // Delete old image
+            if ($product->image && file_exists(public_path($product->image))) {
+                unlink(public_path($product->image));
+            }
 
-    $request->validate([
-        'name' => 'required|max:255',
-        'price' => 'required|numeric',
-        'image' => 'nullable|image|mimes:jpeg,png,jpg,gif',
-        'description' => 'required',
-    ]);
-
-    if ($request->hasFile('image')) {
-
-        $imageName = date('YmdHis') . '.' . $request->file('image')->getClientOriginalExtension();
-
-
-        if ($product->image && \Storage::disk('public')->exists('uploads/' . $product->image)) {
-            \Storage::disk('public')->delete('uploads/' . $product->image);
+            $imageName = date('YmdHis') . '.' . $request->file('image')->getClientOriginalExtension();
+            $request->file('image')->storeAs('uploads', $imageName, 'public');
+            $product->image = 'public/uploads/' . $imageName;
         }
 
-        $request->file('image')->storeAs('uploads', $imageName, 'public');
-        $product->image = $imageName;
+        // Update product details
+        $product->name = $request->name;
+        $product->slug = Str::slug($request->name);
+        $product->status = $request->status;
+        $product->description = $request->description;
+        $product->category_id = $request->category_id;
+        $product->save();
+
+        // Handle multiple images for the product
+        if ($request->hasFile('images')) {
+            // Remove old images from ImageGallery
+            foreach ($product->images as $image) {
+                if (file_exists(public_path($image->images))) {
+                    unlink(public_path($image->images));
+                }
+                $image->delete();
+            }
+
+            // Upload and store new images
+            foreach ($request->file('images') as $file) {
+                if ($file->isValid()) {
+                    $filename = time() . '_' . uniqid() . '.' . $file->getClientOriginalExtension();
+                    $filePath = $file->storeAs('uploads', $filename, 'public');
+
+                    ImageGallery::create([
+                        'product_id' => $product->id,
+                        'images' => '/public/uploads/' . $filename,
+                    ]);
+                }
+            }
+        }
+
+        return redirect()->route('products.index')->with('success', 'Product updated successfully');
     }
 
-    $product->name = $request->input('name');
-    $product->price = $request->input('price');
-    $product->description = $request->input('description');
+    public function edit($slug)
+    {
+        $data['title'] = 'Service Edit';
+        $data['product'] = Product::where('slug',$slug)->firstOrFail();
+        $data['categories'] = Category::all();
+        return view('backend.admin.service.edit', $data);
+    }
 
-    $product->save();
-
-    return redirect()->route('products.index')->with('success', 'Product updated successfully');
-}
 
 
 

@@ -1,75 +1,90 @@
 @extends('backend.layout.app')
+
 @section('content')
 
-<!-- resources/views/products/edit.blade.php -->
+<div class="col-12 d-flex justify-content-center mt-4">
+    <div class="card shadow-lg" style="max-width: 600px; width: 100%;">
+        <div class="card-header">
+            <h3 class="card-title mb-0">Edit Product</h3>
+        </div>
+        <form method="POST" action="{{ route('product.update', $product->id) }}" enctype="multipart/form-data">
+            @csrf
+            @method('PUT')
 
-<div class="col-12">
-    <form class="card shadow-lg border-0" method="POST" action="{{ route('product.update', $product->id) }}" enctype="multipart/form-data">
-        @csrf
-        @method('PUT')
-        <div class="card-body">
-            <h3 class="card-title text-center mb-4 text-primary">Edit Product</h3>
-            <div class="row g-3">
+            <div class="card-body">
                 <!-- Product Name -->
-                <div class="col-md-6">
-                    <div class="form-group">
-                        <label class="form-label fw-bold">Product Name</label>
-                        <input type="text" class="form-control border-2 border-primary" name="name" value="{{ old('name', $product->name) }}" placeholder="Enter product name" required>
-                    </div>
+                <div class="mb-3">
+                    <label class="form-label">Product Name</label>
+                    <input type="text" class="form-control" name="name" value="{{ $product->name }}" required>
                 </div>
-                <!-- Price -->
-                <div class="col-md-6">
-                    <div class="form-group">
-                        <label class="form-label fw-bold">Price &#2547; </label>
-                        <input type="number" class="form-control border-2 border-primary" name="price" value="{{ old('price', $product->price) }}" placeholder="Enter price" step="0.01" min="0" required>
-                    </div>
-                </div>
-                <!-- Image Upload (optional) -->
-                <div class="col-md-6">
-                    <div class="form-group">
-                        <label class="form-label fw-bold">Product Image</label>
-                        <input type="file" class="form-control border-2 border-primary" name="image" accept="image/*" onchange="previewImage(event)">
-                        <small class="form-text text-muted">Upload a high-quality image (JPEG, PNG). Leave empty to keep current image.</small>
-                        <!-- Image Preview -->
-                        <div id="image-preview-container" class="mt-2" style="display: none;">
-                            <img id="image-preview" class="img-thumbnail" style="max-width: 200px;">
-                        </div>
-                    </div>
-                </div>
+
                 <!-- Description -->
-                <div class="col-md-6">
-                    <div class="form-group">
-                        <label class="form-label fw-bold">Product Description</label>
-                        <textarea rows="3" name="description" class="form-control border-2 border-primary" placeholder="Provide a brief description of the product" required>{{ old('description', $product->description) }}</textarea>
-                    </div>
+                <div class="mb-3">
+                    <label class="form-label">Description</label>
+                    <textarea class="form-control" name="description" rows="3" required>{{ $product->description }}</textarea>
+                </div>
+
+                <!-- Category -->
+                <div class="mb-3">
+                    <label class="form-label">Category</label>
+                    <select class="form-control" name="category_id" required>
+                        <option value="">Select a category</option>
+                        @foreach ($categories as $category)
+                            <option value="{{ $category->id }}" {{ $product->category_id == $category->id ? 'selected' : '' }}>
+                                {{ $category->name }}
+                            </option>
+                        @endforeach
+                    </select>
+                </div>
+
+                <!-- Existing Thumbnail -->
+                <div class="mb-3">
+                    <label class="form-label fw-bold">Current Thumbnail</label><br>
+                    <img src="{{ asset($product->image) }}" alt="Product Thumbnail" class="img-thumbnail" width="100">
+                </div>
+
+                <!-- Upload New Thumbnail -->
+                <div class="mb-3">
+                    <label class="form-label fw-bold">Change Thumbnail</label>
+                    <input type="file" class="form-control" name="image" accept="image/*">
+                    <small class="form-text text-muted">Upload a high-quality image (JPEG, PNG).</small>
+                </div>
+
+                <!-- Existing Product Images -->
+                <div class="mb-3">
+                    <label class="form-label fw-bold">Current Product Images</label><br>
+                    @if ($product->images->isNotEmpty())
+                        @foreach ($product->images as $image)
+                            <img src="{{ asset($image->images) }}" alt="Product Image" class="img-thumbnail m-1" width="100">
+                        @endforeach
+                    @else
+                        <p>No images available</p>
+                    @endif
+                </div>
+
+
+                <!-- Upload New Product Images -->
+                <div class="mb-3">
+                    <label class="form-label fw-bold">Change Product Images</label>
+                    <input type="file" class="form-control" name="images[]" accept="image/jpeg,image/png" multiple>
+                    <small class="form-text text-muted">Upload high-quality images (JPEG, PNG).</small>
+                </div>
+
+                <!-- Status -->
+                <div class="mb-3">
+                    <label class="form-label">Status</label>
+                    <select class="form-control" name="status">
+                        <option value="1" {{ $product->status == 1 ? 'selected' : '' }}>Active</option>
+                        <option value="0" {{ $product->status == 0 ? 'selected' : '' }}>Inactive</option>
+                    </select>
                 </div>
             </div>
-        </div>
-        <div class="card-footer text-end bg-light">
-            <button type="submit" class="btn btn-primary px-4">Update</button>
-        </div>
-    </form>
+
+            <div class="card-footer text-end">
+                <button type="submit" class="btn btn-primary">Update Product</button>
+            </div>
+        </form>
+    </div>
 </div>
 
-
 @endsection
-<script>
-    function previewImage(event) {
-        const file = event.target.files[0];
-        const previewContainer = document.getElementById('image-preview-container');
-        const previewImage = document.getElementById('image-preview');
-
-        if (file) {
-            const reader = new FileReader();
-
-            reader.onload = function(e) {
-                previewContainer.style.display = 'block';
-                previewImage.src = e.target.result;
-            };
-
-            reader.readAsDataURL(file);
-        } else {
-            previewContainer.style.display = 'none';
-        }
-    }
-</script>

@@ -21,30 +21,31 @@
                         </thead>
                         <tbody>
                             @forelse ($categories as $category)
+                            <tr>
+                                <td>{{ $category->name }}</td>
+                                <td>
+                                    <span class="badge {{ $category->status ? 'bg-success' : 'bg-danger' }}">
+                                        {{ $category->status ? 'Active' : 'Inactive' }}
+                                    </span>
+                                </td>
+                                <td>
+                                    <div class="btn-group">
+                                        <a href="{{ route('category.edit', $category->slug) }}" class="btn btn-warning btn-sm">
+                                            Edit
+                                        </a>
+                                        <a href="" class="btn btn-danger btn-sm">Delete</a>
+                                        <a href="" class="btn btn-danger btn-sm">show</a>
+                                    </div>
+                                </td>
+                            </tr>
 
-
+                            @empty
                                 <tr>
-                                    <td data-label="Name">{{ $category->name }}</td>
-                                    <td data-label="Status">
-                                        @if($category->status)
-                                            <span class="badge bg-green-lt">Active</span>
-                                        @else
-                                            <span class="badge bg-red-lt">Inactive</span>
-                                        @endif
-                                    </td>
-                                    <td>
-                                        <div class="btn-list flex-nowrap">
-                                            {{-- <a href="{{ route('category.edit', $category->slug) }}" class="btn btn-sm btn-warning">
-                                                Edit
-                                            </a> --}}
-                                            <a href="{{route('category.destroy', $category->id)}}">delete</a>
-
-                                        </div>
+                                    <td colspan="3" class="text-center text-muted">
+                                    <x-backend.svg.notfound-svg />
                                     </td>
                                 </tr>
-                                @empty
-                              <strong class="text-center">  No categories found.</strong>
-                                @endforelse
+                            @endforelse
                         </tbody>
                     </table>
                 </div>

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Category;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 
 class CategoryController extends Controller
@@ -12,7 +13,7 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        $data['title'] = 'Category List';
+        $data['title'] = 'Service Type List';
         $data['categories'] = Category::all();
         return view('backend.admin.category.index',$data);
     }
@@ -22,7 +23,7 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        $data['title'] = 'Add New Category';
+        $data['title'] = 'Add New Service Type';
         return view('backend.admin.category.create',$data);
     }
 
@@ -40,7 +41,8 @@ class CategoryController extends Controller
         // Create new category
         $row = new Category();
         $row->name = $request->name;
-        $row->status = $request->status; // Default to 0 if not provided
+        $row->slug = Str::slug($request->name);
+        $row->status = $request->status;
         $row->save();
 
         return redirect()->back()->with('success', 'Category created successfully.');
@@ -56,18 +58,43 @@ class CategoryController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Category $slug)
+    public function edit($slug)
     {
-        //
+        $data['title'] = 'Edit Service Type';
+
+        $data['category'] = Category::where('slug', $slug)->firstOrFail();
+
+        return view('backend.admin.category.edit', $data);
     }
+
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Category $category)
-    {
-        //
+    public function update(Request $request, $id)
+{
+    // Validate input
+    $request->validate([
+        'name' => 'required|string|max:255',
+        'status' => 'boolean',
+    ]);
+
+    try {
+        // Find the category
+        $row = Category::findOrFail($id);
+
+        // Update category fields
+        $row->name = $request->name;
+        $row->status = $request->status;
+        $row->slug = Str::slug($request->name);
+        $row->save();
+
+        return redirect()->route('category.index')->with('success', 'Category updated successfully.');
+    } catch (\Exception $e) {
+        return redirect()->back()->with('error', 'Something went wrong. Please try again.');
     }
+}
+
 
     /**
      * Remove the specified resource from storage.

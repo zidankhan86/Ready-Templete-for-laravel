@@ -115,7 +115,7 @@
 
                                    </span>
                                     <span class="nav-link-title">
-                                         Type
+                                         Service Type
                                     </span>
                                 </a>
                             </div>
