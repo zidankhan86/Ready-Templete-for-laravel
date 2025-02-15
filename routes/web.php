@@ -96,6 +96,20 @@ use App\Http\Controllers\frontend\HomeController as FrontendHomeController;
     Route::get('/category/index', [CategoryController::class, 'index'])->name('category.index');
     Route::get('/category/create', [CategoryController::class, 'create'])->name('category.create');
 
+
+
+    // ===============================
+    // PROPERTIES MANAGEMENT
+    // ===============================
+    Route::get('/property/index', [PropertyController::class, 'property_index'])->name('property_index');
+    Route::get('/property/create', [PropertyController::class, 'property_create'])->name('property_create');
+    Route::post('/property/save', [PropertyController::class, 'property_store'])->name('property_store');
+    Route::get('/property/edit', [PropertyController::class, 'property_edit'])->name('property_edit');
+    Route::get('/property/delete', [PropertyController::class, 'property_delete'])->name('property_delete');
+    Route::post('/property/update', [PropertyController::class, 'property_update'])->name('property_update');
+
+
+
     // ===============================
     // SETTINGS & PASSWORD MANAGEMENT
     // ===============================

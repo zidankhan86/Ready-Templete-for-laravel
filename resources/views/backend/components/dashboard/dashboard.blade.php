@@ -1,5 +1,6 @@
  @php
      $products = DB::table('products')->get();
+     $row = DB::table('properties')->where('status', '1')->get();
  @endphp
 
  <!-- Page body -->
@@ -80,53 +81,33 @@
 
              </div>
 
-           <!-- New Card 12 -->
-<div class="col-sm-12 col-lg-12">
-    <div class="card">
-        <div class="card-body">
-            <div class="d-flex align-items-center">
-                <div class="subheader">Product Information</div>
-            </div>
-
-            <!-- Table to display product details -->
-            <div class="table-responsive mt-3">
-                <table class="table table-bordered table-striped">
-                    <thead>
-                        <tr>
-                            <th>#</th>
-                            <th>Name</th>
-                            <th>Price</th>
-                            <th>Actions</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @foreach($products as $product)
-                        <tr>
-                            <td>{{ $loop->iteration }}</td>
-                            <td>{{ $product->name }}</td>
-                            <td>{{ $product->price }} $</td>
-                            <td>
-                                <!-- Edit Button -->
-                                <a href="{{ route('product.edit', $product->id) }}" class="btn btn-warning btn-sm">Edit</a>
-
-                                <!-- Delete Button -->
-                                <form action="{{ route('product.destroy', $product->id) }}" method="POST" style="display:inline;">
-                                    @csrf
-                                    @method('DELETE')
-                                    <button type="submit" class="btn btn-danger btn-sm">Delete</button>
-                                </form>
-                            </td>
-                        </tr>
-                        @endforeach
-                    </tbody>
-                </table>
-            </div>
-
-        </div>
-    </div>
-</div>
-
-
+             <section class="section section-white">
+                <div class="container">
+                    <div class="row g-3">
+                        @forelse ($row as $property)
+                            <div class="col-md-6 col-lg-3"> <!-- 4 images per row -->
+                                <div class="card">
+                                    <div class="diff mx-auto" id="diff-{{ $loop->index }}">
+                                        <div class="diff-item-1">
+                                            <img src="{{ asset($property->before_image) }}" alt="Before Image">
+                                        </div>
+                                        <div class="diff-item-2">
+                                            <img src="{{ asset($property->after_image) }}" alt="After Image">
+                                        </div>
+                                        <div class="diff-resizer"></div>
+                                    </div>
+                                    <div class="card-body text-center">
+                                        <h5 class="card-title">{{ Str::limit($property->title, 10) }}</h5>
+                                        <p class="card-text">{{ Str::limit($property->description, 25) }}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        @empty
+                            <strong class="text-center">No Properties added yet</strong>
+                        @endforelse
+                    </div>
+                </div>
+            </section>
 
 
          </div>
@@ -135,3 +116,117 @@
 
  </div>
 
+
+
+ @push('styles')
+     <style>
+         .diff {
+             position: relative;
+             width: 100%;
+             height: 250px;
+             overflow: hidden;
+             user-select: none;
+             border-radius: 8px;
+             cursor: ew-resize;
+         }
+
+         .diff-item-1,
+         .diff-item-2 {
+             position: absolute;
+             top: 0;
+             left: 0;
+             width: 100%;
+             height: 100%;
+         }
+
+         .diff-item-1 img,
+         .diff-item-2 img {
+             width: 100%;
+             height: 100%;
+             object-fit: cover;
+             display: block;
+         }
+
+         .diff-item-2 {
+             width: 50%;
+             overflow: hidden;
+             transition: width 0.3s ease-in-out;
+         }
+
+         .diff-resizer {
+             position: absolute;
+             top: 0;
+             left: 50%;
+             width: 5px;
+             height: 100%;
+             background: #fff;
+             cursor: ew-resize;
+             transition: left 0.3s ease-in-out;
+         }
+     </style>
+ @endpush
+
+ @push('scripts')
+     <!-- jQuery (Required for the script) -->
+     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+     <script>
+         $(document).ready(function() {
+             let isDragging = false;
+             let container, resizer, overlay;
+
+             $(".diff").each(function() {
+                 let currentContainer = $(this);
+                 let currentResizer = currentContainer.find(".diff-resizer");
+                 let currentOverlay = currentContainer.find(".diff-item-2");
+
+                 // Handle mouse click & drag
+                 currentContainer.on("mousedown touchstart", function(e) {
+                     e.preventDefault();
+                     isDragging = true;
+                     container = currentContainer;
+                     resizer = currentResizer;
+                     overlay = currentOverlay;
+                 });
+
+                 // Adjust slider position when moving the mouse
+                 $(document).on("mousemove touchmove", function(e) {
+                     if (!isDragging || !container) return;
+
+                     let pageX = e.pageX || e.originalEvent.touches[0].pageX;
+                     let offsetX = pageX - container.offset().left;
+                     let width = container.width();
+                     let percentage = (offsetX / width) * 100;
+
+                     if (percentage < 0) percentage = 0;
+                     if (percentage > 100) percentage = 100;
+
+                     overlay.css("width", percentage + "%");
+                     resizer.css("left", percentage + "%");
+                 });
+
+                 // Stop dragging when mouse is released
+                 $(document).on("mouseup touchend", function() {
+                     isDragging = false;
+                     container = null;
+                 });
+
+                 // Adjust slider position when hovering over the image
+                 currentContainer.on("mousemove touchmove", function(e) {
+                     if (isDragging) return;
+
+                     let pageX = e.pageX || e.originalEvent.touches[0].pageX;
+                     let offsetX = pageX - currentContainer.offset().left;
+                     let width = currentContainer.width();
+                     let percentage = (offsetX / width) * 100;
+
+                     if (percentage < 0) percentage = 0;
+                     if (percentage > 100) percentage = 100;
+
+                     currentOverlay.css("width", percentage + "%");
+                     currentResizer.css("left", percentage + "%");
+                 });
+             });
+         });
+     </script>
+ @endpush

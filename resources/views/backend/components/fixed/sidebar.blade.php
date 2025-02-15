@@ -83,8 +83,8 @@
                         <div class="dropdown-menu-columns">
                             <div class="dropdown-menu-column">
                                 <a class="dropdown-item {{ request()->routeIs('products.index') ? 'active' : '' }}"
-                                   href="{{ route('products.index') }}">
-                                    Product
+                                   href="{{ route('property_index') }}">
+                                    Property
                                 </a>
                             </div>
                         </div>

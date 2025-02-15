@@ -1,3 +1,4 @@
+
 @extends('backend.layout.app')
 @section('content')
     <div class="container">
@@ -21,26 +22,26 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach($properties as $property)
+                            @foreach($row as $property)
                                 <tr>
                                     <td data-label="Title">{{ $property->title }}</td>
                                     <td data-label="Description">{{ Str::limit($property->description, 50) }}</td>
                                     <td data-label="Before Image">
-                                        <img src="{{ asset('uploads/property/' . $property->before_image) }}" width="60" alt="Before Image">
+                                        <img src="{{ asset($property->before_image) }}" width="60" alt="Before Image">
                                     </td>
                                     <td data-label="After Image">
-                                        <img src="{{ asset('uploads/property/' . $property->after_image) }}" width="60" alt="After Image">
+                                        <img src="{{ asset($property->after_image) }}" width="60" alt="After Image">
                                     </td>
                                     <td>
                                         <div class="btn-list flex-nowrap">
-                                            <a href="{{ route('property.edit', $property->id) }}" class="btn btn-primary">
+                                            <a href="#" class="btn btn-primary">
                                                 Edit
                                             </a>
-                                            <form action="{{ route('property.destroy', $property->id) }}" method="POST" style="display:inline;">
+                                            {{-- <form action="{{ route('property.destroy', $property->id) }}" method="POST" style="display:inline;">
                                                 @csrf
                                                 @method('DELETE')
                                                 <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure?')">Delete</button>
-                                            </form>
+                                            </form> --}}
                                         </div>
                                     </td>
                                 </tr>
