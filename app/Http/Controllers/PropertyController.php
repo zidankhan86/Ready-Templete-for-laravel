@@ -7,19 +7,16 @@ use Illuminate\Support\Str;
 use App\Models\ImageGallery;
 use Illuminate\Http\Request;
 
-class ProductController extends Controller
+class PropertyController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
     public function create()
     {
-       return view('backend.pages.create');
+       return view('backend.admin.properties.create');
     }
      public function index()
      {
         $data['products'] = Product::all();
-        return view('backend.components.product.index', $data);
+        return view('backend.admin.properties.index', $data);
      }
 
     public function store(Request $request)
@@ -78,7 +75,7 @@ class ProductController extends Controller
     public function edit($id)
     {
         $data['product'] = Product::find($id);
-        return view('backend.components.product.edit', $data);
+        return view('backend.admin.properties.edit', $data);
     }
 
     /**

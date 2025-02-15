@@ -43,25 +43,7 @@
 
                 {{-- @can('view category')  --}}
                 <li class="nav-item ">
-                    <a class="nav-link" href="{{ route('category.list') }}" data-bs-auto-close="false" role="button"
-                        aria-expanded="false">
-                        <span class="nav-link-icon d-md-none d-lg-inline-block">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                                fill="currentColor" class="icon icon-tabler icons-tabler-filled icon-tabler-category">
-                                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                                <path
-                                    d="M10 3h-6a1 1 0 0 0 -1 1v6a1 1 0 0 0 1 1h6a1 1 0 0 0 1 -1v-6a1 1 0 0 0 -1 -1z" />
-                                <path
-                                    d="M20 3h-6a1 1 0 0 0 -1 1v6a1 1 0 0 0 1 1h6a1 1 0 0 0 1 -1v-6a1 1 0 0 0 -1 -1z" />
-                                <path
-                                    d="M10 13h-6a1 1 0 0 0 -1 1v6a1 1 0 0 0 1 1h6a1 1 0 0 0 1 -1v-6a1 1 0 0 0 -1 -1z" />
-                                <path d="M17 13a4 4 0 1 1 -3.995 4.2l-.005 -.2l.005 -.2a4 4 0 0 1 3.995 -3.8z" />
-                            </svg>
-                        </span>
-                        <span class="nav-link-title">
-                            Category
-                        </span>
-                    </a>
+
                 </li>
                 {{-- @endcan
 
@@ -80,10 +62,24 @@
                             </svg>
                         </span>
                         <span class="nav-link-title">
-                            Product
+                            Properties
                         </span>
                     </a>
                     <div class="dropdown-menu">
+                        <div class="dropdown-menu-columns">
+                            <div class="dropdown-menu-column">
+                                <a class="nav-link" href="{{ route('category.index') }}" data-bs-auto-close="false" role="button"
+                                aria-expanded="false">
+                                <span class="nav-link-icon d-md-none d-lg-inline-block">
+
+                                </span>
+                                <span class="nav-link-title">
+                                    Type
+                                </span>
+                            </a>
+                            </div>
+                        </div>
+
                         <div class="dropdown-menu-columns">
                             <div class="dropdown-menu-column">
                                 <a class="dropdown-item {{ request()->routeIs('products.index') ? 'active' : '' }}"

@@ -10,6 +10,7 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SettingController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\PropertyController;
 use App\Http\Controllers\CustomPageController;
 use App\Http\Controllers\RegistrationController;
 use App\Http\Controllers\ChangePasswordController;
@@ -77,24 +78,24 @@ use App\Http\Controllers\frontend\HomeController as FrontendHomeController;
     // ===============================
     // PRODUCT MANAGEMENT
     // ===============================
-    Route::get('/product/create', [ProductController::class, 'create'])->name('product.create');
-    Route::post('/product/store', [ProductController::class, 'store'])->name('product.store');
-    Route::get('/product/index', [ProductController::class, 'index'])->name('products.index');
-    Route::get('/product/edit/{id}', [ProductController::class, 'edit'])->name('product.edit');
-    Route::put('/product/update/{id}', [ProductController::class, 'update'])->name('product.update');
-    Route::delete('/product/delete/{id}', [ProductController::class, 'destroy'])->name('product.destroy');
+    Route::get('/product/create', [PropertyController::class, 'create'])->name('product.create');
+    Route::post('/product/store', [PropertyController::class, 'store'])->name('product.store');
+    Route::get('/product/index', [PropertyController::class, 'index'])->name('products.index');
+    Route::get('/product/edit/{id}', [PropertyController::class, 'edit'])->name('product.edit');
+    Route::put('/product/update/{id}', [PropertyController::class, 'update'])->name('product.update');
+    Route::delete('/product/delete/{id}', [PropertyController::class, 'destroy'])->name('product.destroy');
 
     // ===============================
     // AUTH & USER MANAGEMENT
     // ===============================
-    Route::get('/logout', [TestController::class, 'logout'])->name('logout');
+    Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
     Route::get('/user-list', [AuthController::class, 'list'])->name('user.list');
 
     // ===============================
     // CATEGORY MANAGEMENT
     // ===============================
-    Route::get('/category/list', [CategoryController::class, 'list'])->name('category.list');
-    Route::get('/category/form', [CategoryController::class, 'form'])->name('category.form');
+    Route::get('/category/index', [CategoryController::class, 'index'])->name('category.index');
+    Route::get('/category/create', [CategoryController::class, 'create'])->name('category.create');
 
     // ===============================
     // SETTINGS & PASSWORD MANAGEMENT

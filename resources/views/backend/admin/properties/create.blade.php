@@ -1,3 +1,6 @@
+@extends('backend.layout.app')
+@section('content')
+
 <div class="col-12">
     <form class="card shadow-lg border-0" method="POST" action="{{ route('product.store') }}" enctype="multipart/form-data">
         @csrf
@@ -59,7 +62,7 @@
         </div>
     </form>
 </div>
-
+@endsection
 <style>
     .card {
         border-radius: 12px;

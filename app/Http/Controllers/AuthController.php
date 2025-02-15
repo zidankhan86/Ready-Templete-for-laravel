@@ -80,6 +80,12 @@ class AuthController extends Controller
 
     public function list()
     {
-        return view('backend.pages.userList');
+        return view('backend.admin.user.index');
     }
+
+    public function logout(){
+        Auth::logout();
+        return redirect('/')->withSuccess('Logout Success');
+     }
+
 }

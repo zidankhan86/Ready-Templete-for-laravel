@@ -12,7 +12,7 @@ class CategoryController extends Controller
      */
     public function index()
     {
-       return view('frontend.pages.category');
+        return view('backend.admin.category.index');;
     }
 
     /**
@@ -20,7 +20,7 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        //
+        return view('backend.admin.category.create');
     }
 
     /**
@@ -28,7 +28,7 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+       //
     }
 
     /**
@@ -62,13 +62,5 @@ class CategoryController extends Controller
     {
         //
     }
-    public function list()
-    {
-       return view('backend.pages.categoryList');
-    }
 
-    public function form()
-    {
-       return view('backend.pages.categoryForm');
-    }
 }

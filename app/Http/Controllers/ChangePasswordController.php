@@ -13,44 +13,10 @@ class ChangePasswordController extends Controller
      */
     public function index()
     {
-        return view('backend.pages.changePassword');
+        return view('backend.admin.change_password.edit');
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
-    }
 
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
     public function update(Request $request, string $id)
     {
         {
@@ -73,32 +39,24 @@ class ChangePasswordController extends Controller
             // Perform the validation
             $validatedData = $request->validate($rules, $messages);
 
-        $userUpdate= User::find($id);
-
-      
-        $userUpdate->update([
-
-            "password" => bcrypt($request->password),
+            $userUpdate = User::find($id);
 
 
-        ]);
-
-                        // Update password if a new one is provided
-        if ($request->filled('new_password')) {
             $userUpdate->update([
-                'password' => bcrypt($validatedData['new_password']),
+
+                "password" => bcrypt($request->password),
+
+
             ]);
-        }
+
+            // Update password if a new one is provided
+            if ($request->filled('new_password')) {
+                $userUpdate->update([
+                    'password' => bcrypt($validatedData['new_password']),
+                ]);
+            }
             return redirect()->back()->withSuccess('Profile Update Success');
         }
-
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
-    {
-        //
-    }
 }

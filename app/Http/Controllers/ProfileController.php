@@ -7,6 +7,6 @@ use Illuminate\Http\Request;
 class ProfileController extends Controller
 {
     public function index(){
-        return view('backend.pages.profile');
+        return view('backend.admin.profile.edit');
     }
 }
