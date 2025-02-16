@@ -1,12 +1,12 @@
 <?php
 
-namespace App\View\Components;
+namespace App\View\Components\backend\svg;
 
 use Closure;
 use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
 
-class backend.svg.notfoundSvg extends Component
+class editBtn extends Component
 {
     /**
      * Create a new component instance.
@@ -21,6 +21,6 @@ class backend.svg.notfoundSvg extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('components.backend.svg.notfound-svg');
+        return view('components.backend.svg.edit-btn');
     }
 }

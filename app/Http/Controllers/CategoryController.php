@@ -50,9 +50,10 @@ class CategoryController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Category $category)
+    public function show($slug)
     {
-        //
+        $data['category'] = Category::where('slug', $slug)->firstOrFail();
+        return view('backend.admin.category.show',$data);
     }
 
     /**

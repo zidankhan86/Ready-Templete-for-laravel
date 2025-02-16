@@ -3,7 +3,7 @@
 @section('content')
     <div class="container">
         <br>
-        <h2 style="text-align: center">{{$title}}</h2>
+        <h2 style="text-align: center">{{ $title }}</h2>
         <div style="text-align: right">
             <a href="{{ route('category.create') }}" class="btn btn-info" style="margin-right: 10px;">+ Add Category</a>
         </div><br><br>
@@ -21,28 +21,31 @@
                         </thead>
                         <tbody>
                             @forelse ($categories as $category)
-                            <tr>
-                                <td>{{ $category->name }}</td>
-                                <td>
-                                    <span class="badge {{ $category->status ? 'bg-success' : 'bg-danger' }}">
-                                        {{ $category->status ? 'Active' : 'Inactive' }}
-                                    </span>
-                                </td>
-                                <td>
-                                    <div class="btn-group">
-                                        <a href="{{ route('category.edit', $category->slug) }}" class="btn btn-warning btn-sm">
-                                            Edit
-                                        </a>
-                                        <a href="" class="btn btn-danger btn-sm">Delete</a>
-                                        <a href="" class="btn btn-danger btn-sm">show</a>
-                                    </div>
-                                </td>
-                            </tr>
-
+                                <tr>
+                                    <td>{{ $category->name }}</td>
+                                    <td>
+                                        <span class="badge {{ $category->status ? 'badge bg-green-lt' : 'badge bg-red-lt' }}">
+                                            {{ $category->status ? 'Active' : 'Inactive' }}
+                                        </span>
+                                    </td>
+                                    <td>
+                                        <div class="d-flex gap-2">
+                                            <a href="{{ route('category.edit', $category->slug) }}" class="btn btn-warning btn-sm">
+                                                <x-backend.svg.editBtn />
+                                            </a>
+                                            <a href="" class="btn btn-danger btn-sm">
+                                                <x-backend.svg.deleteBtn />
+                                            </a>
+                                            <a href="{{route('category.show',$category->slug)}}" class="btn btn-info btn-sm">
+                                                <x-backend.svg.showBtn />
+                                            </a>
+                                        </div>
+                                    </td>
+                                </tr>
                             @empty
                                 <tr>
                                     <td colspan="3" class="text-center text-muted">
-                                    <x-backend.svg.notfound-svg />
+                                        <x-backend.svg.notfound-svg />
                                     </td>
                                 </tr>
                             @endforelse

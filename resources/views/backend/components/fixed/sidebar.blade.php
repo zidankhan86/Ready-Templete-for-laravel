@@ -66,13 +66,13 @@
                     <div class="dropdown-menu">
                         <div class="dropdown-menu-columns">
                             <div class="dropdown-menu-column">
-                                <a class="nav-link" href="{{ route('category.index') }}" data-bs-auto-close="false" role="button"
+                                <a class="nav-link" href="{{ route('property_index') }}" data-bs-auto-close="false" role="button"
                                 aria-expanded="false">
                                 <span class="nav-link-icon d-md-none d-lg-inline-block">
 
                                 </span>
                                 <span class="nav-link-title">
-                                    Type
+                                    Property List
                                 </span>
                             </a>
                             </div>

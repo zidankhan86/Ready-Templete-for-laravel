@@ -1,12 +1,12 @@
 <?php
 
-namespace App\View\Components;
+namespace App\View\Components\backend\svg;
 
 use Closure;
 use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
 
-class backend.svg.notfoundServiceSvg extends Component
+class notfoundServiceSvg extends Component
 {
     /**
      * Create a new component instance.

@@ -34,8 +34,14 @@
                                     </td>
                                     <td>
                                         <div class="btn-list flex-nowrap">
-                                            <a href="#" class="btn btn-primary">
-                                                Edit
+                                            <a href="{{ route('property_edit', $property->slug) }}" class="btn btn-warning btn-sm">
+                                                <x-backend.svg.editBtn />
+                                            </a>
+                                            <a href="" class="btn btn-danger btn-sm">
+                                                <x-backend.svg.deleteBtn />
+                                            </a>
+                                            <a href="{{route('property_show',$property->slug)}}" class="btn btn-info btn-sm">
+                                                <x-backend.svg.showBtn />
                                             </a>
                                             {{-- <form action="{{ route('property.destroy', $property->id) }}" method="POST" style="display:inline;">
                                                 @csrf

@@ -23,7 +23,7 @@
 
             </div>
             <div class="card-footer text-end">
-                <button type="submit" class="btn btn-primary">Create Category</button>
+                <button type="submit" class="btn btn-primary">Create</button>
             </div>
         </form>
     </div>

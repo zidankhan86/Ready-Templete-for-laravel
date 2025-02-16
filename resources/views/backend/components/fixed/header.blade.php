@@ -186,21 +186,18 @@
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link" href="{{route('cache.clear')}}"
-                            role="button">
+                            role="button" data-bs-toggle="tooltip" data-bs-placement="top" title="Cache Clear">
                             <span class="nav-link-icon d-md-none d-lg-inline-block">
-                                <!-- Download SVG icon from http://tabler.io/icons/icon/package -->
-                                <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-spray"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M4 10m0 2a2 2 0 0 1 2 -2h4a2 2 0 0 1 2 2v7a2 2 0 0 1 -2 2h-4a2 2 0 0 1 -2 -2z" /><path d="M6 10v-4a1 1 0 0 1 1 -1h2a1 1 0 0 1 1 1v4" /><path d="M15 7h.01" /><path d="M18 9h.01" /><path d="M18 5h.01" /><path d="M21 3h.01" /><path d="M21 7h.01" /><path d="M21 11h.01" /><path d="M10 7h1" /></svg>
+                                <x-backend.svg.cacheclear-svg />
+
                             </span>
 
                         </a>
 
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{route('home')}}">
-                            <span class="nav-link-icon d-md-none d-lg-inline-block">
-                                <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-world"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M3 12a9 9 0 1 0 18 0a9 9 0 0 0 -18 0" /><path d="M3.6 9h16.8" /><path d="M3.6 15h16.8" /><path d="M11.5 3a17 17 0 0 0 0 18" /><path d="M12.5 3a17 17 0 0 1 0 18" /></svg>
-                            </span>
-
+                        <a class="nav-link" href="{{ route('home') }}" data-bs-toggle="tooltip" data-bs-placement="top" title="Website">
+                            <x-backend.svg.home-svg />
                         </a>
                     </li>
                     <li class="nav-item dropdown">
@@ -336,20 +333,11 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="./illustrations.html">
-                            <span class="nav-link-icon d-md-none d-lg-inline-block">
-                                <!-- Download SVG icon from http://tabler.io/icons/icon/brand-figma -->
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                    viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                                    stroke-linecap="round" stroke-linejoin="round" class="icon icon-1">
-                                    <path d="M15 12m-3 0a3 3 0 1 0 6 0a3 3 0 1 0 -6 0" />
-                                    <path
-                                        d="M6 3m0 3a3 3 0 0 1 3 -3h6a3 3 0 0 1 3 3v0a3 3 0 0 1 -3 3h-6a3 3 0 0 1 -3 -3z" />
-                                    <path d="M9 9a3 3 0 0 0 0 6h3m-3 0a3 3 0 1 0 3 3v-15" />
-                                </svg>
-                            </span>
-                            <span class="nav-link-title">
-                                Illustrations
+                        <a class="nav-link" href="{{route('property_create')}}">
+
+                            <span class="btn btn-primary">
+                                <x-backend.svg.addBtn />
+                               Add Property
                             </span>
                         </a>
                     </li>
@@ -359,3 +347,15 @@
         </div>
     </div>
 </header>
+
+
+@push('scripts')
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
+        tooltipTriggerList.forEach(function (tooltipTriggerEl) {
+            new bootstrap.Tooltip(tooltipTriggerEl);
+        });
+    });
+</script>
+@endpush

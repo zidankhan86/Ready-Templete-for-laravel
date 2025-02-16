@@ -16,9 +16,7 @@ use App\Http\Controllers\RegistrationController;
 use App\Http\Controllers\ChangePasswordController;
 use App\Http\Controllers\RolePermissionController;
 use App\Http\Controllers\frontend\HomeController as FrontendHomeController;
-
-
-
+use App\Http\Controllers\UserController;
 
   // ===============================
     //CACHE CLEARING ROUTE
@@ -105,7 +103,7 @@ use App\Http\Controllers\frontend\HomeController as FrontendHomeController;
     // AUTH & USER MANAGEMENT
     // ===============================
     Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
-    Route::get('/user-list', [AuthController::class, 'list'])->name('user.list');
+    Route::get('/user-list', [UserController::class, 'index'])->name('user.list');
 
     // ===============================
     // CATEGORY MANAGEMENT
@@ -116,7 +114,7 @@ use App\Http\Controllers\frontend\HomeController as FrontendHomeController;
     Route::get('/category/edit/{slug}', [CategoryController::class, 'edit'])->name('category.edit');
     Route::post('/category/update/{id}', [CategoryController::class, 'update'])->name('category.update');
     Route::get('/category/delete/{id}', [CategoryController::class, 'delete'])->name('category.destroy');
-
+    Route::get('/category/show/{slug}', [CategoryController::class, 'show'])->name('category.show');
 
     // ===============================
     // PROPERTIES MANAGEMENT
@@ -124,7 +122,8 @@ use App\Http\Controllers\frontend\HomeController as FrontendHomeController;
     Route::get('/property/index', [PropertyController::class, 'property_index'])->name('property_index');
     Route::get('/property/create', [PropertyController::class, 'property_create'])->name('property_create');
     Route::post('/property/save', [PropertyController::class, 'property_store'])->name('property_store');
-    Route::get('/property/edit', [PropertyController::class, 'property_edit'])->name('property_edit');
+    Route::get('/property/edit/{slug}', [PropertyController::class, 'property_edit'])->name('property_edit');
+    Route::get('/property/show/{slug}', [PropertyController::class, 'property_show'])->name('property_show');
     Route::get('/property/delete', [PropertyController::class, 'property_delete'])->name('property_delete');
     Route::post('/property/update', [PropertyController::class, 'property_update'])->name('property_update');
 

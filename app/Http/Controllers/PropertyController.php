@@ -8,6 +8,7 @@ use App\Models\properties;
 use Illuminate\Support\Str;
 use App\Models\ImageGallery;
 use Illuminate\Http\Request;
+use PhpParser\Builder\Property;
 
 class PropertyController extends Controller
 {
@@ -40,6 +41,27 @@ class PropertyController extends Controller
         $data['row'] = properties::where('status','1')->get();
 
         return view('backend.admin.properties.property_index', $data);
+     }
+
+
+     public function property_edit($slug)
+     {
+        $data['title'] = 'Service Edit';
+
+        $data['property'] = properties::where('slug', $slug)->firstOrFail();
+
+        return view('backend.admin.properties.edit', $data);
+     }
+
+
+
+     public function property_show($slug)
+     {
+        $data['title'] = 'Service Show';
+
+        $data['property'] = properties::where('slug', $slug)->firstOrFail();
+
+        return view('backend.admin.properties.show', $data);
      }
 
 
@@ -93,60 +115,69 @@ class PropertyController extends Controller
 
     }
 
-    public function update(Request $request, Product $product)
-    {
-        $request->validate([
-            'name' => 'required|max:255',
-            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif',
-            'description' => 'required',
-        ]);
+    public function update(Request $request, $id)
+{
+    $request->validate([
+        'name' => 'required|max:255',
+        'image' => 'nullable|image|mimes:jpeg,png,jpg,gif',
+        'description' => 'required',
+        'category_id' => 'required|exists:categories,id',
+        'status' => 'required|in:0,1',
+    ]);
 
-        // Handle updating the product's main image
-        if ($request->hasFile('image')) {
-            // Delete old image
-            if ($product->image && file_exists(public_path($product->image))) {
-                unlink(public_path($product->image));
-            }
+    // Find the product
+    $product = Product::findOrFail($id);
 
-            $imageName = date('YmdHis') . '.' . $request->file('image')->getClientOriginalExtension();
-            $request->file('image')->storeAs('uploads', $imageName, 'public');
-            $product->image = 'public/uploads/' . $imageName;
+    // Handle updating the product's main image
+    $imageName = $product->image; // Keep old image if not replaced
+    if ($request->hasFile('image')) {
+        // Delete old image if exists
+        if ($product->image && file_exists(public_path($product->image))) {
+            unlink(public_path($product->image));
         }
 
-        // Update product details
-        $product->name = $request->name;
-        $product->slug = Str::slug($request->name);
-        $product->status = $request->status;
-        $product->description = $request->description;
-        $product->category_id = $request->category_id;
-        $product->save();
-
-        // Handle multiple images for the product
-        if ($request->hasFile('images')) {
-            // Remove old images from ImageGallery
-            foreach ($product->images as $image) {
-                if (file_exists(public_path($image->images))) {
-                    unlink(public_path($image->images));
-                }
-                $image->delete();
-            }
-
-            // Upload and store new images
-            foreach ($request->file('images') as $file) {
-                if ($file->isValid()) {
-                    $filename = time() . '_' . uniqid() . '.' . $file->getClientOriginalExtension();
-                    $filePath = $file->storeAs('uploads', $filename, 'public');
-
-                    ImageGallery::create([
-                        'product_id' => $product->id,
-                        'images' => '/public/uploads/' . $filename,
-                    ]);
-                }
-            }
-        }
-
-        return redirect()->route('products.index')->with('success', 'Product updated successfully');
+        // Upload new image
+        $imageName = time() . '.' . $request->file('image')->getClientOriginalExtension();
+        $request->file('image')->storeAs('uploads', $imageName, 'public');
+        $imageName = 'public/uploads/' . $imageName;
     }
+
+    // Update product details
+    $product->name = $request->name;
+    $product->slug = Str::slug($request->name);
+    $product->status = $request->status;
+    $product->image = $imageName;
+    $product->description = $request->description;
+    $product->category_id = $request->category_id;
+    $product->save();
+
+    // Handle multiple images for the product
+    if ($request->hasFile('images')) {
+        // Remove old images from ImageGallery
+        foreach ($product->images as $image) {
+            if (file_exists(public_path($image->images))) {
+                unlink(public_path($image->images));
+            }
+            $image->delete();
+        }
+
+        // Upload and store new images
+        foreach ($request->file('images') as $file) {
+            if ($file->isValid()) {
+                $filename = time() . '_' . uniqid() . '.' . $file->getClientOriginalExtension();
+                $file->storeAs('uploads', $filename, 'public');
+
+                ImageGallery::create([
+                    'product_id' => $product->id,
+                    'images' => 'public/uploads/' . $filename,
+                ]);
+            }
+        }
+    }
+
+    return redirect()->route('products.index')->with('success', 'Product updated successfully');
+}
+
 
     public function edit($slug)
     {

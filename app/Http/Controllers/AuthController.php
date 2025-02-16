@@ -78,10 +78,7 @@ class AuthController extends Controller
         //
     }
 
-    public function list()
-    {
-        return view('backend.admin.user.index');
-    }
+
 
     public function logout(){
         Auth::logout();
