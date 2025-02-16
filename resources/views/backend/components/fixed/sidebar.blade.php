@@ -42,9 +42,7 @@
                 </li>
 
                 {{-- @can('view category')  --}}
-                <li class="nav-item ">
 
-                </li>
                 {{-- @endcan
 
 
@@ -90,11 +88,52 @@
                         </div>
 
                 </li>
-                {{-- @endcan
+                 {{-- @endcan --}}
+
+                 <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown"
+                        data-bs-auto-close="false" role="button" aria-expanded="false">
+                        <span class="nav-link-icon d-md-none d-lg-inline-block">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                fill="currentColor" class="icon icon-tabler icons-tabler-filled icon-tabler-tool">
+                                <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                                <path d="M22 12l-2 2l-2 -2l2 -2z" />
+                                <path d="M15 12l-3 3l-3 -3l3 -3z" />
+                                <path d="M8 12l-2 2l-2 -2l2 -2z" />
+                            </svg>
+                        </span>
+                        <span class="nav-link-title">
+                            Services
+                        </span>
+                    </a>
+                    <div class="dropdown-menu">
+                        <div class="dropdown-menu-columns">
+                            <div class="dropdown-menu-column">
+                                <a class="nav-link" href="{{route('category.index')}}" data-bs-auto-close="false" role="button"
+                                   aria-expanded="false">
+                                   <span class="nav-link-icon d-md-none d-lg-inline-block">
+
+                                   </span>
+                                    <span class="nav-link-title">
+                                         Type
+                                    </span>
+                                </a>
+                            </div>
+                        </div>
+
+                        <div class="dropdown-menu-columns">
+                            <div class="dropdown-menu-column">
+                                <a class="dropdown-item {{ request()->routeIs('products.index') ? 'active' : '' }}"
+                                   href="{{route('products.index')}}">
+                                    Service
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </li>
 
 
-
-@can('view custom page') --}}
+{{-- @can('view custom page')  --}}
 
                 <li class="nav-item ">
                     <a class="nav-link" href="{{ route('custom.page.index') }}" data-bs-auto-close="false"
@@ -159,12 +198,5 @@
 </aside>
 
 
-@push('style')
-    <style>
-        .nav-link.active {
-    background-color: #2d2d2d; /* Change background */
-    color: white; /* Change text color */
-}
 
-    </style>
-@endpush
+

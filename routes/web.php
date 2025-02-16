@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Artisan;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\HomeController;
@@ -15,6 +16,21 @@ use App\Http\Controllers\RegistrationController;
 use App\Http\Controllers\ChangePasswordController;
 use App\Http\Controllers\RolePermissionController;
 use App\Http\Controllers\frontend\HomeController as FrontendHomeController;
+
+
+
+
+  // ===============================
+    //CACHE CLEARING ROUTE
+    // ===============================
+    Route::get('/cc', function() {
+        Artisan::call('cache:clear');
+        Artisan::call('config:clear');
+        Artisan::call('view:clear');
+        Artisan::call('route:clear');
+
+        return back()->with('success', 'Cache Cleared Successfully!');
+    })->name('cache.clear');
 
 
 
@@ -83,6 +99,7 @@ use App\Http\Controllers\frontend\HomeController as FrontendHomeController;
     Route::get('/product/edit/{id}', [PropertyController::class, 'edit'])->name('product.edit');
     Route::put('/product/update/{id}', [PropertyController::class, 'update'])->name('product.update');
     Route::delete('/product/delete/{id}', [PropertyController::class, 'destroy'])->name('product.destroy');
+    Route::get('/product/show/{slug}', [PropertyController::class, 'show'])->name('product.show');
 
     // ===============================
     // AUTH & USER MANAGEMENT
@@ -95,7 +112,9 @@ use App\Http\Controllers\frontend\HomeController as FrontendHomeController;
     // ===============================
     Route::get('/category/index', [CategoryController::class, 'index'])->name('category.index');
     Route::get('/category/create', [CategoryController::class, 'create'])->name('category.create');
-
+    Route::post('/category/save', [CategoryController::class, 'store'])->name('category.store');
+    Route::get('/category/edit/{slug}', [CategoryController::class, 'edit'])->name('category.edit');
+    Route::get('/category/delete/{id}', [CategoryController::class, 'delete'])->name('category.destroy');
 
 
     // ===============================
@@ -137,3 +156,5 @@ use App\Http\Controllers\frontend\HomeController as FrontendHomeController;
     Route::post('/roles/assign', [RolePermissionController::class, 'assignRole'])->name('assign.role');
     Route::post('/permissions/assign', [RolePermissionController::class, 'assignPermission'])->name('assign.permission');
 });
+
+

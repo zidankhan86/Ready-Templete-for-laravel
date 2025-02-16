@@ -4,7 +4,7 @@
 <div class="container d-flex justify-content-center mt-4">
     <div class="card shadow-lg" style="max-width: 600px; width: 100%;">
         <div class="card-header">
-            <h3 class="card-title mb-0">Create Product</h3>
+            <h3 class="card-title mb-0">{{$title}}</h3>
         </div>
         <form action="{{ route('property_store') }}" method="post" enctype="multipart/form-data">
             @csrf

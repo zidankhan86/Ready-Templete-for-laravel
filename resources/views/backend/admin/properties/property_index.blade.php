@@ -3,7 +3,7 @@
 @section('content')
     <div class="container">
         <br>
-        <h2 style="text-align: center">Property Table</h2>
+        <h2 style="text-align: center">{{$title}}</h2>
         <div style="text-align: right">
             <a href="{{ route('property_create') }}" class="btn btn-info" style="margin-right: 10px;">+ Add Property</a>
         </div>

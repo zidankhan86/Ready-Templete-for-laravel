@@ -4,17 +4,18 @@
 <div class="col-12 d-flex justify-content-center mt-4">
     <div class="card shadow-lg" style="max-width: 600px; width: 100%;">
         <div class="card-header">
-            <h3 class="card-title mb-0">Category Form</h3>
+            <h3 class="card-title mb-0">{{$title}}</h3>
         </div>
-        <form>
+        <form action="{{route('category.store')}}" method="POST">
+            @csrf
             <div class="card-body">
                 <div class="mb-3">
                     <label class="form-label">Type Name</label>
-                    <input type="text" class="form-control" placeholder="Type Name">
+                    <input type="text" name="name" class="form-control" placeholder="Type Name">
                 </div>
                 <div class="mb-3">
                     <label class="form-label">Status</label>
-                    <select class="form-control">
+                    <select name="status" class="form-control">
                         <option value="1">Active</option>
                         <option value="0">Inactive</option>
                     </select>
