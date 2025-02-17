@@ -38,7 +38,7 @@ class PropertyController extends Controller
      {
         $data['title'] = 'Property List';
 
-        $data['row'] = properties::where('status','1')->get();
+        $data['row'] = properties::all();
 
         return view('backend.admin.properties.property_index', $data);
      }
@@ -197,6 +197,7 @@ public function property_store(Request $request)
         'description' => 'nullable|string',
         'before_image' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
         'after_image' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
+        'video' => 'nullable|mimes:mp4,mov,avi,wmv|max:10240',
         'status' => 'required',
     ]);
 
@@ -216,6 +217,11 @@ public function property_store(Request $request)
         $afterImageName = time() . '_after.' . $request->file('after_image')->extension();
         $request->file('after_image')->storeAs('uploads/property', $afterImageName, 'public');
         $property->after_image = 'public/uploads/property/' . $afterImageName;
+    }
+    if ($request->hasFile('video')) {
+        $videoName = time() . '_video.' . $request->file('video')->extension();
+        $request->file('video')->storeAs('uploads/property', $videoName, 'public');
+        $property->video = 'public/uploads/property/' . $videoName;
     }
 
     $property->save();

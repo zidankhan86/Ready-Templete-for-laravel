@@ -15,8 +15,9 @@ return new class extends Migration
             $table->id();
             $table->string('before_image')->nullable();
             $table->string('after_image')->nullable();
-            $table->string('title')->nullable();
-            $table->text('description')->nullable();
+            $table->string('video')->nullable();
+            $table->string('title');
+            $table->text('description');
             $table->boolean('status')->default(0);
             $table->string('slug')->uniqid();
             $table->timestamps();

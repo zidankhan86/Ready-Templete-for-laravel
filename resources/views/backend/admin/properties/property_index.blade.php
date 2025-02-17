@@ -34,13 +34,13 @@
                                     </td>
                                     <td>
                                         <div class="btn-list flex-nowrap">
-                                            <a href="{{ route('property_edit', $property->slug) }}" class="btn btn-warning btn-sm">
+                                            <a href="{{ route('property_edit', $property->slug) }}" class="btn btn-warning btn-sm" data-bs-toggle="tooltip" data-bs-placement="top" title="Edit">
                                                 <x-backend.svg.editBtn />
                                             </a>
-                                            <a href="" class="btn btn-danger btn-sm">
+                                            <a href="" class="btn btn-danger btn-sm" data-bs-toggle="tooltip" data-bs-placement="top" title="Delete">
                                                 <x-backend.svg.deleteBtn />
                                             </a>
-                                            <a href="{{route('property_show',$property->slug)}}" class="btn btn-info btn-sm">
+                                            <a href="{{route('property_show',$property->slug)}}" class="btn btn-info btn-sm" data-bs-toggle="tooltip" data-bs-placement="top" title="Show">
                                                 <x-backend.svg.showBtn />
                                             </a>
                                             {{-- <form action="{{ route('property.destroy', $property->id) }}" method="POST" style="display:inline;">
@@ -59,3 +59,13 @@
         </div>
     </div>
 @endsection
+@push('scripts')
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
+        tooltipTriggerList.forEach(function (tooltipTriggerEl) {
+            new bootstrap.Tooltip(tooltipTriggerEl);
+        });
+    });
+</script>
+@endpush
