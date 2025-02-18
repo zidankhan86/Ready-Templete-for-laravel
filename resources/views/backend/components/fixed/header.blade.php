@@ -213,7 +213,7 @@
                                 </svg>
                             </span>
                             <span class="nav-link-title">
-                                Extra
+                                Quick Access
                             </span>
                         </a>
                         <div class="dropdown-menu">
@@ -315,20 +315,11 @@
 
 
                     <li class="nav-item">
-                        <a class="nav-link" href="./emails.html">
-                            <span class="nav-link-icon d-md-none d-lg-inline-block">
-                                <!-- Download SVG icon from http://tabler.io/icons/icon/mail-opened -->
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                    viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                                    stroke-linecap="round" stroke-linejoin="round" class="icon icon-1">
-                                    <path d="M3 9l9 6l9 -6l-9 -6l-9 6" />
-                                    <path d="M21 9v10a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2v-10" />
-                                    <path d="M3 19l6 -6" />
-                                    <path d="M15 13l6 6" />
-                                </svg>
-                            </span>
-                            <span class="nav-link-title">
-                                Emails
+                        <a class="nav-link" href="{{route('product.create')}}">
+
+                            <span class="btn btn-primary">
+                                <x-backend.svg.addBtn />
+                               Add Service
                             </span>
                         </a>
                     </li>

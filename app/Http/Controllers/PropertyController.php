@@ -77,7 +77,7 @@ class PropertyController extends Controller
     {
         $request->validate([
             'name' => 'required|max:255',
-            'image' => 'required|image|mimes:jpeg,png,jpg,gif',
+            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif',
             'description' => 'required',
         ]);
 

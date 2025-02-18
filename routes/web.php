@@ -16,6 +16,7 @@ use App\Http\Controllers\RegistrationController;
 use App\Http\Controllers\ChangePasswordController;
 use App\Http\Controllers\RolePermissionController;
 use App\Http\Controllers\frontend\HomeController as FrontendHomeController;
+use App\Http\Controllers\HomePageContentController;
 use App\Http\Controllers\UserController;
 
   // ===============================
@@ -41,6 +42,10 @@ use App\Http\Controllers\UserController;
     Route::prefix('/')->group(function () {
         Route::get('/', [FrontendHomeController::class, 'index'])->name('home');
         Route::get('/about', [CustomPageController::class, 'about'])->name('about.page');
+
+        Route::get('/terms-and-conditions', [CustomPageController::class, 'termsAndConditions'])->name('terms.and.conditions');
+        Route::get('/privacy-policy', [CustomPageController::class, 'privacyPolicy'])->name('privacy.policy');
+
 
         // Product Routes
         Route::get('/product/page', [FrontendHomeController::class, 'product'])->name('product.page');
@@ -155,6 +160,11 @@ use App\Http\Controllers\UserController;
     Route::post('/permissions/store', [RolePermissionController::class, 'createPermission'])->name('permissions.create');
     Route::post('/roles/assign', [RolePermissionController::class, 'assignRole'])->name('assign.role');
     Route::post('/permissions/assign', [RolePermissionController::class, 'assignPermission'])->name('assign.permission');
+
+
+
+    Route::get('/faq', [CustomPageController::class, 'faq'])->name('faq.index');
+    Route::get('/home-page-content', [HomePageContentController::class,'homepagecontent'])->name('home.page.content');
 });
 
 

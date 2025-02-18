@@ -11,21 +11,16 @@
             </a>
         </h1>
         <div class="navbar-nav flex-row d-lg-none">
-            <div class="nav-item d-none d-lg-flex me-3">
-
-            </div>
-            <div class="d-none d-lg-flex">
-
-
-            </div>
-
+            <div class="nav-item d-none d-lg-flex me-3"></div>
+            <div class="d-none d-lg-flex"></div>
         </div>
         <div class="collapse navbar-collapse" id="sidebar-menu">
             <ul class="navbar-nav pt-lg-3">
+                <!-- Dashboard -->
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('dashboard') }}">
-                        <span
-                            class="nav-link-icon d-md-none d-lg-inline-block"><!-- Download SVG icon from http://tabler-icons.io/i/home -->
+                    <a class="nav-link {{ request()->routeIs('dashboard') ? 'active' : '' }}"
+                        href="{{ route('dashboard') }}">
+                        <span class="nav-link-icon d-md-none d-lg-inline-block">
                             <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24"
                                 viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
                                 stroke-linecap="round" stroke-linejoin="round">
@@ -36,28 +31,18 @@
                             </svg>
                         </span>
                         <span class="nav-link-title">
-                            Home
+                            Dashboard
                         </span>
                     </a>
                 </li>
 
-                {{-- @can('view category')  --}}
-
-                {{-- @endcan
-
-
-                {{-- @can('view product') --}}
+                <!-- Properties -->
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown"
-                        data-bs-auto-close="false" role="button" aria-expanded="false">
+                    <a class="nav-link dropdown-toggle {{ request()->routeIs('property_index') || request()->routeIs('property_create') || request()->routeIs('property_store') || request()->routeIs('property_edit') || request()->routeIs('property_show') || request()->routeIs('property_delete') || request()->routeIs('property_update') ? 'active' : '' }}"
+                        href="#" data-bs-toggle="dropdown" data-bs-auto-close="false" role="button"
+                        aria-expanded="false">
                         <span class="nav-link-icon d-md-none d-lg-inline-block">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                                fill="currentColor"
-                                class="icon icon-tabler icons-tabler-filled icon-tabler-shopping-cart">
-                                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                                <path
-                                    d="M6 2a1 1 0 0 1 .993 .883l.007 .117v1.068l13.071 .935a1 1 0 0 1 .929 1.024l-.01 .114l-1 7a1 1 0 0 1 -.877 .853l-.113 .006h-12v2h10a3 3 0 1 1 -2.995 3.176l-.005 -.176l.005 -.176c.017 -.288 .074 -.564 .166 -.824h-5.342a3 3 0 1 1 -5.824 1.176l-.005 -.176l.005 -.176a3.002 3.002 0 0 1 1.995 -2.654v-12.17h-1a1 1 0 0 1 -.993 -.883l-.007 -.117a1 1 0 0 1 .883 -.993l.117 -.007h2zm0 16a1 1 0 1 0 0 2a1 1 0 0 0 0 -2zm11 0a1 1 0 1 0 0 2a1 1 0 0 0 0 -2z" />
-                            </svg>
+                            <x-backend.svg.hotel-svg />
                         </span>
                         <span class="nav-link-title">
                             Properties
@@ -66,41 +51,26 @@
                     <div class="dropdown-menu">
                         <div class="dropdown-menu-columns">
                             <div class="dropdown-menu-column">
-                                <a class="nav-link" href="{{ route('property_index') }}" data-bs-auto-close="false" role="button"
-                                aria-expanded="false">
-                                <span class="nav-link-icon d-md-none d-lg-inline-block">
-
-                                </span>
-                                <span class="nav-link-title">
+                                <a class="dropdown-item {{ request()->routeIs('property_index') ? 'active' : '' }}"
+                                    href="{{ route('property_index') }}">
                                     Property List
-                                </span>
-                            </a>
-                            </div>
-                        </div>
-
-                        <div class="dropdown-menu-columns">
-                            <div class="dropdown-menu-column">
-                                <a class="dropdown-item {{ request()->routeIs('products.index') ? 'active' : '' }}"
-                                   href="{{ route('property_index') }}">
-                                    Property
+                                </a>
+                                <a class="dropdown-item {{ request()->routeIs('property_create') ? 'active' : '' }}"
+                                    href="{{ route('property_create') }}">
+                                    Create Property
                                 </a>
                             </div>
                         </div>
-
+                    </div>
                 </li>
-                 {{-- @endcan --}}
 
-                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown"
-                        data-bs-auto-close="false" role="button" aria-expanded="false">
+                <!-- Services -->
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle {{ request()->routeIs('category.index') || request()->routeIs('category.create') || request()->routeIs('category.store') || request()->routeIs('category.edit') || request()->routeIs('category.destroy') || request()->routeIs('category.show') ? 'active' : '' }}"
+                        href="#" data-bs-toggle="dropdown" data-bs-auto-close="false" role="button"
+                        aria-expanded="false">
                         <span class="nav-link-icon d-md-none d-lg-inline-block">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                                fill="currentColor" class="icon icon-tabler icons-tabler-filled icon-tabler-tool">
-                                <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-                                <path d="M22 12l-2 2l-2 -2l2 -2z" />
-                                <path d="M15 12l-3 3l-3 -3l3 -3z" />
-                                <path d="M8 12l-2 2l-2 -2l2 -2z" />
-                            </svg>
+                            <x-backend.svg.service-svg />
                         </span>
                         <span class="nav-link-title">
                             Services
@@ -109,118 +79,79 @@
                     <div class="dropdown-menu">
                         <div class="dropdown-menu-columns">
                             <div class="dropdown-menu-column">
-                                <a class="nav-link" href="{{route('category.index')}}" data-bs-auto-close="false" role="button"
-                                   aria-expanded="false">
-                                   <span class="nav-link-icon d-md-none d-lg-inline-block">
-
-                                   </span>
-                                    <span class="nav-link-title">
-                                         Service Type
-                                    </span>
+                                <a class="dropdown-item {{ request()->routeIs('category.index') ? 'active' : '' }}"
+                                    href="{{ route('category.index') }}">
+                                    Service Type
                                 </a>
-                            </div>
-                        </div>
-
-                        <div class="dropdown-menu-columns">
-                            <div class="dropdown-menu-column">
                                 <a class="dropdown-item {{ request()->routeIs('products.index') ? 'active' : '' }}"
-                                   href="{{route('products.index')}}">
-                                    Service
+                                    href="{{ route('products.index') }}">
+                                    Service List
                                 </a>
                             </div>
                         </div>
                     </div>
                 </li>
 
-
-{{-- @can('view custom page')  --}}
-
-                <li class="nav-item ">
-                    <a class="nav-link" href="{{ route('custom.page.index') }}" data-bs-auto-close="false"
-                        role="button" aria-expanded="false">
-                        <span class="nav-link-icon d-md-none d-lg-inline-block">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                stroke-linejoin="round"
-                                class="icon icon-tabler icons-tabler-outline icon-tabler-book-2">
-                                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                                <path d="M19 4v16h-12a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12z" />
-                                <path d="M19 16h-12a2 2 0 0 0 -2 2" />
-                                <path d="M9 8h6" />
-                            </svg>
-                        </span>
+                <!-- Custom Page -->
+                <li class="nav-item">
+                    <a class="nav-link {{ request()->routeIs('custom.page.index') || request()->routeIs('custom.page.edit') || request()->routeIs('custom.page.update') ? 'active' : '' }}"
+                        href="{{ route('custom.page.index') }}">
+                       <x-backend.svg.book-svg />
                         <span class="nav-link-title">
                             Custom Page
                         </span>
                     </a>
                 </li>
 
-                {{-- @endcan
-
-          @can('view users') --}}
-                <li class="nav-item ">
-                    <a class="nav-link" href="{{ route('user.list') }}" data-bs-auto-close="false" role="button"
-                        aria-expanded="false">
-                        <span class="nav-link-icon d-md-none d-lg-inline-block">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                viewBox="0 0 24 24" fill="currentColor"
-                                class="icon icon-tabler icons-tabler-filled icon-tabler-user">
-                                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                                <path d="M12 2a5 5 0 1 1 -5 5l.005 -.217a5 5 0 0 1 4.995 -4.783z" />
-                                <path
-                                    d="M14 14a5 5 0 0 1 5 5v1a2 2 0 0 1 -2 2h-10a2 2 0 0 1 -2 -2v-1a5 5 0 0 1 5 -5h4z" />
-                            </svg>
-                        </span>
+                <!-- User -->
+                <li class="nav-item">
+                    <a class="nav-link {{ request()->routeIs('user.list') ? 'active' : '' }}"
+                        href="{{ route('user.list') }}">
+                       <x-backend.svg.user-svg />
                         <span class="nav-link-title">
                             User
                         </span>
                     </a>
                 </li>
-                {{-- @endcan --}}
 
+                <!-- Roles & Permissions -->
+                <li class="nav-item">
+                    <a class="nav-link {{ request()->routeIs('roles.permission.index') || request()->routeIs('roles.permission.create') || request()->routeIs('store.roles') || request()->routeIs('permissions.create') || request()->routeIs('assign.role') || request()->routeIs('assign.permission') ? 'active' : '' }}"
+                        href="{{ route('roles.permission.index') }}">
 
-                <li class="nav-item ">
-                    <a class="nav-link" href="{{ route('roles.permission.index') }}" data-bs-auto-close="false"
-                        role="button" aria-expanded="false">
-                        <span class="nav-link-icon d-md-none d-lg-inline-block">
-                            <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-users-group"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M10 13a2 2 0 1 0 4 0a2 2 0 0 0 -4 0" /><path d="M8 21v-1a2 2 0 0 1 2 -2h4a2 2 0 0 1 2 2v1" /><path d="M15 5a2 2 0 1 0 4 0a2 2 0 0 0 -4 0" /><path d="M17 10h2a2 2 0 0 1 2 2v1" /><path d="M5 5a2 2 0 1 0 4 0a2 2 0 0 0 -4 0" /><path d="M3 13v-1a2 2 0 0 1 2 -2h2" /></svg>
-                        </span>
+                        <x-backend.svg.people-svg />
                         <span class="nav-link-title">
                             Roles & Permissions
                         </span>
                     </a>
                 </li>
 
-                <li class="nav-item ">
-                    <a class="nav-link" href="{{ route('roles.permission.index') }}" data-bs-auto-close="false"
-                        role="button" aria-expanded="false">
+                <!-- Home Page Content -->
+                <li class="nav-item">
+                    <a class="nav-link {{ request()->routeIs('home.page.content') ? 'active' : '' }}"
+                        href="{{ route('home.page.content') }}">
                         <span class="nav-link-icon d-md-none d-lg-inline-block">
-                            <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-users-group"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M10 13a2 2 0 1 0 4 0a2 2 0 0 0 -4 0" /><path d="M8 21v-1a2 2 0 0 1 2 -2h4a2 2 0 0 1 2 2v1" /><path d="M15 5a2 2 0 1 0 4 0a2 2 0 0 0 -4 0" /><path d="M17 10h2a2 2 0 0 1 2 2v1" /><path d="M5 5a2 2 0 1 0 4 0a2 2 0 0 0 -4 0" /><path d="M3 13v-1a2 2 0 0 1 2 -2h2" /></svg>
+                            <x-backend.svg.book-svg />
                         </span>
                         <span class="nav-link-title">
-                           Home Page Content
+                            Home Page Content
                         </span>
                     </a>
                 </li>
 
-                <li class="nav-item ">
-                    <a class="nav-link" href="{{ route('roles.permission.index') }}" data-bs-auto-close="false"
-                        role="button" aria-expanded="false">
+                <!-- FAQ -->
+                <li class="nav-item">
+                    <a class="nav-link {{ request()->routeIs('faq.index') ? 'active' : '' }}"
+                        href="{{ route('faq.index') }}">
                         <span class="nav-link-icon d-md-none d-lg-inline-block">
-                            <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-users-group"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M10 13a2 2 0 1 0 4 0a2 2 0 0 0 -4 0" /><path d="M8 21v-1a2 2 0 0 1 2 -2h4a2 2 0 0 1 2 2v1" /><path d="M15 5a2 2 0 1 0 4 0a2 2 0 0 0 -4 0" /><path d="M17 10h2a2 2 0 0 1 2 2v1" /><path d="M5 5a2 2 0 1 0 4 0a2 2 0 0 0 -4 0" /><path d="M3 13v-1a2 2 0 0 1 2 -2h2" /></svg>
+                            <x-backend.svg.faq-svg />
                         </span>
                         <span class="nav-link-title">
-                           FAQ
+                            FAQ
                         </span>
                     </a>
                 </li>
-
-
             </ul>
         </div>
     </div>
 </aside>
-
-
-
-
