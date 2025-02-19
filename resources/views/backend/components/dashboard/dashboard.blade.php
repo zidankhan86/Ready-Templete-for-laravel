@@ -1,7 +1,3 @@
- @php
-     $products = DB::table('products')->get();
-     $row = DB::table('properties')->where('status', '1')->latest()->take(24)->get();
- @endphp
 
  <!-- Page body -->
  <div class="page-body">
@@ -11,12 +7,12 @@
                  <div class="card">
                      <div class="card-body">
                          <div class="d-flex align-items-center">
-                             <div class="subheader">Sales</div>
+                             <div class="subheader"><a href="{{route('property_index')}}">Properties({{$total_properties}})</a></div>
                              <div class="ms-auto lh-1">
 
                              </div>
                          </div>
-                         <div class="h1 mb-3">75%</div>
+                         <div class="h1 mb-3"><a href="{{route('property_index')}}">{{$total_properties}}</a> </div>
                      </div>
                  </div>
              </div>
@@ -24,13 +20,13 @@
                  <div class="card">
                      <div class="card-body">
                          <div class="d-flex align-items-center">
-                             <div class="subheader">Revenue</div>
+                             <div class="subheader"><a href="{{route('products.index')}}">Service({{$total_service}})</a></div>
                              <div class="ms-auto lh-1">
 
                              </div>
                          </div>
                          <div class="d-flex align-items-baseline">
-                             <div class="h1 mb-0 me-2">$4,300</div>
+                             <div class="h1 mb-0 me-2"><a href="{{route('products.index')}}">{{$total_service}}</a></div>
                              <div class="me-auto">
 
                              </div>
@@ -42,13 +38,13 @@
                  <div class="card">
                      <div class="card-body">
                          <div class="d-flex align-items-center">
-                             <div class="subheader">New clients</div>
+                             <div class="subheader"><a href="{{route('category.index')}}">Categories({{$total_categories}})</a></div>
                              <div class="ms-auto lh-1">
 
                              </div>
                          </div>
                          <div class="d-flex align-items-baseline">
-                             <div class="h1 mb-3 me-2">6,782</div>
+                             <div class="h1 mb-3 me-2"><a href="{{route('category.index')}}">{{$total_categories}}</a></div>
                              <div class="me-auto">
 
                              </div>
@@ -60,13 +56,13 @@
                  <div class="card">
                      <div class="card-body">
                          <div class="d-flex align-items-center">
-                             <div class="subheader">Active users</div>
+                             <div class="subheader"><a href="{{route('user.list')}}">Users({{$total_users}})</a></div>
                              <div class="ms-auto lh-1">
 
                              </div>
                          </div>
                          <div class="d-flex align-items-baseline">
-                             <div class="h1 mb-3 me-2">2,986</div>
+                             <div class="h1 mb-3 me-2"><a href="{{route('user.list')}}">{{$total_users}}</a></div>
                              <div class="me-auto">
 
                              </div>

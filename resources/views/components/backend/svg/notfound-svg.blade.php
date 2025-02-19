@@ -140,7 +140,7 @@
                             fill="black" opacity="0.1" />
                     </svg>
                 </div>
-                <p class="empty-title">No Category found</p>
+                <p class="empty-title">No Service Type found</p>
 
                 <div class="empty-action">
                     <a href="{{route('category.create')}}" class="btn btn-primary btn-4">
@@ -151,7 +151,7 @@
                             <path d="M12 5l0 14" />
                             <path d="M5 12l14 0" />
                         </svg>
-                        Add your first category
+                        Add your first service type
                     </a>
                 </div>
             </div>

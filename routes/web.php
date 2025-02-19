@@ -14,6 +14,7 @@ use App\Http\Controllers\PropertyController;
 use App\Http\Controllers\CustomPageController;
 use App\Http\Controllers\RegistrationController;
 use App\Http\Controllers\ChangePasswordController;
+use App\Http\Controllers\FAQController;
 use App\Http\Controllers\RolePermissionController;
 use App\Http\Controllers\frontend\HomeController as FrontendHomeController;
 use App\Http\Controllers\HomePageContentController;
@@ -162,8 +163,17 @@ use App\Http\Controllers\UserController;
     Route::post('/permissions/assign', [RolePermissionController::class, 'assignPermission'])->name('assign.permission');
 
 
+   // ===============================
+    //              FAQ
+    // ===============================
+    Route::get('/faq', [FAQController::class, 'index'])->name('faq.index');
+    Route::get('/faq/create', [FAQController::class, 'create'])->name('faq.create');
+    Route::post('/faq/save', [FAQController::class, 'store'])->name('faq.store');
+    Route::get('/faq/edit/{slug}', [FAQController::class, 'edit'])->name('faq.edit');
+    Route::put('/faq/update/{id}', [FAQController::class, 'update'])->name('faq.update');
+    Route::get('/faq/show/{slug}', [FAQController::class, 'show'])->name('faq.show');
+    Route::delete('/faq/delete', [FAQController::class, 'delete'])->name('faq.destroy');
 
-    Route::get('/faq', [CustomPageController::class, 'faq'])->name('faq.index');
     Route::get('/home-page-content', [HomePageContentController::class,'homepagecontent'])->name('home.page.content');
 });
 

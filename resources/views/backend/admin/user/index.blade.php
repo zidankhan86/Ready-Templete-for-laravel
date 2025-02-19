@@ -65,7 +65,7 @@
                         </tbody>
                     </table>
                     @if ($users->isEmpty())
-                        <p class="text-center text-muted mt-3">No users found.</p>
+                    <x-backend.svg.usernotfound-svg />
                     @endif
                 </div>
             </div>

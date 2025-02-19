@@ -2,6 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
+use App\Models\Product;
+use App\Models\Category;
+use App\Models\properties;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -11,7 +15,12 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('backend.pages.dashboard');
+        $data['total_properties'] = properties::count();
+        $data['total_service'] = Product::count();
+        $data['total_categories'] = Category::count();
+        $data['total_users'] = User::count();
+        $data['row'] = properties::where('status', '1')->latest()->take(24)->get();
+        return view('backend.pages.dashboard',$data);
     }
 
     /**
