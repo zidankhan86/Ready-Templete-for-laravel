@@ -134,8 +134,9 @@
                             <x-backend.svg.book-svg />
                         </span>
                         <span class="nav-link-title">
-                            Home Page Content
+                                Home Page Content
                         </span>
+
                     </a>
                 </li>
 
