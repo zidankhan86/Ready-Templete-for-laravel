@@ -53,10 +53,12 @@
                             <div class="dropdown-menu-column">
                                 <a class="dropdown-item {{ request()->routeIs('property_index') ? 'active' : '' }}"
                                     href="{{ route('property_index') }}">
+                                    <x-backend.svg.submenu-svg />
                                     Property List
                                 </a>
                                 <a class="dropdown-item {{ request()->routeIs('property_create') ? 'active' : '' }}"
                                     href="{{ route('property_create') }}">
+                                    <x-backend.svg.submenu-svg />
                                     Create Property
                                 </a>
                             </div>
@@ -79,12 +81,16 @@
                     <div class="dropdown-menu">
                         <div class="dropdown-menu-columns">
                             <div class="dropdown-menu-column">
+
                                 <a class="dropdown-item {{ request()->routeIs('category.index') ? 'active' : '' }}"
                                     href="{{ route('category.index') }}">
+                                    <x-backend.svg.submenu-svg />
                                     Service Type
                                 </a>
+
                                 <a class="dropdown-item {{ request()->routeIs('products.index') ? 'active' : '' }}"
                                     href="{{ route('products.index') }}">
+                                    <x-backend.svg.submenu-svg />
                                     Service List
                                 </a>
                             </div>
