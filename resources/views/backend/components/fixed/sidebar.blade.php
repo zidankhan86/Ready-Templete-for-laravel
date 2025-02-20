@@ -98,22 +98,11 @@
                     </div>
                 </li>
 
-                <!-- Custom Page -->
-                <li class="nav-item">
-                    <a class="nav-link {{ request()->routeIs('custom.page.index') || request()->routeIs('custom.page.edit') || request()->routeIs('custom.page.update') ? 'active' : '' }}"
-                        href="{{ route('custom.page.index') }}">
-                       <x-backend.svg.book-svg />
-                        <span class="nav-link-title">
-                            Custom Page
-                        </span>
-                    </a>
-                </li>
-
                 <!-- User -->
                 <li class="nav-item">
                     <a class="nav-link {{ request()->routeIs('user.list') ? 'active' : '' }}"
                         href="{{ route('user.list') }}">
-                       <x-backend.svg.user-svg />
+                    <x-backend.svg.user-svg />
                         <span class="nav-link-title">
                             User
                         </span>
@@ -145,6 +134,17 @@
 
                     </a>
                 </li>
+                <!-- Custom Page -->
+                <li class="nav-item">
+                    <a class="nav-link {{ request()->routeIs('custom.page.index') || request()->routeIs('custom.page.edit') || request()->routeIs('custom.page.update') ? 'active' : '' }}"
+                        href="{{ route('custom.page.index') }}">
+                    <x-backend.svg.book-svg />
+                        <span class="nav-link-title">
+                            Custom Page
+                        </span>
+                    </a>
+                </li>
+
 
                 <!-- FAQ -->
                 <li class="nav-item">
