@@ -11,7 +11,6 @@
                     <thead>
                 <tr>
                     <th>Title</th>
-                    <th>Slug</th>
                     <th>Meta Title</th>
                     <th>Status</th>
                     <th>Actions</th>
@@ -21,7 +20,6 @@
                 @foreach($data as $item)
                 <tr>
                     <td>{{ $item->title }}</td>
-                    <td>{{ $item->slug }}</td>
                     <td>{{ $item->meta_title }}</td>
                     <td>{{ $item->status ? 'Active' : 'Inactive' }}</td>
                     <td>

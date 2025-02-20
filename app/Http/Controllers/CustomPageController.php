@@ -11,13 +11,13 @@ class CustomPageController extends Controller
     public function index()
     {
         $data = CustomPage::all();
-        return view('backend.components.custom_page.index', compact('data'));
+        return view('backend.admin.custom_page.index', compact('data'));
     }
 
     public function edit($id)
     {
         $item = CustomPage::findOrFail($id);
-        return view('backend.components.custom_page.edit', compact('item'));
+        return view('backend.admin.custom_page.edit', compact('item'));
     }
 
     public function update(Request $request, $id)
