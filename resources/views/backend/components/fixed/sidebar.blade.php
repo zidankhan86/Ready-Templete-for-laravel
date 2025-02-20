@@ -134,8 +134,8 @@
 
                 <!-- Home Page Content -->
                 <li class="nav-item">
-                    <a class="nav-link {{ request()->routeIs('home.page.content') ? 'active' : '' }}"
-                        href="{{ route('home.page.content') }}">
+                    <a class="nav-link {{ request()->routeIs('home.page.index') ? 'active' : '' }}"
+                        href="{{ route('home.page.index') }}">
                         <span class="nav-link-icon d-md-none d-lg-inline-block">
                             <x-backend.svg.book-svg />
                         </span>

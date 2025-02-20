@@ -213,94 +213,40 @@
                             <div class="dropdown-menu-columns">
                                 <div class="dropdown-menu-column">
                                     <a class="dropdown-item" href="./activity.html">
-                                        Activity
+                                        <x-backend.svg.hotel-svg />
+                                        Properties
                                     </a>
                                     <a class="dropdown-item" href="./chat.html">
-                                        Chat
-                                        <span class="badge badge-sm bg-green-lt text-uppercase ms-auto">New</span>
+                                        <x-backend.svg.book-svg />
+                                        Custom Page
+
                                     </a>
                                     <a class="dropdown-item" href="./cookie-banner.html">
-                                        Cookie banner
-                                        <span class="badge badge-sm bg-green-lt text-uppercase ms-auto">New</span>
+                                        <x-backend.svg.book-svg />
+                                        Home Page Content
+
                                     </a>
-                                    <a class="dropdown-item" href="./empty.html">
-                                        Empty page
-                                    </a>
-                                    <a class="dropdown-item" href="./faq.html">
-                                        FAQ
-                                        <span class="badge badge-sm bg-green-lt text-uppercase ms-auto">New</span>
-                                    </a>
-                                    <a class="dropdown-item" href="./gallery.html">
-                                        Gallery
-                                    </a>
-                                    <a class="dropdown-item" href="./invoice.html">
-                                        Invoice
-                                    </a>
-                                    <a class="dropdown-item" href="./job-listing.html">
-                                        Job listing
-                                        <span class="badge badge-sm bg-green-lt text-uppercase ms-auto">New</span>
-                                    </a>
-                                    <a class="dropdown-item" href="./license.html">
-                                        License
-                                    </a>
-                                    <a class="dropdown-item" href="./logs.html">
-                                        Logs
-                                        <span class="badge badge-sm bg-green-lt text-uppercase ms-auto">New</span>
-                                    </a>
-                                    <a class="dropdown-item" href="./marketing/index.html">
-                                        Marketing
-                                        <span class="badge badge-sm bg-green-lt text-uppercase ms-auto">New</span>
-                                    </a>
-                                    <a class="dropdown-item" href="./music.html">
-                                        Music
-                                    </a>
-                                    <a class="dropdown-item" href="./page-loader.html">
-                                        Page loader
-                                        <span class="badge badge-sm bg-green-lt text-uppercase ms-auto">New</span>
-                                    </a>
+
+
+
                                 </div>
                                 <div class="dropdown-menu-column">
                                     <a class="dropdown-item" href="./payment-providers.html">
-                                        Payment providers
-                                        <span class="badge badge-sm bg-green-lt text-uppercase ms-auto">New</span>
+                                        <x-backend.svg.service-svg />
+                                        Service
+
                                     </a>
                                     <a class="dropdown-item" href="./photogrid.html">
-                                        Photogrid
-                                        <span class="badge badge-sm bg-green-lt text-uppercase ms-auto">New</span>
+                                        <x-backend.svg.people-svg />
+                                         Role & Permissions
+
                                     </a>
                                     <a class="dropdown-item" href="./pricing.html">
-                                        Pricing cards
+                                        <x-backend.svg.faq-svg />
+                                        FAQ
                                     </a>
-                                    <a class="dropdown-item" href="./pricing-table.html">
-                                        Pricing table
-                                    </a>
-                                    <a class="dropdown-item" href="./search-results.html">
-                                        Search results
-                                    </a>
-                                    <a class="dropdown-item" href="{{route('setting')}}">
-                                        Settings
-                                        <span class="badge badge-sm bg-green-lt text-uppercase ms-auto">New</span>
-                                    </a>
-                                    <a class="dropdown-item" href="./tasks.html">
-                                        Tasks
-                                        <span class="badge badge-sm bg-green-lt text-uppercase ms-auto">New</span>
-                                    </a>
-                                    <a class="dropdown-item" href="./trial-ended.html">
-                                        Trial ended
-                                        <span class="badge badge-sm bg-green-lt text-uppercase ms-auto">New</span>
-                                    </a>
-                                    <a class="dropdown-item" href="./uptime.html">
-                                        Uptime monitor
-                                    </a>
-                                    <a class="dropdown-item" href="./users.html">
-                                        Users
-                                    </a>
-                                    <a class="dropdown-item" href="./widgets.html">
-                                        Widgets
-                                    </a>
-                                    <a class="dropdown-item" href="./wizard.html">
-                                        Wizard
-                                    </a>
+
+
                                 </div>
                             </div>
                         </div>

@@ -158,9 +158,9 @@ use App\Http\Controllers\UserController;
     // ===============================
     Route::post('/registration/update/{id}', [RegistrationController::class, 'update'])->name('registration.update');
 
-    // ===============================
-    // ROLE & PERMISSION MANAGEMENT
-    // ===============================
+    // ===============================//
+    // ROLE & PERMISSION MANAGEMENT   //
+    // ===============================//
     Route::get('/roles', [RolePermissionController::class, 'createRole'])->name('roles.permission.create');
     Route::get('/roles/permission/index', [RolePermissionController::class, 'index'])->name('roles.permission.index');
     Route::post('/roles/store', [RolePermissionController::class, 'storeRole'])->name('store.roles');
@@ -169,9 +169,9 @@ use App\Http\Controllers\UserController;
     Route::post('/permissions/assign', [RolePermissionController::class, 'assignPermission'])->name('assign.permission');
 
 
-   // ===============================
-    //              FAQ
-    // ===============================
+    // ===============================//
+    //              FAQ               //
+    // ===============================//
     Route::get('/faq', [FAQController::class, 'index'])->name('faq.index');
     Route::get('/faq/create', [FAQController::class, 'create'])->name('faq.create');
     Route::post('/faq/save', [FAQController::class, 'store'])->name('faq.store');
@@ -180,7 +180,13 @@ use App\Http\Controllers\UserController;
     Route::get('/faq/show/{slug}', [FAQController::class, 'show'])->name('faq.show');
     Route::delete('/faq/delete', [FAQController::class, 'delete'])->name('faq.destroy');
 
-    Route::get('/home-page-content', [HomePageContentController::class,'homepagecontent'])->name('home.page.content');
+
+    // ===============================//
+    //  Home Page Content Management  //
+    // ===============================//
+    Route::get('/home-page-content', [HomePageContentController::class,'index'])->name('home.page.index');
+    Route::get('/home-edit', [HomePageContentController::class,'edit'])->name('home.page.edit');
+    Route::post('/home-update', [HomePageContentController::class,'update'])->name('home.page.update');
 });
 
 
