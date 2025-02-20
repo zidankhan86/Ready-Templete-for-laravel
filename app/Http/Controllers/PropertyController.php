@@ -38,7 +38,7 @@ class PropertyController extends Controller
      {
         $data['title'] = 'Property List';
 
-        $data['row'] = properties::all();
+        $data['row'] = properties::get();
 
         return view('backend.admin.properties.property_index', $data);
      }
@@ -65,12 +65,28 @@ class PropertyController extends Controller
      }
 
 
+        public function property_delete($id)
+    {
+        try {
+            $property = Properties::findOrFail($id);
+            $property->delete();
+
+            return redirect()->back()->with('success', 'Property deleted successfully.');
+        } catch (\Exception $e) {
+            return redirect()->back()->with('error', 'Failed to delete property.');
+        }
+    }
+
+
+
      public function show($slug)
      {
         $data['title'] = 'Service view';
         $data['product'] = Product::where('slug',$slug)->firstOrFail();
         return view('backend.admin.service.show', $data);
      }
+
+
 
 
     public function store(Request $request)
@@ -187,7 +203,17 @@ class PropertyController extends Controller
         return view('backend.admin.service.edit', $data);
     }
 
+    public function delete($id)
+    {
+        try {
+            $service = Product::findOrFail($id);
+            $service->delete();
 
+            return redirect()->back()->with('success', 'Service deleted successfully.');
+        } catch (\Exception $e) {
+            return redirect()->back()->with('error', 'Failed to delete Service.');
+        }
+    }
 
 
 public function property_store(Request $request)

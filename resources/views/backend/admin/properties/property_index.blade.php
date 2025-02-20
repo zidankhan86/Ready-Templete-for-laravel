@@ -63,9 +63,16 @@
                                             <a href="{{ route('property_edit', $property->slug) }}" class="btn btn-warning btn-sm" data-bs-toggle="tooltip" data-bs-placement="top" title="Edit">
                                                 <x-backend.svg.editBtn />
                                             </a>
-                                            <a href="" class="btn btn-danger btn-sm" data-bs-toggle="tooltip" data-bs-placement="top" title="Delete">
-                                                <x-backend.svg.deleteBtn />
-                                            </a>
+
+                                            <form action="{{ route('property_delete', $property->id) }}" method="POST" onsubmit="return confirm('Are you sure you want to delete this property?');" style="display: inline;">
+                                                @csrf
+                                                @method('DELETE')
+                                                <button type="submit" class="btn btn-danger btn-sm" data-bs-toggle="tooltip" data-bs-placement="top" title="Delete">
+                                                    <x-backend.svg.deleteBtn />
+                                                </button>
+                                            </form>
+
+
                                             <a href="{{ route('property_show', $property->slug) }}" class="btn btn-info btn-sm" data-bs-toggle="tooltip" data-bs-placement="top" title="Show">
                                                 <x-backend.svg.showBtn />
                                             </a>

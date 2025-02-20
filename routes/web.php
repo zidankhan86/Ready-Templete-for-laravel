@@ -102,7 +102,7 @@ use App\Http\Controllers\UserController;
     Route::get('/product/index', [PropertyController::class, 'index'])->name('products.index');
     Route::get('/product/edit/{slug}', [PropertyController::class, 'edit'])->name('product.edit');
     Route::put('/product/update/{id}', [PropertyController::class, 'update'])->name('product.update');
-    Route::delete('/product/delete/{id}', [PropertyController::class, 'destroy'])->name('product.destroy');
+    Route::delete('/product/delete/{id}', [PropertyController::class, 'delete'])->name('product.delete');
     Route::get('/product/show/{slug}', [PropertyController::class, 'show'])->name('product.show');
 
     // ===============================
@@ -136,7 +136,7 @@ use App\Http\Controllers\UserController;
     Route::post('/property/save', [PropertyController::class, 'property_store'])->name('property_store');
     Route::get('/property/edit/{slug}', [PropertyController::class, 'property_edit'])->name('property_edit');
     Route::get('/property/show/{slug}', [PropertyController::class, 'property_show'])->name('property_show');
-    Route::get('/property/delete', [PropertyController::class, 'property_delete'])->name('property_delete');
+    Route::delete('/property/delete/{id}', [PropertyController::class, 'property_delete'])->name('property_delete');
     Route::post('/property/update', [PropertyController::class, 'property_update'])->name('property_update');
 
 

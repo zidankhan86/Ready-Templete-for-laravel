@@ -49,13 +49,13 @@
                                         </a>
 
 
-                                    <form action="{{ route('product.destroy', $product->id) }}" method="POST" style="display:inline;">
-                                        @csrf
-                                        @method('DELETE')
-                                        <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure?')" data-bs-toggle="tooltip" data-bs-placement="top" title="Delete">
-                                            <x-backend.svg.deleteBtn />
-                                        </button>
-                                    </form>
+                                        <form action="{{ route('product.delete', $product->id) }}" method="POST" onsubmit="return confirm('Are you sure you want to delete this service ?');" style="display: inline;">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="submit" class="btn btn-danger btn-sm" data-bs-toggle="tooltip" data-bs-placement="top" title="Delete">
+                                                <x-backend.svg.deleteBtn />
+                                            </button>
+                                        </form>
                                 </td>
                             </tr>
                         @empty

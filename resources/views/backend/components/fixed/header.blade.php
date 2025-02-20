@@ -212,16 +212,16 @@
                         <div class="dropdown-menu">
                             <div class="dropdown-menu-columns">
                                 <div class="dropdown-menu-column">
-                                    <a class="dropdown-item" href="./activity.html">
+                                    <a class="dropdown-item" href="{{ route('property_index') }}">
                                         <x-backend.svg.hotel-svg />
                                         Properties
                                     </a>
-                                    <a class="dropdown-item" href="./chat.html">
+                                    <a class="dropdown-item" href="{{ route('custom.page.index') }}">
                                         <x-backend.svg.book-svg />
                                         Custom Page
 
                                     </a>
-                                    <a class="dropdown-item" href="./cookie-banner.html">
+                                    <a class="dropdown-item" href="{{ route('home.page.index') }}">
                                         <x-backend.svg.book-svg />
                                         Home Page Content
 
@@ -231,17 +231,17 @@
 
                                 </div>
                                 <div class="dropdown-menu-column">
-                                    <a class="dropdown-item" href="./payment-providers.html">
+                                    <a class="dropdown-item" href="{{ route('products.index') }}">
                                         <x-backend.svg.service-svg />
                                         Service
 
                                     </a>
-                                    <a class="dropdown-item" href="./photogrid.html">
+                                    <a class="dropdown-item" href="{{ route('roles.permission.index') }}">
                                         <x-backend.svg.people-svg />
                                          Role & Permissions
 
                                     </a>
-                                    <a class="dropdown-item" href="./pricing.html">
+                                    <a class="dropdown-item" href="{{ route('faq.index') }}">
                                         <x-backend.svg.faq-svg />
                                         FAQ
                                     </a>
