@@ -110,6 +110,12 @@ use App\Http\Controllers\UserController;
     // ===============================
     Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
     Route::get('/user-list', [UserController::class, 'index'])->name('user.list');
+    Route::get('/user-create', [UserController::class, 'create'])->name('create.user');
+    Route::post('/user-store', [UserController::class, 'store'])->name('store.user');
+    Route::get('/user-edit/{id}', [UserController::class, 'edit'])->name('edit.user');
+    Route::get('/user-delete/{id}', [UserController::class, 'delete'])->name('delete.user');
+    Route::put('/user-update/{id}', [UserController::class, 'update'])->name('update.user');
+    Route::get('/user-show/{id}', [UserController::class, 'show'])->name('show.user');
 
     // ===============================
     // CATEGORY MANAGEMENT

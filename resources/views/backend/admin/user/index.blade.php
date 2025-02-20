@@ -3,7 +3,11 @@
 @section('content')
     <div class="container">
         <br>
-        <h2 style="text-align: center">User Table</h2>
+        <h2 style="text-align: center">{{$title}}</h2>
+        <div style="text-align: right">
+            <a href="{{ route('create.user') }}" class="btn btn-info" style="margin-right: 10px;">+ Add User</a>
+        </div>
+        <br><br>
         <div class="col-12">
             <div class="card">
                 <div class="table-responsive">
@@ -40,25 +44,23 @@
                                     </td>
                                     <td data-label="Role">{{ ucfirst($user->role) }}</td>
 
-                                    <td>
-                                        <div class="btn-list flex-nowrap">
-                                            <a href="#" class="btn btn-primary">
-                                                Edit
-                                            </a>
-                                            <div class="dropdown">
-                                                <button class="btn btn-secondary dropdown-toggle align-text-top" data-bs-toggle="dropdown">
-                                                    Actions
-                                                </button>
-                                                <div class="dropdown-menu dropdown-menu-end">
-                                                    <a class="dropdown-item" href="#">
-                                                        Action
-                                                    </a>
-                                                    <a class="dropdown-item" href="#">
-                                                        Another action
-                                                    </a>
-                                                </div>
+
+                                        <td>
+                                            <div class="d-flex gap-2">
+                                                <a href="{{route('edit.user',$user->id)}}" class="btn btn-warning btn-sm">
+                                                    <x-backend.svg.editBtn />
+                                                </a>
+                                                <a href="{{ route('delete.user', $user->id) }}"
+                                                    class="btn btn-danger btn-sm"
+                                                    onclick="return confirm('Are you sure you want to delete this user?');">
+                                                     <x-backend.svg.deleteBtn />
+                                                 </a>
+
+                                                <a href="{{route('show.user',$user->id)}}" class="btn btn-info btn-sm">
+                                                    <x-backend.svg.showBtn />
+                                                </a>
                                             </div>
-                                        </div>
+                                        </td>
                                     </td>
                                 </tr>
                             @endforeach
@@ -83,4 +85,5 @@
         });
     });
 </script>
+
 @endpush
