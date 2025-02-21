@@ -20,7 +20,7 @@ class HomeController extends Controller
         $data['total_categories'] = Category::count();
         $data['total_users'] = User::count();
         $data['row'] = properties::where('status', '1')->latest()->take(24)->get();
-        return view('backend.pages.dashboard',$data);
+        return view('backend.admin.dashboard.index',$data);
     }
 
     /**
