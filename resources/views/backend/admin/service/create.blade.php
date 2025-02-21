@@ -11,16 +11,15 @@
             <div class="card-body">
                 <!-- Product Name -->
                 <div class="mb-3">
-                    <label class="form-label">Product Name</label>
-                    <input type="text" class="form-control" name="name" placeholder="Enter product name" required>
+                    <label class="form-label">Service Name</label>
+                    <input type="text" class="form-control" name="name" placeholder="Enter Service name" required>
                 </div>
 
                 <!-- Description -->
                 <div class="mb-3">
                     <label class="form-label">Description</label>
-                    <textarea class="form-control" name="description" rows="3" placeholder="Enter product description" required></textarea>
+                    <textarea class="form-control" name="description" rows="3" placeholder="Enter Service description" required></textarea>
                 </div>
-
 
                 <!-- Category -->
                 <div class="mb-3">
@@ -33,25 +32,41 @@
                     </select>
                 </div>
 
+                <!-- Thumbnail -->
                 <div class="mb-3">
-                    <label class="form-label fw-bold">Product Thumbnail</label>
+                    <label class="form-label fw-bold">Service Thumbnail</label>
                     <input type="file" class="form-control" name="image" accept="image/*" required>
                     <small class="form-text text-muted">Upload a high-quality image (JPEG, PNG).</small>
                 </div>
+
+                <!-- Images -->
                 <div class="mb-3">
-                    <label class="form-label fw-bold">Product Images</label>
+                    <label class="form-label fw-bold">Service Images</label>
                     <input type="file" class="form-control" name="images[]" accept="image/jpeg,image/png" multiple required>
                     <small class="form-text text-muted">Upload high-quality images (JPEG, PNG).</small>
                 </div>
 
-                      <!-- Status -->
-                      <div class="mb-3">
-                        <label class="form-label">Status</label>
-                        <select class="form-control" name="status">
-                            <option value="1">Active</option>
-                            <option value="0" selected>Inactive</option>
-                        </select>
+                <!-- Status -->
+                <div class="mb-3">
+                    <label class="form-label">Status</label>
+                    <select class="form-control" name="status">
+                        <option value="1" selected>Active</option>
+                        <option value="0">Inactive</option>
+                    </select>
+                </div>
+
+                <!-- Steps Section -->
+            <div class="mb-3">
+                <label class="form-label fw-bold">Steps</label>
+                <div id="steps-container">
+                    <!-- Initial Step Input -->
+                    <div class="step-input mb-2 d-flex align-items-center gap-2">
+                        <input type="text" class="form-control" name="steps[]" placeholder="Enter step description" required>
+                        <button type="button" id="add-step" class="btn btn-secondary">+ Add</button>
                     </div>
+                </div>
+
+            </div>
             </div>
 
             <div class="card-footer text-end">
@@ -61,6 +76,35 @@
     </div>
 </div>
 
-
 @endsection
 
+
+@push('scripts')
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        // Get the "Add Step" button and steps container
+        const addStepButton = document.getElementById('add-step');
+        const stepsContainer = document.getElementById('steps-container');
+
+        // Add event listener to the "Add Step" button
+        addStepButton.addEventListener('click', function () {
+            // Create a new input element for the step
+            const newStepInput = document.createElement('div');
+            newStepInput.classList.add('step-input', 'mb-2');
+            newStepInput.innerHTML = `
+                <input type="text" class="form-control" name="steps[]" placeholder="Enter step description" required>
+                <button type="button" class="btn btn-danger mt-2 remove-step">Remove</button>
+            `;
+
+            // Append the new input to the steps container
+            stepsContainer.appendChild(newStepInput);
+
+            // Add event listener to the "Remove" button
+            const removeButton = newStepInput.querySelector('.remove-step');
+            removeButton.addEventListener('click', function () {
+                stepsContainer.removeChild(newStepInput);
+            });
+        });
+    });
+</script>
+@endpush

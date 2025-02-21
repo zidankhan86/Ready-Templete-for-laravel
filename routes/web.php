@@ -20,8 +20,8 @@ use App\Http\Controllers\frontend\HomeController as FrontendHomeController;
 use App\Http\Controllers\HomePageContentController;
 use App\Http\Controllers\UserController;
 
-  // ===============================
-    //CACHE CLEARING ROUTE
+  // =================================
+    //CACHE CLEARING ROUTE     //=====
     // ===============================
     Route::get('/cc', function() {
         Artisan::call('cache:clear');
@@ -36,7 +36,7 @@ use App\Http\Controllers\UserController;
 
 
     // ===============================
-    // FRONTEND ROUTES
+    // FRONTEND ROUTES         //=====
     // ===============================
 
     //Pages
@@ -56,13 +56,12 @@ use App\Http\Controllers\UserController;
         Route::get('/category', [CategoryController::class, 'index'])->name('category');
         Route::get('/contact', [ContactController::class, 'index'])->name('contact');
 
-        // Cart
-        Route::get('/products/cart', [ProductController::class, 'cart'])->name('cart');
+
     });
 
 
     // ===============================
-    // AUTHENTICATION ROUTES
+    // AUTHENTICATION ROUTES   //=====
     // ===============================
     Route::prefix('auth')->group(function () {
         Route::get('/login', [AuthController::class, 'index'])->name('login');
@@ -74,12 +73,12 @@ use App\Http\Controllers\UserController;
     });
 
     // ===============================
-    // BACKEND ROUTES (Protected by Auth Middleware)
+    // BACKEND ROUTES          //=====
     // ===============================
     Route::prefix('admin')->middleware('auth')->group(function () {
 
     // ===============================
-    // CART MANAGEMENT
+    // CART MANAGEMENT         //=====
     // ===============================
     Route::get('/cart', [CartController::class, 'showCart'])->name('cart.show');
     Route::get('/add-to-cart/{product}', [CartController::class, 'addToCart'])->name('cart.add');
@@ -87,16 +86,16 @@ use App\Http\Controllers\UserController;
     Route::get('/clear-cart', [CartController::class, 'clearCart'])->name('cart.clear');
 
     // ===============================
-    // DASHBOARD & CUSTOM PAGES
+    // DASHBOARD & CUSTOM PAGES // ===
     // ===============================
     Route::get('/', [HomeController::class, 'index'])->name('dashboard');
     Route::get('/custom/page', [CustomPageController::class, 'index'])->name('custom.page.index');
     Route::get('/custom/page/edit/{id}', [CustomPageController::class, 'edit'])->name('custom.page.edit');
     Route::post('/custom/page/update/{id}', [CustomPageController::class, 'update'])->name('custom.page.update');
 
-    // ===============================//
-    // PRODUCT MANAGEMENT             //
-    // ===============================//
+    // ===============================
+    // PRODUCT MANAGEMENT       //====
+    // ===============================
     Route::get('/product/create', [PropertyController::class, 'create'])->name('product.create');
     Route::post('/product/store', [PropertyController::class, 'store'])->name('product.store');
     Route::get('/product/index', [PropertyController::class, 'index'])->name('products.index');
@@ -142,9 +141,9 @@ use App\Http\Controllers\UserController;
 
 
 
-    // ===============================
-    // SETTINGS & PASSWORD MANAGEMENT
-    // ===============================
+    // ===============================//
+    // SETTINGS & PASSWORD MANAGEMENT //
+    // ===============================//
     Route::get('/settings', [SettingController::class, 'index'])->name('setting');
     Route::get('/change-password', [ChangePasswordController::class, 'index'])->name('change.password');
     Route::post('/update-password/{id}', [ChangePasswordController::class, 'update'])->name('update.password');

@@ -187,6 +187,8 @@ public function property_update(Request $request, $id)
 
     public function store(Request $request)
     {
+
+        // dd($request->all());
         $request->validate([
             'name' => 'required|max:255',
             'image' => 'nullable|image|mimes:jpeg,png,jpg,gif',
@@ -207,6 +209,7 @@ public function property_update(Request $request, $id)
         $product->image         = 'public/uploads/'.$imageName;
         $product->description   = $request->description;
         $product->category_id   = $request->category_id;
+        $product->steps         = json_encode($request->steps);
 
         $product->save();
 
