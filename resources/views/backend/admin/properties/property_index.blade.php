@@ -27,8 +27,8 @@
                         <tbody>
                             @foreach($row as $property)
                                 <tr>
-                                    <td data-label="Title">{{ $property->title }}</td>
-                                    <td data-label="Description">{{ Str::limit($property->description, 50) }}</td>
+                                    <td data-label="Title">{{ Str::limit($property->title,30) }}</td>
+                                    <td data-label="Description">{{ Str::limit($property->description, 30) }}</td>
 
                                     @if($property->video)
                                         <td data-label="Video">

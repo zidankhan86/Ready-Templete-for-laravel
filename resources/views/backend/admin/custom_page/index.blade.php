@@ -19,11 +19,11 @@
             <tbody>
                 @foreach($data as $item)
                 <tr>
-                    <td>{{ $item->title }}</td>
-                    <td>{{ $item->meta_title }}</td>
+                    <td>{{ Str::limit($item->title,20) }}</td>
+                    <td>{{ Str::limit($item->meta_title,20) }} </td>
                     <td>{{ $item->status ? 'Active' : 'Inactive' }}</td>
                     <td>
-                        <a href="{{ route('custom.page.edit', $item->id) }}" class="btn btn-primary btn-sm">Edit</a>
+                        <a href="{{ route('custom.page.edit', $item->id) }}" class="btn btn-primary btn-sm"><x-backend.svg.editBtn /></a>
                     </td>
                 </tr>
                 @endforeach
@@ -37,58 +37,4 @@
 
 @endsection
 
-@push('styles')
-<!-- DataTables CSS -->
-<link href="https://cdn.datatables.net/1.13.6/css/dataTables.bootstrap5.min.css" rel="stylesheet">
-<link href="https://cdn.datatables.net/buttons/2.4.1/css/buttons.bootstrap5.min.css" rel="stylesheet">
-@endpush
 
-@push('scripts')
-<!-- DataTables JS and Dependencies -->
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
-<script src="https://cdn.datatables.net/1.13.6/js/dataTables.bootstrap5.min.js"></script>
-
-<!-- DataTables Buttons Extension -->
-<script src="https://cdn.datatables.net/buttons/2.4.1/js/dataTables.buttons.min.js"></script>
-<script src="https://cdn.datatables.net/buttons/2.4.1/js/buttons.bootstrap5.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
-<script src="https://cdn.datatables.net/buttons/2.4.1/js/buttons.html5.min.js"></script>
-<script src="https://cdn.datatables.net/buttons/2.4.1/js/buttons.print.min.js"></script>
-<script src="https://cdn.datatables.net/buttons/2.4.1/js/buttons.colVis.min.js"></script>
-
-<script>
-    $(document).ready(function() {
-        $('#dataTable').DataTable({
-            dom: 'Bfrtip',
-            buttons: [
-                {
-                    extend: 'excelHtml5',
-                    text: 'Export to Excel',
-                    className: 'btn btn-success btn-sm'
-                },
-                {
-                    extend: 'pdfHtml5',
-                    text: 'Export to PDF',
-                    className: 'btn btn-danger btn-sm'
-                },
-                {
-                    extend: 'csvHtml5',
-                    text: 'Export to CSV',
-                    className: 'btn btn-primary btn-sm'
-                },
-                {
-                    extend: 'print',
-                    text: 'Print',
-                    className: 'btn btn-secondary btn-sm'
-                },
-                {
-                    extend: 'colvis',
-                    text: 'Column Visibility',
-                    className: 'btn btn-info btn-sm'
-                }
-            ]
-        });
-    });
-</script>
-@endpush

@@ -30,7 +30,7 @@
                                 <td>
                                     <img src="{{ asset($product->image) }}" alt="Product" style="width: 50px; height: 50px; object-fit: cover;">
                                 </td>
-                                <td><a href="{{route('product.show',$product->slug)}}">{{ $product->name }}</a></td>
+                                <td><a href="{{route('product.show',$product->slug)}}">{{Str::limit($product->name,30)}}</a></td>
                                 <td><a href="">{{ $product->category->name ?? 'Uncategorized' }}</a></td>
                                 <td>
                                     <span class="badge {{ $product->status ? 'badge bg-green-lt' : 'badge bg-red-lt' }}">

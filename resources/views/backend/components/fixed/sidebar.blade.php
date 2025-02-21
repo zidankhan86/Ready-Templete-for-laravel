@@ -126,7 +126,7 @@
                     <a class="nav-link {{ request()->routeIs('home.page.index') ? 'active' : '' }}"
                         href="{{ route('home.page.index') }}">
                         <span class="nav-link-icon d-md-none d-lg-inline-block">
-                            <x-backend.svg.book-svg />
+                            <x-backend.svg.home-content-svg />
                         </span>
                         <span class="nav-link-title">
                                 Home Page Content

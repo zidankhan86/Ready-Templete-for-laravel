@@ -94,9 +94,9 @@ use App\Http\Controllers\UserController;
     Route::get('/custom/page/edit/{id}', [CustomPageController::class, 'edit'])->name('custom.page.edit');
     Route::post('/custom/page/update/{id}', [CustomPageController::class, 'update'])->name('custom.page.update');
 
-    // ===============================
-    // PRODUCT MANAGEMENT
-    // ===============================
+    // ===============================//
+    // PRODUCT MANAGEMENT             //
+    // ===============================//
     Route::get('/product/create', [PropertyController::class, 'create'])->name('product.create');
     Route::post('/product/store', [PropertyController::class, 'store'])->name('product.store');
     Route::get('/product/index', [PropertyController::class, 'index'])->name('products.index');
@@ -105,9 +105,10 @@ use App\Http\Controllers\UserController;
     Route::delete('/product/delete/{id}', [PropertyController::class, 'delete'])->name('product.delete');
     Route::get('/product/show/{slug}', [PropertyController::class, 'show'])->name('product.show');
 
-    // ===============================
-    // AUTH & USER MANAGEMENT
-    // ===============================
+
+    // ===============================//
+    // AUTH & USER MANAGEMENT         //
+    // ===============================//
     Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
     Route::get('/user-list', [UserController::class, 'index'])->name('user.list');
     Route::get('/user-create', [UserController::class, 'create'])->name('create.user');
@@ -117,9 +118,9 @@ use App\Http\Controllers\UserController;
     Route::put('/user-update/{id}', [UserController::class, 'update'])->name('update.user');
     Route::get('/user-show/{id}', [UserController::class, 'show'])->name('show.user');
 
-    // ===============================
-    // CATEGORY MANAGEMENT
-    // ===============================
+    // ===============================//
+    // CATEGORY MANAGEMENT            //
+    // ===============================//
     Route::get('/category/index', [CategoryController::class, 'index'])->name('category.index');
     Route::get('/category/create', [CategoryController::class, 'create'])->name('category.create');
     Route::post('/category/save', [CategoryController::class, 'store'])->name('category.store');
@@ -128,16 +129,16 @@ use App\Http\Controllers\UserController;
     Route::get('/category/delete/{id}', [CategoryController::class, 'delete'])->name('category.destroy');
     Route::get('/category/show/{slug}', [CategoryController::class, 'show'])->name('category.show');
 
-    // ===============================
-    // PROPERTIES MANAGEMENT
-    // ===============================
+    // ===============================//
+    // PROPERTIES MANAGEMENT          //
+    // ===============================//
     Route::get('/property/index', [PropertyController::class, 'property_index'])->name('property_index');
     Route::get('/property/create', [PropertyController::class, 'property_create'])->name('property_create');
     Route::post('/property/save', [PropertyController::class, 'property_store'])->name('property_store');
     Route::get('/property/edit/{slug}', [PropertyController::class, 'property_edit'])->name('property_edit');
     Route::get('/property/show/{slug}', [PropertyController::class, 'property_show'])->name('property_show');
     Route::delete('/property/delete/{id}', [PropertyController::class, 'property_delete'])->name('property_delete');
-    Route::post('/property/update', [PropertyController::class, 'property_update'])->name('property_update');
+    Route::put('/property/update/{id}', [PropertyController::class, 'property_update'])->name('property_update');
 
 
 
@@ -148,14 +149,14 @@ use App\Http\Controllers\UserController;
     Route::get('/change-password', [ChangePasswordController::class, 'index'])->name('change.password');
     Route::post('/update-password/{id}', [ChangePasswordController::class, 'update'])->name('update.password');
 
-    // ===============================
-    // PROFILE MANAGEMENT
-    // ===============================
+    // ===============================//
+    // PROFILE MANAGEMENT             //
+    // ===============================//
     Route::get('/profile', [ProfileController::class, 'index'])->name('profile');
 
-    // ===============================
-    // REGISTRATION UPDATE
-    // ===============================
+    // ===============================//
+    // REGISTRATION UPDATE            //
+    // ===============================//
     Route::post('/registration/update/{id}', [RegistrationController::class, 'update'])->name('registration.update');
 
     // ===============================//

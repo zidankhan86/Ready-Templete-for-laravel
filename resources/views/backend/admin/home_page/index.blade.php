@@ -19,11 +19,11 @@
                     <tbody>
                         @foreach($content as $item)
                         <tr>
-                            <td>{{ $item->homepage_title }}</td>
-                            <td>{{ $item->about_title }}</td>
-                            <td>{{ $item->footer_title }}</td>
+                            <td>{{ Str::limit($item->homepage_title,30) }}</td>
+                            <td>{{ Str::limit($item->about_title,30) }}</td>
+                            <td>{{ Str::limit($item->footer_title,30) }}</td>
                             <td>
-                                <a href="{{ route('home.page.edit') }}" class="btn btn-primary btn-sm">Edit</a>
+                                <a href="{{ route('home.page.edit') }}" class="btn btn-primary btn-sm"><x-backend.svg.edit-btn/></a>
                             </td>
                         </tr>
                         @endforeach

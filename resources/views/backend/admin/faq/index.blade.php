@@ -23,8 +23,8 @@
                         <tbody>
                             @forelse($faqs as $faq)
                                 <tr>
-                                    <td data-label="Question">{{ $faq->question }}</td>
-                                    <td data-label="Answer">{{ Str::limit($faq->answer, 100) }}</td>
+                                    <td data-label="Question">{{ Str::limit($faq->question,20) }}</td>
+                                    <td data-label="Answer">{{ Str::limit($faq->answer, 30) }}</td>
                                     <td>
 
                                         <div class="d-flex gap-2">

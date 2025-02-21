@@ -222,7 +222,7 @@
 
                                     </a>
                                     <a class="dropdown-item" href="{{ route('home.page.index') }}">
-                                        <x-backend.svg.book-svg />
+                                        <x-backend.svg.home-content-svg />
                                         Home Page Content
 
                                     </a>

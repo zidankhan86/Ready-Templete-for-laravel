@@ -22,7 +22,7 @@
                         <tbody>
                             @forelse ($categories as $category)
                                 <tr>
-                                    <td>{{ $category->name }}</td>
+                                    <td>{{ Str::limit($category->name,20) }}</td>
                                     <td>
                                         <span class="badge {{ $category->status ? 'badge bg-green-lt' : 'badge bg-red-lt' }}">
                                             {{ $category->status ? 'Active' : 'Inactive' }}
